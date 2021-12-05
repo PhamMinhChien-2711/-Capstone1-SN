@@ -1,5 +1,5 @@
 import { AllOutSharp, SearchOutlined } from '@mui/icons-material';
-import React from 'react';
+import React, { useContext } from 'react';
 import { BrowserRouter as Router, Switch, Route, NavLink } from 'react-router-dom';
 import { Col, Container, Row, InputGroupAddon, Input, InputGroup, Button } from 'reactstrap';
 import './index.scss';
@@ -7,9 +7,9 @@ import logo from '../../assets/logo.jpg';
 import headImg from '../../assets/headimg.png';
 import user from '../../assets/user.jpg';
 import { Avatar, IconButton } from '@mui/material';
-import { useSelector } from 'react-redux'
-import store from '../../redux/store';
-import userSlice from '../../redux/user';
+// import { useSelector } from 'react-redux'
+import { AuthContext } from "../../context/AuthContext";
+// import store from '../../redux/store';   
 
 const active = {
     fontWeight: 'bold',
@@ -17,11 +17,12 @@ const active = {
 }
 
 function Header(props) {
-    const userStore = useSelector(state => state.userSlider)
+    const { user, dispatch } = useContext(AuthContext);
+    console.log(user, "user");
 
     const logout = () => {
-        localStorage.clear()
-        store.dispatch(userSlice.actions.setUserInfo(null))
+         localStorage.clear()
+         dispatch({ type: "LOGIN_FAILURE", payload: null });
     }
 
     return (
@@ -46,7 +47,7 @@ function Header(props) {
                     </Col>
                     <Col xs='12' sm='12' md='12' lg='2' className='Header-col-3'>
                         {
-                            userStore.userInfo ?
+                            user.user ?
                                 <>
                                     <NavLink to='/user'>
                                         <Avatar
@@ -59,7 +60,7 @@ function Header(props) {
                                     <IconButton onClick={logout} endIcon={<AllOutSharp />}><i class="fas fa-sign-out-alt"></i></IconButton>
                                 </>
                                 :
-                                <NavLink activeStyle={active} className='Header-col-1-link' to='/signin' >Đăng nhập</NavLink>
+                                <NavLink activeStyle={active} className='Header-col-1-link' to='/login' >Đăng nhập</NavLink>
                         }
                     </Col>
                 </Row>

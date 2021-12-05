@@ -9,8 +9,8 @@ import HomePostDetail from '../../pages/HomePostDetail';
 import User from '../../pages/User';
 import CuuTroPostDetail from '../../pages/CuuTroPostDetail';
 import HoiDapPostDetail from '../../pages/HoiDapPostDetail';
-import SignIn from '../../pages/SignIn';
-import SignUp from '../../pages/SignUp';
+// import SignIn from '../../pages/SignIn';
+// import SignUp from '../../pages/SignUp';
 import Cart from '../../pages/GioHang';
 const Main = () => (
     <main>
@@ -44,12 +44,12 @@ const Main = () => (
             <Route path='/hoidap/:id'>
                 <HoiDapPostDetail />
             </Route>
-            <Route path='/signin'>
+            {/* <Route path='/signin'>
                 <SignIn/>
             </Route>
             <Route path='/signup'>
                 <SignUp/>
-            </Route>
+            </Route> */}
             <Route path='/user'>
                 <User />
             </Route>

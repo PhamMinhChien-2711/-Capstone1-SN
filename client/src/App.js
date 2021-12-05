@@ -1,5 +1,6 @@
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
+import { CartProvider } from './context/Cart';
 import {
   BrowserRouter as Router,
   Switch,
@@ -9,20 +10,21 @@ import {
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
 import Messenger from "./pages/messenger/Messenger";
-import Home from './pages/HomePage';
-import HoiDap from './pages/HoiDap';
-import CuuTro from './pages/CuuTro';
-import Shop from './pages/Shop';
-import HomePostDetail from './pages/HomePostDetail';
-import User from './pages/User';
-import CuuTroPostDetail from './pages/CuuTroPostDetail';
-import HoiDapPostDetail from './pages/HoiDapPostDetail';
-import Cart from './pages/GioHang';
+
+import Header from './components/Header';
+import Main from './components/Main';
+
 
 function App() {
   const { user } = useContext(AuthContext);
   return (
     <Router>
+      <CartProvider >
+        <div className="App">
+            <Header />
+            <Main />
+        </div>
+        </CartProvider>
       <Switch>
         <Route path="/login">{!user ? <Redirect to="/" /> : <Login />}</Route>
         <Route path="/register">
@@ -33,35 +35,10 @@ function App() {
         </Route>
 
         {/* chien update */}
-        <Route exact path='/'>
-          <Home />
-        </Route>
-        <Route exact path='/hoidap'>
-          <HoiDap />
-        </Route>
-        <Route exact path='/cuutro'>
-          <CuuTro />
-        </Route>
-
-        <Route exact path='/shop'>
-          <Shop />
-        </Route>
-        <Route exact path='/shop/cart'>
-          <Cart />
-        </Route>
-        <Route path='/home/:id'>
-          <HomePostDetail />
-        </Route>
-        <Route path='/cuutro/:id'>
-          <CuuTroPostDetail />
-        </Route>
-        <Route path='/hoidap/:id'>
-          <HoiDapPostDetail />
-        </Route>
-        <Route path='/user'>
-          <User />
-        </Route>
+       
+       
       </Switch>
+      
     </Router>
   );
 }
