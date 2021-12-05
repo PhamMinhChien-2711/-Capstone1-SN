@@ -1,0 +1,21 @@
+{
+    "name": "Capstone",
+    "version": "1.0.0",
+    "description": "",
+    "scripts": {
+        "start": "concurrently  \"cd client && npm start\" \"cd api && npm start\" \"cd socket && npm start\" "
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/phudinhnguyen/instagram-clone.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/phudinhnguyen/instagram-clone/issues"
+    },
+    "homepage": "https://github.com/phudinhnguyen/instagram-clone#readme",
+    "dependencies": {
+        "concurrently": "^5.3.0"
+    }
+}
