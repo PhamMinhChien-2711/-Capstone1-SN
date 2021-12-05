@@ -1,0 +1,41 @@
+.Home {
+  display: block;
+  Button {
+    color: black;
+  }
+  &-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 0.5rem;
+    margin-left: 5rem;
+
+    &-1 {
+      flex-basis: 400px;
+      Button {
+        border-right: black solid 6px;
+        border-radius: 5px;
+        font-size: 14px;
+        padding: 0 1rem;
+      }
+    }
+    &-2 {
+      flex-basis: 800px;
+      Button {
+        font-size: 0.8rem;
+        float: right;
+        color: white;
+      }
+    }
+  }
+  &-posts {
+    display: inline;
+    width: 80%;
+    padding: 0 10px;
+  }
+  .Home-posts {
+    max-width: 700px;
+    margin: auto;
+    display: block;
+  }
+}

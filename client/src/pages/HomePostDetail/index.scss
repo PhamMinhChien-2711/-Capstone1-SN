@@ -1,0 +1,29 @@
+.HomePostDetail {
+  display: flex;
+  flex-direction: row;
+  margin-top: 1rem;
+  .left {
+    width: 50%;
+    margin-left: 10rem;
+
+    .head {
+      &-author {
+        color: rgb(77, 77, 172);
+        font-size: 24px;
+        font-weight: bold;
+      }
+      span {
+        margin-left: 30px;
+      }
+      &-button {
+        margin-left: 50px;
+      }
+    }
+  }
+
+  .comment {
+   .head{
+
+   }
+  }
+}

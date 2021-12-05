@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap");
+.Header {
+    display: flex;
+    flex-direction: column;
+    &-row {
+        align-items: center;
+    }
+
+    &-row-2 {
+        padding: 0;
+        margin: 0;
+        img {
+            height: 12rem;
+            border-radius: 10px;
+        }
+    }
+
+    &-col-1 {
+        img {
+            margin-right: 2rem;
+        }
+        &-link {
+            text-decoration: none;
+            color: rgb(78, 77, 77);
+            font-size: 1px;
+            margin-right: 1rem;
+
+            &:hover {
+                font-weight: bold;
+                color: rgb(13, 26, 83);
+            }
+        }
+    }
+    &-col-2 {
+        margin-bottom: 0.5rem;
+    }
+    &-col-3 {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .Header-col-1 {
+        img {
+            height: 30px;
+            width: 40px;
+        }
+        &-link {
+            font-size: 1rem;
+        }
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .Header-col-1 {
+        &-link {
+            font-size: 1.3rem;
+        }
+    }
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+}

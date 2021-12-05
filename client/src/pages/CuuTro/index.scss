@@ -1,0 +1,36 @@
+.CuuTro {
+    display: block;
+    &-button {
+        margin-top: 0.5rem;
+        Button {
+            float: right;
+            margin-right: 3rem;
+        }
+    }
+
+    &-body {
+        display: flex;
+        flex-direction: row;
+        .left {
+            width: 100%;
+            margin-left: 7rem;
+        }
+
+        .right {
+            width: 40%;
+            position: fixed;
+            top: 20rem;
+            right: -3rem;
+            hr {
+                width: 80%;
+            }
+            h4 {
+                color: rgb(75, 75, 153);
+            }
+
+            span {
+                opacity: 0.8;
+            }
+        }
+    }
+}

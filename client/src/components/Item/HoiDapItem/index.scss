@@ -1,0 +1,19 @@
+.Id {
+    font-weight: bold;
+}
+
+.Author {
+    font-size: 25px;
+    color: rgb(63, 63, 189);
+}
+.CreatedAt {
+    font-style: italic;
+    margin-left: 50px;
+    font-size: 15px;
+}
+
+.Item {
+    &-link {
+        text-decoration: none;
+    }
+}

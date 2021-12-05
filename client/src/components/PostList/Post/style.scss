@@ -1,0 +1,22 @@
+.card {
+  &-content,
+  &-action {
+    text-align: left;
+  }
+  width: 600px;
+  margin-left: 3rem;
+  margin-bottom: 1rem;
+  &-link {
+    text-decoration: none;
+    
+    box-sizing: border-box;
+    width: fit-content;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    color: white;
+    &:hover {
+    
+      color: white;
+    }
+  }
+}

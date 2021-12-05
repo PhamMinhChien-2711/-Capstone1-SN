@@ -1,0 +1,13 @@
+.User {
+    display: flex;
+    flex-direction: row;
+    img {
+        max-width: 100%;
+        width: 300px;
+        height: 300px;
+    }
+
+    &-infor {
+        margin-top: 2.5rem;
+    }
+}
