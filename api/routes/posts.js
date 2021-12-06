@@ -21,7 +21,7 @@ router.post('/', async (req, res) => {
         const post = new PostModel({
             ...newPost,
             likeCount: [],
-            authorId: req.user.user_id,
+            // authorId: req.user.user_id,
         });
         await post.save();
         res.status(200).json({ data: post });

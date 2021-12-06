@@ -26,12 +26,12 @@ function App() {
         </div>
         </CartProvider>
       <Switch>
-        <Route path="/login">{!user ? <Redirect to="/" /> : <Login />}</Route>
+        <Route path="/login">{user ? <Redirect to="/" /> : <Login />}</Route>
         <Route path="/register">
           {user ? <Redirect to="/" /> : <Register />}
         </Route>
         <Route path="/messenger">
-          {!user ? <Redirect to="/" /> : <Messenger />}
+          {user ? <Redirect to="/" /> : <Messenger />}
         </Route>
 
         {/* chien update */}

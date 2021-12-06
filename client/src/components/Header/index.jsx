@@ -5,7 +5,7 @@ import { Col, Container, Row, InputGroupAddon, Input, InputGroup, Button } from 
 import './index.scss';
 import logo from '../../assets/logo.jpg';
 import headImg from '../../assets/headimg.png';
-import user from '../../assets/user.jpg';
+import userAv from '../../assets/user.jpg';
 import { Avatar, IconButton } from '@mui/material';
 // import { useSelector } from 'react-redux'
 import { AuthContext } from "../../context/AuthContext";
@@ -47,16 +47,17 @@ function Header(props) {
                     </Col>
                     <Col xs='12' sm='12' md='12' lg='2' className='Header-col-3'>
                         {
-                            user.user ?
+                            user?
                                 <>
                                     <NavLink to='/user'>
                                         <Avatar
                                             className='img'
                                             alt="Remy Sharp"
-                                            src={user}
+                                            src={userAv}
                                             sx={{ width: 56, height: 50 }}
                                         />
                                     </NavLink>
+                                    {/* <div onClick={logout} className="div"> Dang nhap</div> */}
                                     <IconButton onClick={logout} endIcon={<AllOutSharp />}><i class="fas fa-sign-out-alt"></i></IconButton>
                                 </>
                                 :

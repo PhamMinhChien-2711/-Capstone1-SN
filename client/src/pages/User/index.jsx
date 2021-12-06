@@ -1,11 +1,13 @@
-import React from 'react';
+
 import './index.scss';
-import user from '../../assets/user.jpg';
+import userr from '../../assets/user.jpg';
 import { Button, Col, Container, Row } from 'reactstrap';
-import { useSelector } from 'react-redux';
+import React, { useContext } from 'react';
+import { AuthContext } from "../../context/AuthContext";
+
 function User(props) {
-    const userStore = useSelector(state => state.userSlider)
-    console.log(userStore, 'userStore');
+    const { user, dispatch } = useContext(AuthContext);
+    
     return (
 
         <div className='User'>
@@ -13,14 +15,14 @@ function User(props) {
                 <Row>
                     <Col lg='2'> </Col>
                     <Col lg='4'>
-                        <img src={user} alt='' />
+                        <img src={userr} alt='' />
                     </Col>
                     <Col lg='6' className='User-infor'>
                         <h4>Your Information </h4>
                         <table>
                             <tr>
                                 <td>FullName: </td>
-                                <td>{userStore?.userInfo?.username}</td>
+                                <td>{user?.username}</td>
                             </tr>
                             <tr>
                                 <td>Email: </td>
