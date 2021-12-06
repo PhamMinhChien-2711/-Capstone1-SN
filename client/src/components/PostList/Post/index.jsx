@@ -23,7 +23,7 @@ export default function Post({ post }) {
         <Link
             className="card-link"
             to={{ pathname: `/home/postid=${post?.postID}`, state: { post } }}
-            style={{ marginLeft: '32rem', marginBottom: '2rem', fontWeight: 'bold' }}
+            style={{ fontWeight: 'bold' }}
         >
             <Card className='card'>
                 <CardHeader
