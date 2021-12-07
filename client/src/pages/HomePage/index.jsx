@@ -33,8 +33,8 @@ const Home = (props) => {
         attachment: "",
     });
     const [file, setFile] = useState(null);
-    const PF = process.env.REACT_APP_PUBLIC_FOLDER;
-    const desc = useRef();
+    // const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+    // const desc = useRef();
     const [modal, setModal] = useState(false);
     const [postLoading, setPostLoading] = useState(false);
 
@@ -103,7 +103,6 @@ const Home = (props) => {
                                 value={postData.content}
                             />
                            <input
-                           
                             type="file"
                             id="file"
                             accept=".png,.jpeg,.jpg"
