@@ -18,17 +18,16 @@ import img from "../../../assets/item.jpg";
 import './style.scss';
 
 export default function Post({ post }) {
-    console.log(post);
     return (
         <>
             <Link
-                className="card-link"
+                className="link"
                 to={{ pathname: `/home/postid=${post?.postID}`, state: { post } }}
                 style={{ fontWeight: 'bold' }}
             >
                 <Card className='card'>
                     <CardHeader
-                        avatar={<Avatar></Avatar>}
+                        avatar={<Avatar />}
                         title={post.authorId}
                         subheader={moment(post.updateAt).format("HH:MM MMM DD,YYYY")}
                         action={
@@ -42,9 +41,8 @@ export default function Post({ post }) {
                     <CardMedia
                         image={img}
                         title="Title"
-                        style={{ height: "500px", width: "700px", borderRadius: "5px", }}
+                        style={{ height: "400px", width: "630px", borderRadius: "5px", }}
                     />
-
                     <CardActions className='card-action'>
                         <IconButton>
                             <FavoriteIcon />
@@ -63,9 +61,6 @@ export default function Post({ post }) {
                             {post.content}{" "}
                         </Typography>
                     </CardContent>
-
-
-
                 </Card >
             </Link>
         </>
