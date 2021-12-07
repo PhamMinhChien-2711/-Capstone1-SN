@@ -21,8 +21,8 @@ function Header(props) {
     console.log(user, "user");
 
     const logout = () => {
-         localStorage.clear()
-         dispatch({ type: "LOGIN_FAILURE", payload: null });
+        localStorage.clear()
+        dispatch({ type: "LOGIN_FAILURE", payload: null });
     }
 
     return (
@@ -47,7 +47,7 @@ function Header(props) {
                     </Col>
                     <Col xs='12' sm='12' md='12' lg='2' className='Header-col-3'>
                         {
-                            user?
+                            user ?
                                 <>
                                     <NavLink to='/user'>
                                         <Avatar
@@ -66,8 +66,8 @@ function Header(props) {
                     </Col>
                 </Row>
             </Container>
-            <Row className='Header-row-2'><img style={{ width: '100%' }} src={headImg} alt='head img' /></Row>
-        </div>
+            <><div className='Header-row-2'><img style={{ width: '100%' }} src={headImg} alt='head img' /></div></>
+        </div >
 
     );
 }
