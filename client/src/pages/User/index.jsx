@@ -26,11 +26,11 @@ function User(props) {
                             </tr>
                             <tr>
                                 <td>Email: </td>
-                                <td>contact @abc.com</td>
+                                <td>{user.email}</td>
                             </tr>
                             <tr>
                                 <td>Phone: </td>
-                                <td>+13 4131 14112</td>
+                                <td>{user._id}</td>
                             </tr><br />
                             <tr>
                                 <Button varriant='contained'>Change your password</Button>
