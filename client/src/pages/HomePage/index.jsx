@@ -1,4 +1,4 @@
-import React, { useState,  useContext, useRef, } from "react";
+import React, { useState, useContext, useRef, } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import {
     Button,
@@ -10,6 +10,7 @@ import "./index.scss";
 import PostList from "../../components/PostList";
 import Item from "../../components/Item/HomeItem";
 import { createPost, fetchPosts } from "../../api/post";
+import { uploadImage } from "../../api/upload";
 import {
     Container,
     Row,
@@ -45,11 +46,13 @@ const Home = (props) => {
         setPostData((prev) => ({ ...prev, [name]: value }));
 
     };
-    const post = () => {
+
+    const post = async () => {
         setPostLoading(true);
         createPost({
             title: postData.title,
             content: postData.content,
+            img: url,
         })
             .then((res) => {
                 console.log(res, "post res");
@@ -60,6 +63,14 @@ const Home = (props) => {
                 setPostLoading(false);
             });
     };
+
+    const upload = (e) => {
+        const formData = new FormData()
+        formData.append("file", e.target.files[0])
+
+        const res = await uploadImage(formData)
+        console.log('res: ', res);
+    }
 
     return (
         <div className="Home">
@@ -102,14 +113,14 @@ const Home = (props) => {
                                 onChange={onChange}
                                 value={postData.content}
                             />
-                           <input
-                           
-                            type="file"
-                            id="file"
-                            accept=".png,.jpeg,.jpg"
-                            onChange={(e) => setFile(e.target.files[0])}
+                            <input
+
+                                type="file"
+                                id="file"
+                                accept=".png,.jpeg,.jpg"
+                                onChange={upload}
                             />
-                           
+
                         </ModalBody>
                         <ModalFooter>
                             <LoadingButton
