@@ -39,7 +39,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 app.post("/api/upload", upload.single("file"), (req, res) => {
   try {
-    return res.status(200).json("File uploded successfully");
+    return res.status(200).json({ url: `http://localhost:8800/images/${req.file.originalname}` });
   } catch (error) {
     console.error(error);
   }
@@ -50,6 +50,7 @@ app.use("/api/users", userRoute);
 app.use("/api/conversations", conversationRoute);
 app.use("/api/messages", messageRoute);
 app.use("/api/posts", postRoute);
+app.use(express.static('public'))
 
 app.listen(8800, () => {
   console.log("Backend server is running!");
