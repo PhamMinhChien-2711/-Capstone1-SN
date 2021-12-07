@@ -39,7 +39,7 @@ export default function Post({ post }) {
                     }
                 />
                 <CardMedia
-                    image={img}
+                    image={post.img}
                     title="Title"
                     style={{ height: "500px", width: "700px", borderRadius: "5px", }}
                 />

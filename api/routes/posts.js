@@ -7,7 +7,7 @@ const router = express.Router();
 router.get('/', async (req, res) => {
     try {
         console.log('PostModel: ', PostModel);
-        const posts = await PostModel.find();
+        const posts = await PostModel.find().sort({ createdAt: -1 });
         res.status(200).json(posts);
     } catch (error) {
         console.log('error: ', error);

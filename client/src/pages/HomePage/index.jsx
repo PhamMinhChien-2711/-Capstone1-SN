@@ -1,4 +1,4 @@
-import React, { useState,  useContext, useRef, } from "react";
+import React, { useState, useContext,useEffect, useRef, } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import {
     Button,
@@ -10,6 +10,7 @@ import "./index.scss";
 import PostList from "../../components/PostList";
 import Item from "../../components/Item/HomeItem";
 import { createPost, fetchPosts } from "../../api/post";
+import { uploadImage } from "../../api/upload";
 import {
     Container,
     Row,
@@ -33,10 +34,20 @@ const Home = (props) => {
         attachment: "",
     });
     const [file, setFile] = useState(null);
-    // const PF = process.env.REACT_APP_PUBLIC_FOLDER;
-    // const desc = useRef();
+    const [url, setUrl] = useState("");
+    const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+    const desc = useRef();
     const [modal, setModal] = useState(false);
     const [postLoading, setPostLoading] = useState(false);
+
+    const [posts, setPosts] = useState([])
+    console.log(posts);
+  
+    useEffect(() => {
+      fetchPosts().then(res => {
+        setPosts(res.data)
+      })
+    }, [])
 
     const toggle = () => setModal(!modal);
 
@@ -45,21 +56,40 @@ const Home = (props) => {
         setPostData((prev) => ({ ...prev, [name]: value }));
 
     };
-    const post = () => {
+
+    
+   
+    const post = async () => {
         setPostLoading(true);
         createPost({
+
             title: postData.title,
             content: postData.content,
+            img: url,
+           
         })
             .then((res) => {
                 console.log(res, "post res");
                 setPostLoading(false);
+                toggle();
+                fetchPosts().then(res => {
+                    setPosts(res.data)
+                  })
+
             })
             .catch((err) => {
                 console.log(err, "err");
                 setPostLoading(false);
             });
     };
+    const upload = async (e) => {
+        const formData = new FormData()
+        formData.append("file", e.target.files[0])
+        const res = await uploadImage(formData)
+        setUrl(res.data.url)
+        console.log("res.url",res);
+    }
+  
 
     return (
         <div className="Home">
@@ -86,6 +116,7 @@ const Home = (props) => {
                     <Modal isOpen={modal} toggle={toggle} >
                         <ModalHeader toggle={toggle}>Add a post ✍️</ModalHeader>
                         <ModalBody>
+
                             <Input
                                 style={{ marginBottom: '0.5rem' }}
                                 name="title"
@@ -102,13 +133,15 @@ const Home = (props) => {
                                 onChange={onChange}
                                 value={postData.content}
                             />
-                           <input
-                            type="file"
-                            id="file"
-                            accept=".png,.jpeg,.jpg"
-                            onChange={(e) => setFile(e.target.files[0])}
+                            <img src={url} alt="" />
+                            <input
+
+                                type="file"
+                                id="file"
+                                accept=".png,.jpeg,.jpg"
+                                onChange={upload}
                             />
-                           
+                            
                         </ModalBody>
                         <ModalFooter>
                             <LoadingButton
@@ -122,14 +155,17 @@ const Home = (props) => {
                                 Cancel
                             </Button>
                         </ModalFooter>
+                        
                     </Modal>
                 </div>
             </div>
+            
             <hr />
             <div className="Home-posts">
+
                 <Container>
                     <Row >
-                        <PostList />
+                        <PostList posts={posts}/>
                     </Row>
                 </Container>
             </div>

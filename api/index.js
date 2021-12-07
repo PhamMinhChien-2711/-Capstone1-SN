@@ -12,6 +12,7 @@ const messageRoute = require("./routes/messages");
 const postRoute = require("./routes/posts");
 const router = express.Router();
 const path = require("path");
+var cors = require('cors')
 
 dotenv.config();
 
@@ -20,9 +21,11 @@ const db = require('./config/db');
 // Connect to DB
 db.connect();
 
+
 app.use("/images", express.static(path.join(__dirname, "public/images")));
 
 //middleware
+app.use(cors())
 app.use(express.json());
 app.use(helmet());
 app.use(morgan("common"));
@@ -39,7 +42,9 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 app.post("/api/upload", upload.single("file"), (req, res) => {
   try {
+    console.log("req.file.originalname",req.file);
     return res.status(200).json({ url: `http://localhost:8800/images/${req.file.originalname}` });
+    
   } catch (error) {
     console.error(error);
   }
