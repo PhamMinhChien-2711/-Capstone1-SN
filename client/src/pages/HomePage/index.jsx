@@ -34,6 +34,7 @@ const Home = (props) => {
         attachment: "",
     });
     const [file, setFile] = useState(null);
+    const [url, setUrl] = useState("");
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
     const desc = useRef();
     const [modal, setModal] = useState(false);
@@ -69,7 +70,8 @@ const Home = (props) => {
         formData.append("file", e.target.files[0])
 
         const res = await uploadImage(formData)
-        console.log('res: ', res);
+
+        setUrl(res.url)
     }
 
     return (
@@ -137,6 +139,7 @@ const Home = (props) => {
                     </Modal>
                 </div>
             </div>
+            <img src={url} alt="" />
             <hr />
             <div className="Home-posts">
                 <Container>
