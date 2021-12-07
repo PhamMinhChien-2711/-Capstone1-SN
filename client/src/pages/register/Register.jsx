@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useRef } from "react";
-import "./register.css";
+import "./register.scss";
 import { useHistory } from "react-router";
-
+import TypeWritter from 'typewriter-effect';
 export default function Register() {
   const username = useRef();
   const email = useRef();
@@ -28,18 +28,26 @@ export default function Register() {
       }
     }
   };
-
+  const handleLogin = () => history.push('/login')
   return (
     <div className="login">
       <div className="loginWrapper">
         <div className="loginLeft">
-          <h3 className="loginLogo">Kene</h3>
+          <h3 className="loginLogo">Social Network for <TypeWritter
+            options={{
+              strings: ['Pet owner', 'also for you', 'also for everyone'],
+              autoStart: true,
+              loop: true,
+            }} /></h3>
+
           <span className="loginDesc">
             Connect with friends and the world around you on social.
           </span>
         </div>
         <div className="loginRight">
+
           <form className="loginBox" onSubmit={handleClick}>
+            <h3 >Sign up</h3>
             <input
               placeholder="Username"
               required
@@ -71,7 +79,7 @@ export default function Register() {
             <button className="loginButton" type="submit">
               Sign Up
             </button>
-            <button className="loginRegisterButton">Log into Account</button>
+            <button onClick={handleLogin} className="loginRegisterButton">Log into Account</button>
           </form>
         </div>
       </div>
