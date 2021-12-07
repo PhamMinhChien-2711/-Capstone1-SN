@@ -1,6 +1,6 @@
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
-import { CartProvider } from './context/Cart';
+import { CartProvider } from "./context/Cart";
 import {
   BrowserRouter as Router,
   Switch,
@@ -11,20 +11,21 @@ import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
 import Messenger from "./pages/messenger/Messenger";
 
-import Header from './components/Header';
-import Main from './components/Main';
-
+import Header from "./components/Header";
+import Main from "./components/Main";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   const { user } = useContext(AuthContext);
   return (
     <Router>
-      <CartProvider >
+      <CartProvider>
         <div className="App">
-            <Header />
-            <Main />
+          <Header />
+          <Main />
+          <ScrollToTop />
         </div>
-        </CartProvider>
+      </CartProvider>
       <Switch>
         <Route path="/login">{user ? <Redirect to="/" /> : <Login />}</Route>
         <Route path="/register">
@@ -35,10 +36,7 @@ function App() {
         </Route>
 
         {/* chien update */}
-       
-       
       </Switch>
-      
     </Router>
   );
 }

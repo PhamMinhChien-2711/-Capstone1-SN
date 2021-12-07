@@ -139,14 +139,12 @@ const Home = (props) => {
                     </Modal>
                 </div>
             </div>
-            <img src={url} alt="" />
+
             <hr />
             <div className="Home-posts">
-                <Container>
-                    <Row >
-                        <PostList />
-                    </Row>
-                </Container>
+                <>
+                    <PostList />
+                </>
             </div>
         </div>
     );

@@ -9,7 +9,7 @@
     align-items: center;
     margin-top: 0.5rem;
     margin-left: 5rem;
-
+    margin-bottom: 0;
     &-1 {
       flex-basis: 400px;
       Button {
@@ -26,31 +26,26 @@
         float: right;
         color: white;
       }
-      .shareOption{
+      .shareOption {
         display: flex;
         align-items: center;
         margin-right: 15px;
         cursor: pointer;
-    }
-    .shareIcon{
-      font-size: 18px;
-      margin-right: 3px;
-  }
-  
-  .shareOptionText{
-      font-size: 14px;
-      font-weight: 500;
-  }
+      }
+      .shareIcon {
+        font-size: 18px;
+        margin-right: 3px;
+      }
+
+      .shareOptionText {
+        font-size: 14px;
+        font-weight: 500;
+      }
     }
   }
   &-posts {
-    display: inline;
-    width: 80%;
-    padding: 0 10px;
-  }
-  .Home-posts{
-    max-width: 700px;
-    margin: auto;
     display: block;
+    max-width: 95%;
+    margin: 0 auto;
   }
 }
