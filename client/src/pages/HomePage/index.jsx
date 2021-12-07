@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext, useRef, } from "react";
+import { AuthContext } from "../../context/AuthContext";
 import {
     Button,
 } from "@material-ui/core";
+
 import { LoadingButton } from "@mui/lab";
 import CreateIcon from "@mui/icons-material/Create";
 import "./index.scss";
 import PostList from "../../components/PostList";
 import Item from "../../components/Item/HomeItem";
 import { createPost, fetchPosts } from "../../api/post";
+import { uploadImage } from "../../api/upload";
 import {
     Container,
     Row,
@@ -30,7 +33,10 @@ const Home = (props) => {
         content: "",
         attachment: "",
     });
-
+    const [file, setFile] = useState(null);
+    const [url, setUrl] = useState("");
+    const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+    const desc = useRef();
     const [modal, setModal] = useState(false);
     const [postLoading, setPostLoading] = useState(false);
 
@@ -39,12 +45,15 @@ const Home = (props) => {
     const onChange = (e) => {
         const { value, name } = e.target;
         setPostData((prev) => ({ ...prev, [name]: value }));
+
     };
-    const post = () => {
+
+    const post = async () => {
         setPostLoading(true);
         createPost({
             title: postData.title,
             content: postData.content,
+            img: url,
         })
             .then((res) => {
                 console.log(res, "post res");
@@ -55,6 +64,15 @@ const Home = (props) => {
                 setPostLoading(false);
             });
     };
+
+    const upload = (e) => {
+        const formData = new FormData()
+        formData.append("file", e.target.files[0])
+
+        const res = uploadImage(formData)
+
+        setUrl(res.url)
+    }
 
     return (
         <div className="Home">
@@ -97,13 +115,14 @@ const Home = (props) => {
                                 onChange={onChange}
                                 value={postData.content}
                             />
-                            <Input
-                                name="attachment"
-                                type="text"
-                                placeholder="Link to img"
-                                onChange={onChange}
-                                value={postData.attachment}
+                            <input
+
+                                type="file"
+                                id="file"
+                                accept=".png,.jpeg,.jpg"
+                                onChange={upload}
                             />
+
                         </ModalBody>
                         <ModalFooter>
                             <LoadingButton
@@ -120,6 +139,7 @@ const Home = (props) => {
                     </Modal>
                 </div>
             </div>
+            <img src={url} alt="" />
             <hr />
             <div className="Home-posts">
                 <Container>

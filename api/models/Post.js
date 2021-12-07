@@ -16,7 +16,14 @@ const schema = new mongoose.Schema(
       required: false,
       default: '',
     },
-    attachment: String,
+    desc: {
+      type: String,
+      max: 500,
+    },
+    img: {
+      type: String,
+    },
+    // attachment: String,
     likeCount: {
       type: [Types.ObjectId],
       default: 0,
