@@ -22,7 +22,7 @@ export default function Login() {
     <div className="login">
       <div className="loginWrapper">
         <div className="loginLeft">
-          <h3 className="loginLogo">SNPO</h3>
+          <h3 className="loginLogo">🐈SNPO</h3>
           <span className="loginDesc">
           Connect with other pet owers around you on SNPO social.
           </span>

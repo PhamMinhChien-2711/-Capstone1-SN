@@ -33,7 +33,7 @@ export default function Post({ post }) {
                     action={
                         <IconButton>
                             <MoreVertIcon>
-                                oke
+                                
                             </MoreVertIcon>
                         </IconButton>
                     }
@@ -44,9 +44,9 @@ export default function Post({ post }) {
                     style={{ height: "500px", width: "700px", borderRadius: "5px", }}
                 />
 
-                <CardActions className='card-action'>
+                <CardActions className='card-actgition'>
                     <IconButton>
-                        <FavoriteIcon />
+                        <FavoriteIcon/>
                         <Typography component="span" color="textSecondary">
                             {post.likeCount}
                         </Typography>

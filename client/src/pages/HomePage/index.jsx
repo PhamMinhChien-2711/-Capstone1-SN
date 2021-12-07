@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState,  useContext, useRef, } from "react";
+import { AuthContext } from "../../context/AuthContext";
 import {
     Button,
 } from "@material-ui/core";
+
 import { LoadingButton } from "@mui/lab";
 import CreateIcon from "@mui/icons-material/Create";
 import "./index.scss";
@@ -30,7 +32,9 @@ const Home = (props) => {
         content: "",
         attachment: "",
     });
-
+    const [file, setFile] = useState(null);
+    const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+    const desc = useRef();
     const [modal, setModal] = useState(false);
     const [postLoading, setPostLoading] = useState(false);
 
@@ -39,6 +43,7 @@ const Home = (props) => {
     const onChange = (e) => {
         const { value, name } = e.target;
         setPostData((prev) => ({ ...prev, [name]: value }));
+
     };
     const post = () => {
         setPostLoading(true);
@@ -97,13 +102,14 @@ const Home = (props) => {
                                 onChange={onChange}
                                 value={postData.content}
                             />
-                            <Input
-                                name="attachment"
-                                type="text"
-                                placeholder="Link to img"
-                                onChange={onChange}
-                                value={postData.attachment}
+                           <input
+                           
+                            type="file"
+                            id="file"
+                            accept=".png,.jpeg,.jpg"
+                            onChange={(e) => setFile(e.target.files[0])}
                             />
+                           
                         </ModalBody>
                         <ModalFooter>
                             <LoadingButton
