@@ -20,7 +20,7 @@ const schema = new mongoose.Schema(
       type: String,
       max: 500,
     },
-    img: {
+    img:{
       type: String,
     },
     // attachment: String,

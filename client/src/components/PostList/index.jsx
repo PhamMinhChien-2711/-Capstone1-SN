@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Grid } from '@material-ui/core';
 import { fetchPosts } from '../../api/post';
 import Post from './Post';
-import { Row } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 
 const PostList = ({posts}) => {
   

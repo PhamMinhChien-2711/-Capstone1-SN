@@ -1,5 +1,5 @@
 import React, { useState, useContext,useEffect, useRef, } from "react";
-import { AuthContext } from "../../context/AuthContext";
+
 import {
     Button,
 } from "@material-ui/core";
@@ -8,7 +8,7 @@ import { LoadingButton } from "@mui/lab";
 import CreateIcon from "@mui/icons-material/Create";
 import "./index.scss";
 import PostList from "../../components/PostList";
-import Item from "../../components/Item/HomeItem";
+
 import { createPost, fetchPosts } from "../../api/post";
 import { uploadImage } from "../../api/upload";
 import {
@@ -33,10 +33,9 @@ const Home = (props) => {
         content: "",
         attachment: "",
     });
-    const [file, setFile] = useState(null);
+    
     const [url, setUrl] = useState("");
-    const PF = process.env.REACT_APP_PUBLIC_FOLDER;
-    const desc = useRef();
+   
     const [modal, setModal] = useState(false);
     const [postLoading, setPostLoading] = useState(false);
 
@@ -57,8 +56,6 @@ const Home = (props) => {
 
     };
 
-    
-   
     const post = async () => {
         setPostLoading(true);
         createPost({
@@ -66,7 +63,6 @@ const Home = (props) => {
             title: postData.title,
             content: postData.content,
             img: url,
-           
         })
             .then((res) => {
                 console.log(res, "post res");
@@ -89,6 +85,8 @@ const Home = (props) => {
         setUrl(res.data.url)
         console.log("res.url",res);
     }
+  
+
   
 
     return (

@@ -7,12 +7,25 @@ import { AuthContext } from "../../context/AuthContext";
 
 function User(props) {
     const { user, dispatch } = useContext(AuthContext);
-    
+
     return (
 
         <div className='User'>
-            <Container >
-                <Row>
+            <div className='User-left'>
+                <img src={userr} alt='' />
+            </div>
+            <div className='User-right'>
+                <span className="User-right__userName">elon.musk</span>
+                <span className="User-right__button-edit">Edit profile</span>
+                <span className="User-right__button-setting"><i class="fas fa-cogs"></i></span><br />
+                <br />
+                <span className="User-right__post"><strong>1</strong> post</span>
+                <span className="User-right__follower"><strong>1414</strong> followers</span>
+                <span className="User-right__following"><strong>122</strong> following</span>
+                <div className="User-right__name">Elon Musk</div>
+
+            </div>
+            {/* <>
                     <Col lg='2'> </Col>
                     <Col lg='4'>
                         <img src={userr} alt='' />
@@ -22,7 +35,7 @@ function User(props) {
                         <table>
                             <tr>
                                 <td>FullName: </td>
-                                <td>{user?.username}</td>
+                                <td>Elon Musk</td>
                             </tr>
                             <tr>
                                 <td>Email: </td>
@@ -37,8 +50,8 @@ function User(props) {
                             </tr>
                         </table>
                     </Col>
-                </Row>
-            </Container>
+                </> */}
+
         </div >
     );
 }
