@@ -8,13 +8,15 @@ const PostList = ({posts}) => {
   
 
   return (
-    <Grid container spacing={1} alignItems='stretch'>
-      {posts.map((post) => (
-        <Row key={post._id} >
+    <>
+    <Row>
+        {posts.map((post) => (
+        <Col key={post._id} >
           <Post post={post} />
-        </Row>
+        </Col>
       ))}
-    </Grid>
+      </Row>
+    </>
   );
 }
 

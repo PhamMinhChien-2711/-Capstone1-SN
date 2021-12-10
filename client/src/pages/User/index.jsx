@@ -2,27 +2,70 @@
 import './index.scss';
 import userr from '../../assets/user.jpg';
 import { Button, Col, Container, Row } from 'reactstrap';
-import React, { useContext } from 'react';
-import { AuthContext } from "../../context/AuthContext";
+import React, { useContext, useState,useEffect } from 'react';
+
+
+import {useLocation} from 'react-router-dom'
+import { useParams } from "react-router";
+import userApi from "../../api/user"
+const querystring = require("querystring");
+
 
 function User(props) {
-    const { user, dispatch } = useContext(AuthContext);
+    const [user, setUser] = useState()
+    const location = useLocation();
+    console.log("useLocation",useLocation());
+    const userId = location.search.split("=")[1]
+    console.log("userId",userId);
 
+    
+   useEffect(() => {
+    userApi.getUser(userId).then((res)=>{
+        console.log("res",res);
+        setUser(res.data)
+    })
+   
+        
+   }, [])
+    // const [url, setUrl] = useState("");
+
+    
+    // const upload = async (e) => {
+    //     const formData = new FormData()
+    //     formData.append("file", e.target.files[0])
+    //     const res = await uploadImage(formData)
+    //     setUrl(res.data.url)
+    //     console.log("res.url",res);
+    // }
     return (
 
         <div className='User'>
+            
             <div className='User-left'>
+
+
                 <img src={userr} alt='' />
             </div>
             <div className='User-right'>
-                <span className="User-right__userName">elon.musk</span>
+                <span className="User-right__userName">
+                {user?.username}
+                </span> 
+                <span className="User-right__button-edit">Messages</span>
                 <span className="User-right__button-edit">Edit profile</span>
                 <span className="User-right__button-setting"><i class="fas fa-cogs"></i></span><br />
+                {/* <input className="User-right__avatar"
+                  type="file"
+                  id="file"
+                  accept=".png,.jpeg,.jpg"
+                  onChange={upload}
+                 >
+                 </input>  */}
+                <br />
                 <br />
                 <span className="User-right__post"><strong>1</strong> post</span>
-                <span className="User-right__follower"><strong>1414</strong> followers</span>
+                <span className="User-right__follower"><strong>{user?.followers} </strong> followers</span>
                 <span className="User-right__following"><strong>122</strong> following</span>
-                <div className="User-right__name">Elon Musk</div>
+                <div className="User-right__name">{user?.username}</div>
 
             </div>
             {/* <>

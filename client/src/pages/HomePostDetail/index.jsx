@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import './index.scss';
-import img from "../../assets/item.jpg";
+// import img from "../../assets/item.jpg";
 import {
     CardMedia, Avatar
 } from "@material-ui/core";
@@ -17,16 +17,20 @@ function HomePostDetail(props) {
             <div className='left'>
 
                 <CardMedia
-                    image={img}
+                    image={post.img}
                     title="Title"
                     style={{ height: "500px", width: "700px", borderRadius: "5px", }} />
                 {/* <section className='body'>
                    
                 </section> */}
+                 <hr/>
                 <section className='foot'>
-
+                <br/>
                 </section>
             </div>
+          
+
+           
             <div className='comment'>
                 <section className='head'>
                     <Link to='/' style={{ textDecoration: 'none' }}>
@@ -47,7 +51,7 @@ function HomePostDetail(props) {
                     {post.content}
                 </p>
             </div>
-            <hr></hr>
+            
         </div>
 
     );

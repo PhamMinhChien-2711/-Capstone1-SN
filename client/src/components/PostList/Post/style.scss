@@ -11,6 +11,28 @@
     transition: transform 0.5s ease;
     transform: translateY(-5px);
   }
+  &-postTop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &-Left {
+    display: flex;
+    align-items: center;
+    
+      
+      
+      &-postUsername{
+       
+        margin: auto 5px;
+        font-size: 1.1rem;
+        color: black;
+       
+      }
+    }
+   
+  }
+  
+ 
 }
 .link {
   text-decoration: none;

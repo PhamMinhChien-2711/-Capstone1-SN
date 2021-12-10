@@ -3,7 +3,7 @@ import React, { useState, useContext,useEffect, useRef, } from "react";
 import {
     Button,
 } from "@material-ui/core";
-
+import { AuthContext } from "../../context/AuthContext";
 import { LoadingButton } from "@mui/lab";
 import CreateIcon from "@mui/icons-material/Create";
 import "./index.scss";
@@ -24,6 +24,7 @@ const active = {
     borderBottom: "3px solid black",
 };
 
+
 const Home = (props) => {
     const tabs = ["Mới nhất", "Quan tâm", "Xu hướng"];
     const [currentFilter, setCurrentFilter] = useState("Mới nhất");
@@ -33,7 +34,8 @@ const Home = (props) => {
         content: "",
         attachment: "",
     });
-    
+
+    const { user, dispatch } = useContext(AuthContext);
     const [url, setUrl] = useState("");
    
     const [modal, setModal] = useState(false);
@@ -63,6 +65,7 @@ const Home = (props) => {
             title: postData.title,
             content: postData.content,
             img: url,
+            authorId: user._id,
         })
             .then((res) => {
                 console.log(res, "post res");
@@ -132,6 +135,7 @@ const Home = (props) => {
                                 value={postData.content}
                             />
                             <img src={url} alt="" />
+                            
                             <input
 
                                 type="file"
@@ -161,11 +165,7 @@ const Home = (props) => {
             <hr />
             <div className="Home-posts">
 
-                <Container>
-                    <Row >
                         <PostList posts={posts}/>
-                    </Row>
-                </Container>
             </div>
         </div>
     );

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import React,{useContext} from 'react';
+import { Switch, Route,Link } from 'react-router-dom';
 import WritePost from '../../components/WritePost';
 import Home from '../../pages/HomePage';
 import HoiDap from '../../pages/HoiDap';
@@ -12,8 +12,12 @@ import HoiDapPostDetail from '../../pages/HoiDapPostDetail';
 // import SignIn from '../../pages/SignIn';
 // import SignUp from '../../pages/SignUp';
 import Cart from '../../pages/GioHang';
-const Main = () => (
-    <main>
+import { AuthContext } from "../../context/AuthContext";
+
+
+export default function  Main ()  {
+    const { user } = useContext(AuthContext);
+    return(
         <Switch>
             <Route exact path='/'>
                 <Home />
@@ -53,8 +57,11 @@ const Main = () => (
             <Route path='/user'>
                 <User />
             </Route>
+            {/* <Link path={`/users/${user.username}`}>
+                <User />
+            </Link> */}
         </Switch>
-    </main>
-)
+    
+    );
+}
 
-export default Main;

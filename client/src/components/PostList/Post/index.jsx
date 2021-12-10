@@ -1,4 +1,13 @@
-import React from "react";
+import React,{useContext,useState,useEffect} from "react";
+import {
+    Container,
+    Row,
+    Input,
+    Modal,
+    ModalHeader,
+    ModalBody,
+    ModalFooter,
+} from "reactstrap";
 import {
     Avatar,
     Card,
@@ -9,40 +18,60 @@ import {
     IconButton,
     Typography,
 } from "@material-ui/core";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
+import MoreVert from "@material-ui/icons/MoreVert";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import moment from "moment";
-import { Link } from "react-router-dom";
+import { Link , useHistory } from "react-router-dom";       
+import { AuthContext } from "../../../context/AuthContext";
+import axios from "axios";
 
 
 import './style.scss';
 
 export default function Post({ post }) {
+    const [user, setUser] = useState({});
+    const [modal, setModal] = useState(false);
+    useEffect(() => {
+        const fetchUser = async () => {
+          const res = await axios.get(`/users?userId=${post.authorId}`);
+          setUser(res.data);
+        };
+        fetchUser();
+      }, [post.userId]);
+    const { user:currentUser } = useContext(AuthContext);
+
+    const toggle = () => setModal(!modal);
+    
     return (
         <>
-            <Link
+           
+                <Card className='card'>
+                    <div className="card-postTop">
+                        <div className="card-postTop-Left">
+                        
+                        <Avatar></Avatar>
+                        <Link to={`/user?userId=${post?.authorId}`}>
+                        <span className="card-postTop-Left-postUsername">{user.username}</span>
+                        </Link>  
+                        </div>
+                            <div className="card-postTop-Right">
+                            <MoreVert style={{ height: "24px", width: "24px", }} onClick={toggle} />
+                           
+                            </div>
+                    </div>
+                    
+            
+            <Link   
                 className="link"
                 to={{ pathname: `/home/postid=${post?.postID}`, state: { post } }}
                 style={{ fontWeight: 'bold' }}
             >
-                <Card className='card'>
-                    <CardHeader
-                        avatar={<Avatar />}
-                        title={post.authorId}
-                        subheader={moment(post.updateAt).format("HH:MM MMM DD,YYYY")}
-                        action={
-                            <IconButton>
-                                <MoreVertIcon>
-                                    oke
-                                </MoreVertIcon>
-                            </IconButton>
-                        }
-                    />
                     <CardMedia
                         image={post.img}
                         title="Title"
                         style={{ height: "400px", width: "630px", borderRadius: "5px", }}
                     />
+                    </Link>
                     <CardActions className='card-action'>
                         <IconButton>
                             <FavoriteIcon />
@@ -51,18 +80,20 @@ export default function Post({ post }) {
                             </Typography>
                         </IconButton>
                     </CardActions >
+                
                     <CardContent className='card-content'>
                         <Typography cariant="h5" color="textPrimary">
-                            {" "}
+                            
                             {post.title}
                         </Typography>
                         <Typography cariant="body2" component="p" color="textSecondary">
-                            {" "}
+                            {""}
                             {post.content}{" "}
                         </Typography>
                     </CardContent>
+                    
                 </Card >
-            </Link>
+            
         </>
 
     );
