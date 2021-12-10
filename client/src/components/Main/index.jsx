@@ -1,10 +1,11 @@
 import React,{useContext} from 'react';
-import { Switch, Route,Link } from 'react-router-dom';
+import { Switch, Route,Link,Redirect } from 'react-router-dom';
 import WritePost from '../../components/WritePost';
 import Home from '../../pages/HomePage';
 import HoiDap from '../../pages/HoiDap';
 import CuuTro from '../../pages/CuuTro';
 import Shop from '../../pages/Shop';
+import Messenger from '../../pages/messenger/Messenger';
 import HomePostDetail from '../../pages/HomePostDetail';
 import User from '../../pages/User';
 import CuuTroPostDetail from '../../pages/CuuTroPostDetail';
@@ -18,6 +19,7 @@ import { AuthContext } from "../../context/AuthContext";
 export default function  Main ()  {
     const { user } = useContext(AuthContext);
     return(
+        
         <Switch>
             <Route exact path='/'>
                 <Home />
@@ -60,8 +62,9 @@ export default function  Main ()  {
             {/* <Link path={`/users/${user.username}`}>
                 <User />
             </Link> */}
+            
         </Switch>
-    
+        
     );
 }
 
