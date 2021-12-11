@@ -13,7 +13,6 @@ const querystring = require("querystring");
 
 function User(props) {
     const [currentUser, setcurrentUser] = useState();
-    const [newChat, setNewChat] = useState()
     const location = useLocation();
     console.log("useLocation", useLocation());
     const userId = location.search.split("=")[1]
@@ -42,13 +41,14 @@ function User(props) {
         }
         else {
             try {
-                const res = await axios.post(`/conversations`, conversation);
+                const res = await axios.post(`/conversations`,conversation );
             } catch (err) {
                 console.log(err);
             }
         }
     };
 
+    
     // const [url, setUrl] = useState("");
 
 
