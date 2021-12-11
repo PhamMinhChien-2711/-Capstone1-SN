@@ -49,7 +49,7 @@ function Header(props) {
                         {
                             user ?
                                 <>
-                                    <NavLink to={`/user/${user?.username}`}>
+                                    <NavLink to={`/user?userId=${user._id}`}>
                                         <Avatar
                                             className='img'
                                             alt="Remy Sharp"

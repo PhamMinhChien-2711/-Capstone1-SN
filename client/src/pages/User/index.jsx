@@ -1,10 +1,17 @@
-
+import { LoadingButton } from "@mui/lab";
 import './index.scss';
 import userr from '../../assets/user.jpg';
 import { Button, Col, Container, Row } from 'reactstrap';
 import React, { useContext, useState,useEffect } from 'react';
-
-
+import {
+    
+    Input,
+    Modal,
+    ModalHeader,
+    ModalBody,
+    ModalFooter,
+} from "reactstrap";
+import { uploadImage } from "../../api/upload";
 import {useLocation} from 'react-router-dom'
 import { useParams } from "react-router";
 import userApi from "../../api/user"
@@ -17,7 +24,12 @@ function User(props) {
     console.log("useLocation",useLocation());
     const userId = location.search.split("=")[1]
     console.log("userId",userId);
-
+    const [modal, setModal] = useState(false);
+    
+    const [postData, setPostData] = useState({
+        username: "",
+        email:""
+    });
     
    useEffect(() => {
     userApi.getUser(userId).then((res)=>{
@@ -27,16 +39,38 @@ function User(props) {
    
         
    }, [])
-    // const [url, setUrl] = useState("");
+   const update =()=>{
+    
+    userApi.updateUser({
+
+            username: postData.username,
+            email: postData.email,
+            profilePicture: url,
+            
+        })
+            .then((res) => {
+                toggle();
+                userApi.getUser().then(res => {
+                    setUser(res.data)
+                  })
+            })
+   }
+   const toggle = () => setModal(!modal);
+   const onChange = (e) => {
+    const { value, name } = e.target;
+    setPostData((prev) => ({ ...prev, [name]: value }));
+
+};
+    const [url, setUrl] = useState("");
 
     
-    // const upload = async (e) => {
-    //     const formData = new FormData()
-    //     formData.append("file", e.target.files[0])
-    //     const res = await uploadImage(formData)
-    //     setUrl(res.data.url)
-    //     console.log("res.url",res);
-    // }
+    const upload = async (e) => {
+        const formData = new FormData()
+        formData.append("file", e.target.files[0])
+        const res = await uploadImage(formData)
+        setUrl(res.data.url)
+       
+    }
     return (
 
         <div className='User'>
@@ -44,14 +78,61 @@ function User(props) {
             <div className='User-left'>
 
 
-                <img src={userr} alt='' />
+                <img src={url} alt='' />
             </div>
             <div className='User-right'>
                 <span className="User-right__userName">
                 {user?.username}
                 </span> 
                 <span className="User-right__button-edit">Messages</span>
-                <span className="User-right__button-edit">Edit profile</span>
+                <span className="User-right__button-edit" onClick={toggle}>Edit profile</span>
+                <Modal isOpen={modal} toggle={toggle} >
+                        <ModalHeader toggle={toggle}>Update User ✍️</ModalHeader>
+                        <ModalBody>
+
+                            <Input
+                                style={{ marginBottom: '0.5rem' }}
+                                name="username"
+                                type="text"
+                                placeholder="Username"
+                                onChange={onChange}
+                                value={postData.username}
+                            />
+                            <Input
+                                style={{ marginBottom: '0.5rem' }}
+                                name="email"
+                                type="text"
+                                placeholder="Email"
+                                onChange={onChange}
+                                value={postData.email}
+                            />
+                            <img style={{width:'85px', height:'60px'}} src={url} alt="" />
+                            
+                            <input
+                                 
+                                type="file"
+                                id="file"
+                                accept=".png,.jpeg,.jpg"
+                                onChange={upload}
+                            />
+                            
+                        </ModalBody>
+                        <ModalFooter>
+                            <LoadingButton
+                               
+                                color="primary"
+                                onClick={update}
+                            >
+                                Update
+                            </LoadingButton>
+                            <Button variant="danger" onClick={toggle}>
+                                Cancel
+                            </Button>
+                        </ModalFooter>
+                        
+                    </Modal>
+
+
                 <span className="User-right__button-setting"><i class="fas fa-cogs"></i></span><br />
                 {/* <input className="User-right__avatar"
                   type="file"

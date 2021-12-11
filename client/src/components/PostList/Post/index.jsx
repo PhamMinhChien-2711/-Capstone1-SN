@@ -75,9 +75,9 @@ export default function Post({ post }) {
                     <CardActions className='card-action'>
                         <IconButton>
                             <FavoriteIcon />
-                            <Typography component="span" color="textSecondary">
+                            {/* <Typography component="span" >
                                 {post.likeCount}
-                            </Typography>
+                            </Typography> */}
                         </IconButton>
                     </CardActions >
                 

@@ -134,7 +134,8 @@ const Home = (props) => {
                                 onChange={onChange}
                                 value={postData.content}
                             />
-                            <img src={url} alt="" />
+                            <img src={url} alt=""
+                             style={{width:'85px', height:'60px'}} />
                             
                             <input
 
