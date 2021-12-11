@@ -9,7 +9,7 @@ import CreateIcon from "@mui/icons-material/Create";
 import "./index.scss";
 import PostList from "../../components/PostList";
 
-import { createPost, fetchPosts } from "../../api/post";
+import { createPost, fetchPosts, likePost } from "../../api/post";
 import { uploadImage } from "../../api/upload";
 import {
     Container,
@@ -98,6 +98,14 @@ const Home = (props) => {
         // Thay đổi state để render ra giao diện
         const newPosts = posts.map(post => {
             if (post._id == postId) {
+                if (post.likeCount.includes(user._id)) {
+                    // dislike
+                    return {
+                        ...post,
+                        likeCount: post.likeCount.filter(userId => userId != user._id)
+                    }
+                }
+                // like
                 return {
                     ...post,
                     likeCount: [...post.likeCount, user._id]
