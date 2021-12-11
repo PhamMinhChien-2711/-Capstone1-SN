@@ -42,7 +42,7 @@ export default function Post({ post, onLike }) {
 
     const toggle = () => setModal(!modal);
 
-    const isLiked = post.likeCount.includes(currentUser._id)
+    const isLiked = post.likeCount.includes(currentUser?._id)
 
     return (
         <>
