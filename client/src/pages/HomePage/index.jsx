@@ -1,4 +1,4 @@
-import React, { useState, useContext,useEffect, useRef, } from "react";
+import React, { useState, useContext, useEffect, useRef, } from "react";
 
 import {
     Button,
@@ -14,12 +14,14 @@ import { uploadImage } from "../../api/upload";
 import {
     Container,
     Row,
+    Col,
     Input,
     Modal,
     ModalHeader,
     ModalBody,
     ModalFooter,
 } from "reactstrap";
+import Post from "../../components/PostList/Post";
 const active = {
     borderBottom: "3px solid black",
 };
@@ -37,17 +39,16 @@ const Home = (props) => {
 
     const { user, dispatch } = useContext(AuthContext);
     const [url, setUrl] = useState("");
-   
+
     const [modal, setModal] = useState(false);
     const [postLoading, setPostLoading] = useState(false);
 
     const [posts, setPosts] = useState([])
-    console.log(posts);
-  
+
     useEffect(() => {
-      fetchPosts().then(res => {
-        setPosts(res.data)
-      })
+        fetchPosts().then(res => {
+            setPosts(res.data)
+        })
     }, [])
 
     const toggle = () => setModal(!modal);
@@ -73,7 +74,7 @@ const Home = (props) => {
                 toggle();
                 fetchPosts().then(res => {
                     setPosts(res.data)
-                  })
+                })
 
             })
             .catch((err) => {
@@ -81,16 +82,32 @@ const Home = (props) => {
                 setPostLoading(false);
             });
     };
+
     const upload = async (e) => {
         const formData = new FormData()
         formData.append("file", e.target.files[0])
         const res = await uploadImage(formData)
         setUrl(res.data.url)
-        console.log("res.url",res);
+        console.log("res.url", res);
     }
-  
 
-  
+    const onLike = (postId) => {
+        // Gọi api like để update dữ liệu dưới db
+        likePost(postId, user._id)
+
+        // Thay đổi state để render ra giao diện
+        const newPosts = posts.map(post => {
+            if (post._id == postId) {
+                return {
+                    ...post,
+                    likeCount: [...post.likeCount, user._id]
+                }
+            }
+            return post
+        })
+
+        setPosts(newPosts)
+    }
 
     return (
         <div className="Home">
@@ -135,8 +152,8 @@ const Home = (props) => {
                                 value={postData.content}
                             />
                             <img src={url} alt=""
-                             style={{width:'85px', height:'60px'}} />
-                            
+                                style={{ width: '85px', height: '60px' }} />
+
                             <input
 
                                 type="file"
@@ -144,7 +161,7 @@ const Home = (props) => {
                                 accept=".png,.jpeg,.jpg"
                                 onChange={upload}
                             />
-                            
+
                         </ModalBody>
                         <ModalFooter>
                             <LoadingButton
@@ -158,15 +175,21 @@ const Home = (props) => {
                                 Cancel
                             </Button>
                         </ModalFooter>
-                        
+
                     </Modal>
                 </div>
             </div>
-            
+
             <hr />
             <div className="Home-posts">
-
-                        <PostList posts={posts}/>
+                {/* <PostList posts={posts}/> */}
+                <Row>
+                    {posts.map((post) => (
+                        <Col key={post._id} >
+                            <Post post={post} onLike={onLike} />
+                        </Col>
+                    ))}
+                </Row>
             </div>
         </div>
     );
