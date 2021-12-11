@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState,useEffect} from "react";
 import { useLocation, Link } from 'react-router-dom';
 import './index.scss';
 // import img from "../../assets/item.jpg";
@@ -7,11 +7,22 @@ import {
 } from "@material-ui/core";
 import { getTimeDistanceFromNow } from "../../utils/formater"
 import { Button } from '@mui/material';
+import axios from "axios";
+
 function HomePostDetail(props) {
 
     //truyen props thong qua Link
     const location = useLocation();
     const { post } = location.state;
+    const [user, setUser] = useState({});
+    
+    useEffect(() => {
+        const fetchUser = async () => {
+          const res = await axios.get(`/users?userId=${post.authorId}`);
+          setUser(res.data);
+        };
+        fetchUser();
+      }, [post.userId]);
     return (
         <div className='HomePostDetail'>
             <div className='left'>
@@ -39,17 +50,19 @@ function HomePostDetail(props) {
 
                     <div className="d-flex">
                         <Avatar></Avatar>
-                        <div className='head-author mx-3'>post.authorId</div>
-                    </div>
-                    <span>{getTimeDistanceFromNow(post.createdAt)}</span>
+                        <div className='head-author mx-3'>{user.username}</div>
+                        <span>{getTimeDistanceFromNow(post.createdAt)}</span>
                     <Button className='head-button' size='small' variant='outlined'>Theo dõi</Button><br />
+                    </div>
+                    
                 </section>
-                <h4 className='body-title'>
+                <h5 className='body-title'>
                     {post.title}
-                </h4>
+                </h5>
                 <p className='body-content'>
                     {post.content}
                 </p>
+             
             </div>
             
         </div>
