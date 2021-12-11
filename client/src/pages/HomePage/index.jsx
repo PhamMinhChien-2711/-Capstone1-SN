@@ -105,7 +105,7 @@ const Home = (props) => {
                         likeCount: post.likeCount.filter(userId => userId != user._id)
                     }
                 }
-                // like
+                // liken
                 return {
                     ...post,
                     likeCount: [...post.likeCount, user._id]
