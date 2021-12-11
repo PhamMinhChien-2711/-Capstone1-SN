@@ -29,6 +29,7 @@ import axios from "axios";
 import './style.scss';
 
 export default function Post({ post }) {
+    
     const [user, setUser] = useState({});
     const [modal, setModal] = useState(false);
     useEffect(() => {

@@ -15,7 +15,7 @@ import { uploadImage } from "../../api/upload";
 import { useLocation } from 'react-router-dom'
 import { useParams } from "react-router";
 import userApi from "../../api/user"
-import { AuthContext } from "./context/AuthContext";
+import { AuthContext } from "../../context/AuthContext";
 
 const querystring = require("querystring");
 
@@ -45,6 +45,7 @@ function User(props) {
             username: postData.username,
             email: postData.email,
             profilePicture: url,
+            userId:userId
         }
 
         userApi.updateUser(currentUser._id, userInfo)
@@ -78,7 +79,7 @@ function User(props) {
             <div className='User-left'>
 
 
-                <img src={url} alt='' />
+                <img src={user?.profilePicture} alt='' />
             </div>
             <div className='User-right'>
                 <span className="User-right__userName">

@@ -13,7 +13,7 @@ userApi.getUser = (userId) => {
     return apiBase.get(`${process.env.REACT_APP_BASE_API}/users?userId=${userId}`)
 }
 userApi.updateUser = (userId, userInfor) => {
-    return apiBase.put(`${process.env.REACT_APP_BASE_API}/user/${userId}`, userInfor)
+    return apiBase.put(`${process.env.REACT_APP_BASE_API}/users/${userId}`, userInfor)
 }
 
 export default userApi
