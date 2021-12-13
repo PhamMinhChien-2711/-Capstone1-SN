@@ -7,6 +7,10 @@
     width: 50%;
     margin-left: 10rem;
 
+   
+  }
+
+  .comment {
     .head {
       &-author {
         color: rgb(77, 77, 172);
@@ -24,13 +28,14 @@
         display: flex;
         justify-content: center;
         align-items: center;
+
+        .postProfileImg {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
       }
     }
   }
-
-//   .comment {
-//    .head{
-
-//    }
-//   }
 }

@@ -53,12 +53,12 @@ function Header(props) {
                                         <Avatar
                                             className='img'
                                             alt="Remy Sharp"
-                                            src={userAv}
+                                            src={user.profilePicture}
                                             sx={{ width: 56, height: 50 }}
                                         />
                                     </NavLink>
                                     {/* <div onClick={logout} className="div"> Dang nhap</div> */}
-                                    <IconButton onClick={logout} endIcon={<AllOutSharp />}><i class="fas fa-sign-out-alt"></i></IconButton>
+                                    <NavLink style={{ textDecoration: 'none' }} to='/login'><IconButton  onClick={logout} endIcon={<AllOutSharp />}><i class="fas fa-sign-out-alt"></i></IconButton></NavLink>
                                 </>
                                 :
                                 <NavLink activeStyle={active} className='Header-col-1-link' to='/login' >Đăng nhập</NavLink>

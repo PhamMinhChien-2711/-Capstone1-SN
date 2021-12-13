@@ -49,7 +49,15 @@ function HomePostDetail(props) {
                     </Link> <br /> <hr />
 
                     <div className="d-flex">
-                        <Avatar></Avatar>
+                    <img
+                         className="postProfileImg"
+                        src={
+                        user.profilePicture
+                        ?   user.profilePicture
+                        : "person/noAvatar.png"
+                }
+                alt=""
+              />
                         <div className='head-author mx-3'>{user.username}</div>
                         <span>{getTimeDistanceFromNow(post.createdAt)}</span>
                     <Button className='head-button' size='small' variant='outlined'>Theo dõi</Button><br />

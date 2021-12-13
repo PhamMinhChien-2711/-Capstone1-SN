@@ -42,7 +42,7 @@ export default function Post({ post, onLike }) {
 
     const toggle = () => setModal(!modal);
 
-    const isLiked = post.likeCount.includes(currentUser._id)
+    const isLiked = post.likeCount.includes(currentUser?._id)
 
     return (
         <>
@@ -51,8 +51,16 @@ export default function Post({ post, onLike }) {
                 <div className="card-postTop">
                     <div className="card-postTop-Left">
 
-                        <Avatar></Avatar>
-                        <Link to={`/user?userId=${post?.authorId}`}>
+                    <img
+                         className="postProfileImg"
+                        src={
+                        user.profilePicture
+                        ?   user.profilePicture
+                        : "person/noAvatar.png"
+                }
+                alt=""
+              />
+                        <Link to={`/user?userId=${post?.authorId}`} style={{ textDecoration: 'none' }}>
                             <span className="card-postTop-Left-postUsername">{user.username}</span>
                         </Link>
                     </div>
