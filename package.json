@@ -1,25 +1,27 @@
 {
-    "name": "Capstone",
-    "version": "1.0.0",
-    "description": "",
-    "scripts": {
-        "start": "concurrently  \"cd client && npm start\" \"cd api && npm start\" \"cd socket && npm start\" "
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/phudinhnguyen/instagram-clone.git"
-    },
-    "author": "",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/phudinhnguyen/instagram-clone/issues"
-    },
-    "homepage": "https://github.com/phudinhnguyen/instagram-clone#readme",
-    "dependencies": {
-        "@aeaton/react-prosemirror": "^2.0.3",
-        "@aeaton/react-prosemirror-config-default": "^2.0.3",
-        "concurrently": "^5.3.0",
-        "react-loader-spinner": "^4.0.0",
-        "typewriter-effect": "^2.18.2"
-    }
+  "name": "Capstone",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "concurrently  \"cd client && yarn start\" \"cd api && yarn start\" \"cd socket && yarn start\" "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phudinhnguyen/instagram-clone.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/phudinhnguyen/instagram-clone/issues"
+  },
+  "homepage": "https://github.com/phudinhnguyen/instagram-clone#readme",
+  "dependencies": {
+    "@aeaton/react-prosemirror": "^2.0.3",
+    "@aeaton/react-prosemirror-config-default": "^2.0.3",
+    "concurrently": "^5.3.0",
+    "formik": "^2.2.9",
+    "react-loader-spinner": "^4.0.0",
+    "typewriter-effect": "^2.18.2",
+    "yup": "^0.32.11"
+  }
 }
