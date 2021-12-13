@@ -26,9 +26,9 @@ function ScrollToTop() {
     }, []);
     return (
         <div className='scroll'>
-            {visible && <Button onClick={handleClick}>
+            {visible && <div className='scroll-button' onClick={handleClick}>
                 <ArrowUpwardIcon />
-            </Button>}
+            </div>}
         </div>
     );
 }
