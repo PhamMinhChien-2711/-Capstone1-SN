@@ -47,13 +47,13 @@ export default function Post({ post, onLike }) {
                     <div className="card-postTop-Left">
 
                     <img
-                         className="postProfileImg"
+                         className="postProfileImg"s
                         src={
                         user.profilePicture
                         ?  user.profilePicture
                         : "person/noAvatar.png"
                 }
-                alt=""
+                      alt=""
               />
                         <Link to={`/user?userId=${post?.authorId}`} style={{ textDecoration: 'none' }}>
                             <span className="card-postTop-Left-postUsername">{user.username}</span>

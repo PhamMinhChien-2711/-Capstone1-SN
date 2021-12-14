@@ -1,7 +1,8 @@
-.HomePostDetail {
+.PD {
   display: flex;
   flex-direction: row;
-  
+  width: 80%;
+  margin: 0 auto;
   margin-top: 1rem;
   .left {
     width: 50%;
@@ -20,13 +21,30 @@
       span {
         margin-left: 30px;
       }
+
       &-button {
-        margin: auto;
-        padding: auto;
+        padding: 10px;
+        color: white;
+        background-color: rgb(56, 55, 55);
+        border-radius: 5px;
+        float: right;
+        cursor: pointer;
+
+        &:hover {
+          background-color: black;
+        }
       }
-      .d-flex{
+    }
+  }
+
+  &-right {
+    margin-left: 1rem;
+    &-content {
+      display: flex;
+      flex-direction: column;
+
+      &-head {
         display: flex;
-        justify-content: center;
         align-items: center;
 
         .postProfileImg {
