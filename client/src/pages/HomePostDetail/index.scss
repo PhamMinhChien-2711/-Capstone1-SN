@@ -39,20 +39,11 @@
 
   &-right {
     margin-left: 1rem;
-    &-content {
-      display: flex;
-      flex-direction: column;
-
-      &-head {
-        display: flex;
-        align-items: center;
-
-        .postProfileImg {
-          width: 32px;
-          height: 32px;
-          border-radius: 50%;
-          object-fit: cover;
-        }
+    width: 450px;
+  
+    .d-flex{
+      .head-button{
+        margin-left: 40px ;
       }
     }
     .commentPost{

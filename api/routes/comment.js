@@ -1,13 +1,25 @@
 const express = require("express");
 const Comment = require('../models/Comment');
+const User = require('../models/User');
 
 const router = express.Router();
 
 
 router.get('/:id' ,async(req,res)=>{
     try {
-        
-        const comments = await Comment.find();
+        let comments = await Comment.find({postId:req.params.id})
+        .then(res => {
+
+            return Promise.all(
+                res.map(async item => {
+                    return {
+                        content: item.content,
+                        authorInfo: await User.findById(item.authorId)
+                    }
+                })
+            )
+        })
+
         res.status(200).json(comments);
     } catch (error) {
         console.log('error: ', error);

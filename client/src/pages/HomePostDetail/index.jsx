@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from "react";
+import React,{useState,useEffect,useRef, useContext } from "react";
 
 import './index.scss';
 import { LoadingButton } from '@mui/lab';
@@ -6,16 +6,35 @@ import { LoadingButton } from '@mui/lab';
 import { useLocation, Link } from "react-router-dom";
 import "./index.scss";
 // import img from "../../assets/item.jpg";
+import commentApi from "../../api/comment";
 import { CardMedia, Avatar } from "@material-ui/core";
 import { getTimeDistanceFromNow } from "../../utils/formater";
 import { Button } from "@mui/material";
 import axios from "axios";
 import {  Input,  ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { io } from "socket.io-client"
+import { AuthContext } from "../../context/AuthContext";
+
 function HomePostDetail(props) {
     //truyen props thong qua Link
     const location = useLocation();
     const { post } = location.state;
     const [user, setUser] = useState({});
+    const [comment, setComment] = useState([]);
+    const socket = useRef();
+    const { user:profile } = useContext(AuthContext);
+
+    const [postData, setPostData] = useState({
+        content: ""
+    });
+
+    useEffect(() => {
+        socket.current = io("ws://localhost:8900");
+        socket.current.on(`getComment-${post._id}`, (_comment) => {
+            console.log(_comment, "on comment");
+            setComment(prev => ([...prev, _comment]))
+        });
+      }, []);
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -24,6 +43,35 @@ function HomePostDetail(props) {
         };
         fetchUser();
     }, [post.userId]);
+
+    const onChange = (e) => {
+        const { value, name } = e.target;
+        setPostData((prev) => ({ ...prev, [name]: value }));
+
+    };
+
+    useEffect(() => {
+        commentApi.getComment(post._id).then(res => {
+            setComment(res.data)
+        })
+    }, [])
+
+    const onComment = async () => {
+        commentApi.postComment({
+            authorId: profile._id,
+            content: postData.content,
+            postId: post._id,
+        })
+
+        socket.current.emit(`sendComment`, {
+            authorId: profile._id,
+            content: postData.content,
+            postId: post._id,
+            authorInfo: profile,
+        })
+}
+
+
     return (
         <div className="PD">
             <div className="PD-left">
@@ -53,7 +101,6 @@ function HomePostDetail(props) {
                          className="postProfileImg"
                         src={
                         user.profilePicture
-                        
                         }
                 alt=""
               />
@@ -63,34 +110,48 @@ function HomePostDetail(props) {
                     </div>
 
                 
-                <h5 className='body-title'>
+                {/* <h5 className='body-title'>
                     <span>{user.username}  </span>
                     <span style={{marginLeft: 10}}  >{post.title}</span>
-                </h5>
+                </h5> */}
                 <p className='body-content'>
                     {post.content}
                 </p>
 
              <section className="commentPost">
                 <hr></hr>
-                <div  className="commentPost-User">
-                    <span><img
-                         className="postProfileImg"
-                        src={
-                        user.profilePicture
-                        ?   user.profilePicture 
-                        : "person/noAvatar.png"
-                         }
-                         alt=""
-                        />    {user.username}  </span>
-                    <span style={{marginLeft: 10}}  >con này giá bao nhiêu </span>
-                      
+                <div style={{height: 300,     overflow: "auto"}}>
+                {
+                    comment?.map(item => {
+                        return <div  className="commentPost-User">
+                        <span><img
+                             className="postProfileImg"
+                            src={
+                            item?.authorInfo?.profilePicture
+                            ?   item?.authorInfo?.profilePicture 
+                            : "person/noAvatar.png"
+                             }
+                             alt=""
+                            />    {item?.authorInfo?.username}  </span>
+                        <span style={{marginLeft: 10}}>{item?.content} </span>
+                          
+                    </div>
+                    })
+                }
                 </div>
-                <div className="commentPost-Send mt-5" >
-                <Input name="title" type="text" placeholder="Content" />
-                <LoadingButton color="primary" >Send it</LoadingButton>
+                <br /><br /><br />
+                <hr />
+                <div className="commentPost-Send mt-0 d-flex" >
+                <Input 
+                name="content"
+                type="text" 
+                 placeholder="Content" 
+                 onChange={onChange}
+                 value={postData.content}
+                 />
+                <LoadingButton color="primary" onClick={onComment} >Send</LoadingButton>
                 </div>
-             </section>
+             </section> 
             </div>
         </div>
     );

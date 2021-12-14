@@ -1,13 +1,32 @@
 const express = require("express");
 const Post = require('../models/Post');
+const User = require('../models/User');
 
 
 const router = express.Router();
 
 router.get('/', async (req, res) => {
     try {
+        const posts = await Post.find().sort({ createdAt: -1 })
+        .then(res => {
+          return Promise.all(
+              res.map(async item => {
+                if(!item.authorId) return item
+                  return {
+                      authorInfo: await User.findById(item.authorId),
+                      authorId: item.authorId,
+                      content: item.content ,
+                      createdAt: item.createdAt ,
+                      img: item.img ,
+                      likeCount: item.likeCount ,
+                      title: item.title ,
+                      updatedAt: item.updatedAt ,
+                      _id: item._id ,
+                  }
+              })
+          )
+      })
         
-        const posts = await Post.find().sort({ createdAt: -1 });
         res.status(200).json(posts);
     } catch (error) {
         console.log('error: ', error);
