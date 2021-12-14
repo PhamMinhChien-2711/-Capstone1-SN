@@ -1,5 +1,5 @@
 import { AllOutSharp, SearchOutlined } from '@mui/icons-material';
-import React, { useContext } from 'react';
+import React, { useContext,useState } from 'react';
 import { BrowserRouter as Router, Switch, Route, NavLink } from 'react-router-dom';
 import { Col, Container, Row, InputGroupAddon, Input, InputGroup, Button } from 'reactstrap';
 import './index.scss';
@@ -17,6 +17,8 @@ const active = {
 }
 
 function Header(props) {
+  
+
     const { user, dispatch } = useContext(AuthContext);
     console.log(user, "user");
 

@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from "react";
 import { useLocation, Link } from 'react-router-dom';
 import './index.scss';
+import { LoadingButton } from '@mui/lab';
 // import img from "../../assets/item.jpg";
 import {
     CardMedia, Avatar
@@ -8,7 +9,7 @@ import {
 import { getTimeDistanceFromNow } from "../../utils/formater"
 import { Button } from '@mui/material';
 import axios from "axios";
-
+import {  Input,  ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 function HomePostDetail(props) {
 
     //truyen props thong qua Link
@@ -53,24 +54,45 @@ function HomePostDetail(props) {
                          className="postProfileImg"
                         src={
                         user.profilePicture
-                        ?   user.profilePicture
+                        ?   user.profilePicture 
                         : "person/noAvatar.png"
                 }
                 alt=""
               />
                         <div className='head-author mx-3'>{user.username}</div>
-                        <span>{getTimeDistanceFromNow(post.createdAt)}</span>
+                        <span >{getTimeDistanceFromNow(post.createdAt)}</span>
                     <Button className='head-button' size='small' variant='outlined'>Theo dõi</Button><br />
                     </div>
                     
                 </section>
                 <h5 className='body-title'>
-                    {post.title}
+                    <span>{user.username}  </span>
+                    <span style={{marginLeft: 10}}  >{post.title}</span>
                 </h5>
                 <p className='body-content'>
                     {post.content}
                 </p>
-             
+
+             <section className="commentPost">
+                <hr></hr>
+                <div  className="commentPost-User">
+                    <span><img
+                         className="postProfileImg"
+                        src={
+                        user.profilePicture
+                        ?   user.profilePicture 
+                        : "person/noAvatar.png"
+                         }
+                         alt=""
+                        />    {user.username}  </span>
+                    <span style={{marginLeft: 10}}  >con này giá bao nhiêu </span>
+                      
+                </div>
+                <div className="commentPost-Send mt-5" >
+                <Input name="title" type="text" placeholder="Content" />
+                <LoadingButton color="primary" >Send it</LoadingButton>
+                </div>
+             </section>
             </div>
             
         </div>

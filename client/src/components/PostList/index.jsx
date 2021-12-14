@@ -4,17 +4,17 @@ import { fetchPosts } from '../../api/post';
 import Post from './Post';
 import { Row, Col } from 'reactstrap';
 
-const PostList = ({posts}) => {
-  
+const PostList = ({ posts }) => {
+
 
   return (
     <>
-    <Row>
+      <Row>
         {posts.map((post) => (
-        <Col key={post._id} >
-          <Post post={post} />
-        </Col>
-      ))}
+          <Col key={post?._id} >
+            <Post post={post} />
+          </Col>
+        ))}
       </Row>
     </>
   );

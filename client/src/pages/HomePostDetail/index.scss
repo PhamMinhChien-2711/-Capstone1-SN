@@ -37,5 +37,27 @@
         }
       }
     }
+    .commentPost{
+      &-User{
+        display: flex;
+        justify-content: space-between;
+
+        .postProfileImg{
+          
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+        &-Name{
+          padding-left: 0px;
+        }
+      }
+    }
+    &-Send {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 40px;
+    }
   }
 }

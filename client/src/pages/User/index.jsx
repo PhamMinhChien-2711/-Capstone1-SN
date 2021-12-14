@@ -12,11 +12,11 @@ import {
     ModalFooter,
 } from "reactstrap";
 import { uploadImage } from "../../api/upload";
-import { useLocation } from 'react-router-dom'
+import { useLocation, Link } from 'react-router-dom'
 import { useParams } from "react-router";
 import userApi from "../../api/user"
 import { AuthContext } from "../../context/AuthContext";
-
+import axios from "axios";
 const querystring = require("querystring");
 
 
@@ -38,14 +38,36 @@ function User(props) {
         userApi.getUser(userId).then((res) => {
             setUser(res.data)
         })
-    }, [])
+    }, []);
+
+    const handleClick = async (e) => {
+
+        const conversation = {
+            senderId: currentUser._id,
+            receiverId: userId,
+        }
+        if (currentUser._id === userId || userId== null) {
+            try {
+                const res = await axios.get("/conversations/" + currentUser._id);
+            } catch (err) {
+                console.log(err);
+            }
+        }
+        else {
+            try {
+                const res = await axios.post(`/conversations`,conversation );
+            } catch (err) {
+                console.log(err);
+            }
+        }
+    };
 
     const update = () => {
         const userInfo = {
             username: postData.username,
             email: postData.email,
             profilePicture: url,
-            userId:userId
+            userId: userId
         }
 
         userApi.updateUser(currentUser._id, userInfo)
@@ -85,7 +107,7 @@ function User(props) {
                 <span className="User-right__userName">
                     {user?.username}
                 </span>
-                <span className="User-right__button-edit">Messages</span>
+                <Link style={{ textDecoration: 'none' }} to={`/messenger`}><span className="User-right__button-edit" onClick={handleClick}>Messages</span></Link>
                 <span className="User-right__button-edit" onClick={toggle}>Edit profile</span>
                 <Modal isOpen={modal} toggle={toggle} >
                     <ModalHeader toggle={toggle}>Update User ✍️</ModalHeader>
@@ -145,7 +167,7 @@ function User(props) {
                 <br />
                 <br />
                 <span className="User-right__post"><strong>1</strong> post</span>
-                <span className="User-right__follower"><strong>{user?.followers} </strong> followers</span>
+                <span className="User-right__follower"><strong>{/* {user?.followers} */} </strong> followers</span>
                 <span className="User-right__following"><strong>122</strong> following</span>
                 <div className="User-right__name">{user?.username}</div>
 
