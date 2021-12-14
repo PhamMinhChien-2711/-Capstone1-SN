@@ -124,7 +124,7 @@ function HomePostDetail(props) {
                 {
                     comment?.map(item => {
                         return <div  className="commentPost-User">
-                        <span><img
+                        <Avatar
                              className="postProfileImg"
                             src={
                             item?.authorInfo?.profilePicture
@@ -132,8 +132,9 @@ function HomePostDetail(props) {
                             : "person/noAvatar.png"
                              }
                              alt=""
-                            />    {item?.authorInfo?.username}  </span>
-                        <span style={{marginLeft: 10}}>{item?.content} </span>
+                            /> 
+                            <span>  {item?.authorInfo?.username}  </span>
+                            <span style={{marginLeft: 10}}>{item?.content} </span>
                           
                     </div>
                     })
