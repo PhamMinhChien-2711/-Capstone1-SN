@@ -13,6 +13,7 @@ const postRoute = require("./routes/posts");
 const supportRoute = require('./routes/support')
 const productRoute=require('./routes/product')
 const cartRoute=require('./routes/cart')
+const commentRoute = require("./routes/comment");
 const router = express.Router();
 const path = require("path");
 var cors = require('cors')
@@ -63,9 +64,13 @@ app.use("/api/users", userRoute);
 app.use("/api/conversations", conversationRoute);
 app.use("/api/messages", messageRoute);
 app.use("/api/posts", postRoute);
+<<<<<<< HEAD
 app.use('/api/support', supportRoute);
 app.use('/api/products', productRoute);
 app.use('/api/cart', cartRoute);
+=======
+app.use("/api/comment", commentRoute);
+>>>>>>> d412c8b095d652264b9afd668ca49e39d822a250
 app.use(express.static('public'))
 
 app.listen(process.env.PORT, () => {

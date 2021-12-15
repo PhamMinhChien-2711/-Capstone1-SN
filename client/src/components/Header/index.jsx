@@ -1,5 +1,5 @@
 import { AllOutSharp, SearchOutlined } from '@mui/icons-material';
-import React, { useContext } from 'react';
+import React, { useContext,useState } from 'react';
 import { BrowserRouter as Router, Switch, Route, NavLink } from 'react-router-dom';
 import { Col, Container, Row, InputGroupAddon, Input, InputGroup, Button } from 'reactstrap';
 import './index.scss';
@@ -17,6 +17,8 @@ const active = {
 }
 
 function Header(props) {
+  
+
     const { user, dispatch } = useContext(AuthContext);
     console.log(user, "user");
 
@@ -49,16 +51,16 @@ function Header(props) {
                         {
                             user ?
                                 <>
-                                    <NavLink to='/user'>
+                                    <NavLink to={`/user?userId=${user._id}`}>
                                         <Avatar
                                             className='img'
                                             alt="Remy Sharp"
-                                            src={userAv}
+                                            src={user.profilePicture}
                                             sx={{ width: 56, height: 50 }}
                                         />
                                     </NavLink>
                                     {/* <div onClick={logout} className="div"> Dang nhap</div> */}
-                                    <IconButton onClick={logout} endIcon={<AllOutSharp />}><i class="fas fa-sign-out-alt"></i></IconButton>
+                                    <NavLink style={{ textDecoration: 'none' }} to='/login'><IconButton  onClick={logout} endIcon={<AllOutSharp />}><i class="fas fa-sign-out-alt"></i></IconButton></NavLink>
                                 </>
                                 :
                                 <NavLink activeStyle={active} className='Header-col-1-link' to='/login' >Đăng nhập</NavLink>

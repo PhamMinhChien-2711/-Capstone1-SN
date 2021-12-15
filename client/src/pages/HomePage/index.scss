@@ -1,7 +1,18 @@
 .Home {
   display: block;
+  position: relative;
   Button {
     color: black;
+  }
+  &-image {
+    left: -20px;
+    bottom: -20px;
+    position: fixed;
+    padding: -10px;
+    img {
+      width: 200px;
+      height: 200px;
+    }
   }
   &-button {
     display: flex;
@@ -26,21 +37,6 @@
         float: right;
         color: white;
       }
-      .shareOption {
-        display: flex;
-        align-items: center;
-        margin-right: 15px;
-        cursor: pointer;
-    }
-    .shareIcon{
-      font-size: 18px;
-      margin-right: 3px;
-  }
-  
-  .shareOptionText{
-      font-size: 14px;
-      font-weight: 500;
-  }
     }
   }
   &-posts {

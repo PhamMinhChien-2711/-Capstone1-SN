@@ -1,11 +1,17 @@
-.HomePostDetail {
+.PD {
   display: flex;
   flex-direction: row;
+  width: 80%;
+  margin: 0 auto;
   margin-top: 1rem;
   .left {
     width: 50%;
     margin-left: 10rem;
 
+   
+  }
+
+  .comment {
     .head {
       &-author {
         color: rgb(77, 77, 172);
@@ -15,15 +21,52 @@
       span {
         margin-left: 30px;
       }
+
       &-button {
-        margin-left: 50px;
+        padding: 10px;
+        color: white;
+        background-color: rgb(56, 55, 55);
+        border-radius: 5px;
+        float: right;
+        cursor: pointer;
+
+        &:hover {
+          background-color: black;
+        }
       }
     }
   }
 
-  .comment {
-   .head{
+  &-right {
+    margin-left: 1rem;
+    width: 450px;
+  
+    .d-flex{
+      .head-button{
+        margin-left: 40px ;
+      }
+    }
+    .commentPost{
+      &-User{
+        display: flex;
+        justify-content: space-between;
 
-   }
+        .postProfileImg{
+          
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+        &-Name{
+          padding-left: 0px;
+        }
+      }
+    }
+    &-Send {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 40px;
+    }
   }
 }
