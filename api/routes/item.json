@@ -1,0 +1,38 @@
+{
+    "authorId": "617505e86fae8a93bec34087",
+    "total": 29,
+    "_id": "61b4c384ef64b30f60a9152b",
+    "cartItems": [
+        {
+            "quantity": 1,
+            "title": "Sản Phẩm Tắm Gội Cho Cún Yêu SLEEKY",
+            "price": 6,
+            "_id": "61b8aaaf5b85c726b4d1df64",
+            "IDproduct": "61b460a6987912138c3b52d4"
+        },
+        {
+            "quantity": 1,
+            "title": "Sữa tắm cho chó Pug – Perfect Coat",
+            "price": 8,
+            "_id": "61b8aab6a1c5eb1f08aee74b",
+            "IDproduct": "61b7fc209b42272684ac7b0e"
+        },
+        {
+            "quantity": 1,
+            "title": "Sữa tắm dành riêng cho Pug Fresh Cleannest",
+            "price": 9,
+            "_id": "61b8d7c4dffc3a060cc863c4",
+            "IDproduct": "61b7fd8f9b42272684ac7b2e"
+        },
+        {
+            "quantity": 1,
+            "title": "Sản Phẩm Tắm Gội Cho Cún Yêu SLEEKY",
+            "price": 6,
+            "_id": "61b90449f561b836f09c9332",
+            "IDproduct": "61b4609f987912138c3b52d1"
+        }
+    ],
+    "createdAt": "2021-12-11T15:28:04.049Z",
+    "updatedAt": "2021-12-14T20:53:29.470Z",
+    "__v": 0
+}

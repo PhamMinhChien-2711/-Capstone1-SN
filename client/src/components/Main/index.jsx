@@ -9,6 +9,8 @@ import HomePostDetail from '../../pages/HomePostDetail';
 import User from '../../pages/User';
 import CuuTroPostDetail from '../../pages/CuuTroPostDetail';
 import HoiDapPostDetail from '../../pages/HoiDapPostDetail';
+import NewPostSupport from '../Item/NewPostSupport'
+import NewItem from '../Item/NewItem';
 // import SignIn from '../../pages/SignIn';
 // import SignUp from '../../pages/SignUp';
 import Cart from '../../pages/GioHang';
@@ -24,9 +26,12 @@ const Main = () => (
             <Route exact path='/cuutro'>
                 <CuuTro />
             </Route>
-            
+
             <Route exact path='/shop'>
                 <Shop />
+            </Route>
+            <Route exact path='/newitem'>
+                <NewItem />
             </Route>
             <Route exact path='/shop/cart'>
                 <Cart />
@@ -43,6 +48,9 @@ const Main = () => (
             </Route>
             <Route path='/hoidap/:id'>
                 <HoiDapPostDetail />
+            </Route>
+            <Route exact path='/newPostSupport'>
+                <NewPostSupport />
             </Route>
             {/* <Route path='/signin'>
                 <SignIn/>
