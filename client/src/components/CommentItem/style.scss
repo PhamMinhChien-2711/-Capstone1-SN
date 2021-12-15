@@ -1,0 +1,20 @@
+.comment-item {
+  background-color: rgb(241, 239, 239);
+  padding: 10px 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+
+  &-infor {
+    display: flex;
+    align-items: center;
+
+    &__username {
+      font-weight: bold;
+      padding: 0 20px;
+    }
+  }
+
+  &-content {
+    margin-left: 60px;
+  }
+}
