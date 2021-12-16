@@ -66,8 +66,8 @@ function User(props) {
         const userInfo = {
             username: postData.username,
             email: postData.email,
-            profilePicture: url,
-            userId: userId
+            img: url,
+            authorId: user._id,
         }
 
         userApi.updateUser(currentUser._id, userInfo)
