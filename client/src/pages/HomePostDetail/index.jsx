@@ -1,4 +1,4 @@
-import React,{useState,useEffect,useRef, useContext } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 
 import './index.scss';
 import { LoadingButton } from '@mui/lab';
@@ -11,9 +11,10 @@ import { CardMedia, Avatar } from "@material-ui/core";
 import { getTimeDistanceFromNow } from "../../utils/formater";
 import { Button } from "@mui/material";
 import axios from "axios";
-import {  Input,  ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Input, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { io } from "socket.io-client"
 import { AuthContext } from "../../context/AuthContext";
+import CommentItem from "../../components/CommentItem";
 
 function HomePostDetail(props) {
     //truyen props thong qua Link
@@ -22,7 +23,7 @@ function HomePostDetail(props) {
     const [user, setUser] = useState({});
     const [comment, setComment] = useState([]);
     const socket = useRef();
-    const { user:profile } = useContext(AuthContext);
+    const { user: profile } = useContext(AuthContext);
 
     const [postData, setPostData] = useState({
         content: ""
@@ -34,7 +35,7 @@ function HomePostDetail(props) {
             console.log(_comment, "on comment");
             setComment(prev => ([...prev, _comment]))
         });
-      }, []);
+    }, []);
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -58,19 +59,21 @@ function HomePostDetail(props) {
 
     const onComment = async () => {
         commentApi.postComment({
-            authorId: profile._id,
+            authorId: profile?._id,
             content: postData.content,
             postId: post._id,
         })
 
         socket.current.emit(`sendComment`, {
-            authorId: profile._id,
+            authorId: profile?._id,
             content: postData.content,
             postId: post._id,
             authorInfo: profile,
         })
-}
-
+        setPostData({
+            content: ''
+        })
+    }
 
     return (
         <div className="PD">
@@ -82,7 +85,33 @@ function HomePostDetail(props) {
                 />
 
                 <hr />
-               
+                <section className="PD-left-comment">
+
+                    <div className="PD-left-comment-top" >
+                        <textarea
+                            className='PD-left-comment-top-input'
+                            name="content"
+                            type="text"
+                            placeholder="Write a comment"
+                            onChange={onChange}
+                            value={postData.content}
+                        />
+                        <LoadingButton className='PD-left-comment-top-button' color="primary" onClick={onComment} >Send</LoadingButton>
+                    </div>
+                    <br /> <br />
+                    <div className='PD-left-comment-content '>
+                        {
+                            comment?.reverse().map(item => {
+                                return <div className="commentPost-User">
+                                    <CommentItem item={item} />
+                                </div>
+                            })
+                        }
+                    </div>
+
+                    <hr />
+
+                </section>
                 <br /><br /><br />
             </div>
 
@@ -96,63 +125,29 @@ function HomePostDetail(props) {
                     </Link>{" "}
                 </section> <hr />
 
-                    <div className="d-flex">
+                <section className="PD-right-infor">
                     <Avatar
-                         className="postProfileImg"
+                        className="postProfileImg"
                         src={
-                        user.profilePicture
+                            user.profilePicture
                         }
-                alt=""
-              />
-                        <div className='head-author mx-3'>{user.username}</div>
-                        <span >{getTimeDistanceFromNow(post.createdAt)}</span>
-                    <Button className='head-button' size='small' variant='outlined'>Theo dõi</Button><br />
+                        alt=""
+                    />
+                    <div className='PD-right-infor-username'>{user.username}</div>
+                    <span >{getTimeDistanceFromNow(post.createdAt)}</span>
+                    <div className='PD-right-infor-button'>
+                        <Button size='small' variant='outlined'>Theo dõi</Button><br />
                     </div>
 
-                
-                {/* <h5 className='body-title'>
-                    <span>{user.username}  </span>
-                    <span style={{marginLeft: 10}}  >{post.title}</span>
-                </h5> */}
-                <p className='body-content'>
-                    {post.content}
-                </p>
+                </section>
+                <section className='PD-right-content'>
+                    <p>
+                        {post.content}
+                    </p>
+                </section>
 
-             <section className="commentPost">
-                <hr></hr>
-                <div style={{height: 300,     overflow: "auto"}}>
-                {
-                    comment?.map(item => {
-                        return <div  className="commentPost-User">
-                        <Avatar
-                             className="postProfileImg"
-                            src={
-                            item?.authorInfo?.profilePicture
-                            ?   item?.authorInfo?.profilePicture 
-                            : "person/noAvatar.png"
-                             }
-                             alt=""
-                            /> 
-                            <span>  {item?.authorInfo?.username}  </span>
-                            <span style={{marginLeft: 10}}>{item?.content} </span>
-                          
-                    </div>
-                    })
-                }
-                </div>
-                <br /><br /><br />
-                <hr />
-                <div className="commentPost-Send mt-0 d-flex" >
-                <Input 
-                name="content"
-                type="text" 
-                 placeholder="Content" 
-                 onChange={onChange}
-                 value={postData.content}
-                 />
-                <LoadingButton color="primary" onClick={onComment} >Send</LoadingButton>
-                </div>
-             </section> 
+
+
             </div>
         </div>
     );
