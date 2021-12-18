@@ -1,5 +1,5 @@
 import { AllOutSharp, SearchOutlined } from '@mui/icons-material';
-import React, { useContext,useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { BrowserRouter as Router, Switch, Route, NavLink } from 'react-router-dom';
 import { Col, Container, Row, InputGroupAddon, Input, InputGroup, Button } from 'reactstrap';
 import './index.scss';
@@ -12,12 +12,12 @@ import { AuthContext } from "../../context/AuthContext";
 // import store from '../../redux/store';   
 
 const active = {
-    fontWeight: 'bold',
+    opacity: '1',
     borderBottom: 'solid 3px black'
 }
 
 function Header(props) {
-  
+
 
     const { user, dispatch } = useContext(AuthContext);
     console.log(user, "user");
@@ -60,10 +60,13 @@ function Header(props) {
                                         />
                                     </NavLink>
                                     {/* <div onClick={logout} className="div"> Dang nhap</div> */}
-                                    <NavLink style={{ textDecoration: 'none' }} to='/login'><IconButton  onClick={logout} endIcon={<AllOutSharp />}><i class="fas fa-sign-out-alt"></i></IconButton></NavLink>
+                                    <NavLink style={{ textDecoration: 'none' }} to='/login'><IconButton onClick={logout} endIcon={<AllOutSharp />}><i class="fas fa-sign-out-alt"></i></IconButton></NavLink>
                                 </>
                                 :
-                                <NavLink activeStyle={active} className='Header-col-1-link' to='/login' >Đăng nhập</NavLink>
+                                <>
+                                    <NavLink activeStyle={active} className='Header-col-1-link' to='/login' >Đăng nhập</NavLink>
+                                    <NavLink className='Header-col-2-link' to='/register' >Đăng ký</NavLink>
+                                </>
                         }
                     </Col>
                 </Row>
