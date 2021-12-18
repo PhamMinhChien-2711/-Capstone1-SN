@@ -77,6 +77,15 @@ function HomePostDetail(props) {
 
     return (
         <div className="PD">
+            <section className="PD-right_head">
+                <Link to="/" style={{ textDecoration: "none" }}>
+                    <Button size="small" variant="outlined">
+                        <i style={{ marginRight: "10px" }} class="fas fa-arrow-left"></i>
+                        Home Page
+                    </Button>
+                </Link>{" "}
+            </section> <hr />
+            <br />
             <div className="PD-left">
                 <CardMedia
                     image={post.img}
@@ -116,14 +125,7 @@ function HomePostDetail(props) {
             </div>
 
             <div className="PD-right">
-                <section className="PD-right_head">
-                    <Link to="/" style={{ textDecoration: "none" }}>
-                        <Button size="small" variant="outlined">
-                            <i style={{ marginRight: "10px" }} class="fas fa-arrow-left"></i>
-                            Back to home
-                        </Button>
-                    </Link>{" "}
-                </section> <hr />
+
 
                 <section className="PD-right-infor">
                     <Avatar

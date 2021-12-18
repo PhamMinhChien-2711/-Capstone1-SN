@@ -6,6 +6,7 @@ import './index.scss';
 import logo from '../../assets/logo.jpg';
 import headImg from '../../assets/headimg.png';
 import userAv from '../../assets/user.jpg';
+import { UncontrolledCarousel } from 'reactstrap';
 import { Avatar, IconButton } from '@mui/material';
 // import { useSelector } from 'react-redux'
 import { AuthContext } from "../../context/AuthContext";
@@ -15,6 +16,28 @@ const active = {
     opacity: '1',
     borderBottom: 'solid 3px black'
 }
+
+const itemHeadImage = [
+
+    {
+        src: '/assets/headimg.png',
+
+        header: 'Welcome to social network for Pet owner'
+    },
+    {
+        src: '/assets/0.jpg',
+    },
+    {
+        src: '/assets/2.jpg',
+
+    },
+    {
+        src: '/assets/5.jpeg',
+        caption: 'Thanks for choose us',
+        header: 'Hope you have the best experience here'
+    }
+];
+
 
 function Header(props) {
 
@@ -32,7 +55,7 @@ function Header(props) {
             <Container>
                 <Row className='Header-row'>
                     <Col xs='12' sm='12' md='12' lg='6' className='Header-col-1'>
-                        <img src={logo} alt='logo snpo' />
+                        <img src='/favicon.ico' style={{ width: '70px', height: '70px' }} alt='logo snpo' />
                         <NavLink activeStyle={active} className='Header-col-1-link' exact to='/' >Trang chủ</NavLink>
                         <NavLink activeStyle={active} className='Header-col-1-link' to='/hoidap' >Hỏi đáp</NavLink>
                         <NavLink activeStyle={active} className='Header-col-1-link' to='/cuutro' >Cứu trợ</NavLink>
@@ -71,7 +94,13 @@ function Header(props) {
                     </Col>
                 </Row>
             </Container>
-            <><div className='Header-row-2'><img style={{ width: '100%' }} src={headImg} alt='head img' /></div></>
+            <>
+                <div className='Header-row-2'>
+                    {/* <img src='https://www.seekpng.com/png/detail/3-38652_all-dogs-banner.png' alt='head img' /> */}
+                    <UncontrolledCarousel items={itemHeadImage} />
+                </div>
+            </>
+
         </div >
 
     );

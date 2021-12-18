@@ -2,12 +2,15 @@
 .Header {
   display: flex;
   flex-direction: column;
-  margin-top: 5px;
+ 
+  background-color: #fff;
   &-row {
     align-items: center;
   }
 
   &-row-2 {
+    margin: 0 auto;
+    width: 100%;
     img {
       width: 100%;
       height: 12rem;
@@ -36,7 +39,7 @@
 
     &-link {
       text-decoration: none;
-      background-color: orange;
+      background-color: #0d6efd;
       padding: 5px 10px;
       border-radius: 5px;
       color: white;
