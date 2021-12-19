@@ -16,7 +16,7 @@
   }
 
   &-right {
-    margin-left: 3rem;
+    margin-left: 2rem;
 
     &__userName {
       font-size: 25px;
@@ -48,14 +48,13 @@
       font-size: 15px;
       margin-top: 29px;
     }
-    &__avatar{
+    &__avatar {
       border: 0;
-    color: #0095f6;
-    color: rgba(var(--d69,0,149,246),1);
-    display: inline;
-    padding: 0;
-    position: relative;
-
+      color: #0095f6;
+      color: rgba(var(--d69, 0, 149, 246), 1);
+      display: inline;
+      padding: 0;
+      position: relative;
     }
   }
 }
