@@ -166,7 +166,7 @@ function User(props) {
                  </input>  */}
                 <br />
                 <br />
-                <span className="User-right__post"><strong></strong> post</span>
+                <span className="User-right__post"><strong>1</strong> post</span>
                 <span className="User-right__follower"><strong>{/* {user?.followers} */} </strong> followers</span>
                 <span className="User-right__following"><strong>122</strong> following</span>
                 <div className="User-right__name">{user?.username}</div>

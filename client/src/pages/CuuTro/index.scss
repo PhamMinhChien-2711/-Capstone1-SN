@@ -14,23 +14,11 @@
         .left {
             width: 100%;
             margin-left: 7rem;
-            .button-delete{
-                border: 1px solid rgba(245, 222, 179, 0);
-                background-color: rgba(245, 222, 179, 0);
-                cursor: pointer;
-                text-decoration: underline;
-                font-style: italic;
-                color: rgb(105, 105, 105);
-                margin-left: 150px;
-                width: 100px;
-                // margin-top: -30rem;
-                
-            }
         }
 
         .right {
             width: 40%;
-            position: absolute;
+            position: fixed;
             top: 20rem;
             right: -3rem;
             hr {
