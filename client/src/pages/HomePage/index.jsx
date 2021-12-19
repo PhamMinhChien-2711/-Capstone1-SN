@@ -189,11 +189,11 @@ const Home = (props) => {
             </div>
 
             <hr />
-            <div className='Home-image'>
+            {/* <div className='Home-image'>
                 <img src='https://media2.giphy.com/media/3o8dp7vEroP9E0WSdi/giphy.gif?cid=ecf05e47dbb6nseunuf7fn2b3082vrj038uf6qvznga4k8oj&rid=giphy.gif&ct=g'
                 />
 
-            </div>
+            </div> */}
             <div className="Home-posts">
                 {/* <PostList posts={posts}/> */}
                 <Row>

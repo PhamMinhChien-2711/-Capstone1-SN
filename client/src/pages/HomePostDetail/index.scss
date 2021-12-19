@@ -1,11 +1,12 @@
 .PD {
   display: flex;
   flex-direction: row;
-  width: 80%;
-  margin: 0 auto;
   margin-top: 1rem;
-
+  width: 100%;
+  margin: 1rem auto;
+  justify-content: space-between;
   &-left {
+    margin-left: 0rem;
     &-comment {
       &-top {
         border: 5px solid rgb(240, 239, 239);
@@ -39,35 +40,12 @@
     }
   }
 
-  // .comment {
-  //   .head {
-  //     &-author {
-  //       color: rgb(77, 77, 172);
-  //       font-size: 24px;
-  //       font-weight: bold;
-  //     }
-  //     span {
-  //       margin-left: 30px;
-  //     }
-
-  //     &-button {
-  //       padding: 10px;
-  //       color: white;
-  //       background-color: rgb(56, 55, 55);
-  //       border-radius: 5px;
-  //       float: right;
-  //       cursor: pointer;
-
-  //       &:hover {
-  //         background-color: black;
-  //       }
-  //     }
-  //   }
-  // }
-
   &-right {
-    margin-left: 10px;
-
+    background-color: #fff;
+    height: fit-content;
+    padding: 20px 10px;
+    border-radius: 5px;
+    width: 470px;
     &-infor {
       display: flex;
       align-items: center;

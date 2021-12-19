@@ -1,15 +1,14 @@
 .login {
-  background-color: white !important;
   width: 100% !important;
   margin: 0 auto;
   display: flex;
   flex-direction: row;
-
-  background: linear-gradient(
-    90deg,
-    rgb(244, 247, 217) 0%,
-    rgba(252, 169, 0, 1) 100%
-  );
+  background-color: #fff !important;
+  // background: linear-gradient(
+  //   90deg,
+  //   rgb(244, 247, 217) 0%,
+  //   rgba(252, 169, 0, 1) 100%
+  // );
   &-left {
     margin-right: -2rem;
     &__image {
