@@ -21,17 +21,7 @@ const optionsPolyline = {
   
 
   const Map = (props) => {
-  //   const [positions,setPositions] =useState( [{
-  //     lat: 21.027763, lng: 105.834160, label: "position 1"
-  //   }, {
-  //     lat: 21.027763, lng: 106, label: "position 2"
-  //   }, {
-  //     lat: 21.127763, lng: 106.1, label: "position 3"
-  //   },
-  //   // {
-  //   //   lat: 203.59583593019192, lng: 112.78009333955667, label: "position 3"
-  //   // }
-  // ])
+  
   const [positions,setPositions] =useState({
     lat:props.lat,
     lng:props.lng,
@@ -58,6 +48,7 @@ const optionsPolyline = {
               }
 
             }}
+            // onClick={(e)=>{console.log('xhung')}}
             
           >
             {positions?(

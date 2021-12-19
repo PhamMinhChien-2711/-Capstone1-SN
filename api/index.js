@@ -64,13 +64,10 @@ app.use("/api/users", userRoute);
 app.use("/api/conversations", conversationRoute);
 app.use("/api/messages", messageRoute);
 app.use("/api/posts", postRoute);
-<<<<<<< HEAD
 app.use('/api/support', supportRoute);
 app.use('/api/products', productRoute);
 app.use('/api/cart', cartRoute);
-=======
 app.use("/api/comment", commentRoute);
->>>>>>> d412c8b095d652264b9afd668ca49e39d822a250
 app.use(express.static('public'))
 
 app.listen(process.env.PORT, () => {

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NavLink, Route, Switch } from "react-router-dom";
 import './AddItem.css';
 import axios from 'axios'
-import {API_URL} from '../../../actions/type'
+import { API_URL } from '../../../actions/type'
 export default function NewItem() {
     const [data, setData] = useState({
         title: '',
@@ -70,13 +70,18 @@ export default function NewItem() {
                                             required minlength="8" maxlength="60"
                                             onChange={onChangeData}
                                         />
-                                        <input
+                                        {/* <input
                                             type="text"
                                             placeholder="Currency"
-                                            name="currency"
+                                            select name="currency" id ="currency"
                                             required
                                             onChange={onChangeData}
-                                        />
+                                        /> */}
+                                        <select name="currency" id="currency">
+                                            <option value="USD">USD</option>
+                                            <option value="VNĐ">VND</option>
+                                        </select>
+
                                         <input
                                             type="number"
                                             placeholder="Nhập giá bán"

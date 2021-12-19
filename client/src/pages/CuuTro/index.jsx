@@ -35,6 +35,7 @@ const CuuTro = (props) => {
             item._id === response.data._id ? false : true
         )
         setPost(newPost)
+        
         console.log('dlete: ', response)
     } 
 
@@ -64,7 +65,7 @@ const CuuTro = (props) => {
                                             type="button"
                                             value="Delete"
                                             className="button-delete"
-                                            onClick={()=>deletePost(post._id)}
+                                            onClick={()=>window.location.reload(false)+deletePost(post._id)}
                                         />
                                     </div>
                                 )

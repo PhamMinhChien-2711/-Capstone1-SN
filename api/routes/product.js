@@ -142,7 +142,7 @@ router.post('/addproduct', cors(), upload.array('productImage', 5), async (req, 
             const newProduct = new Product({
                 title,
                 desc,
-                productImage: '/uploads/'+req.files[0]?.filename,
+                productImage: '/uploads/' + req.files[0]?.filename,
                 price,
                 currency,
                 quantity,

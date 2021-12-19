@@ -30,7 +30,7 @@ export const CartProvider = (props) => {
         } catch (error) {
             // alert('Đổi địa chỉ IP đi');
             alert(error.toString())
-            toast.success('Đổi địa chỉ Ip đi  🎉🎉');
+            toast.success('Internal server error  🎉🎉');
         }
     }
     const removeItem = async (item) => {
@@ -51,7 +51,7 @@ export const CartProvider = (props) => {
         } catch (error) {
             alert('Đổi địa chỉ IP đi');
             alert(error.toString())
-            toast.success('Đổi địa chỉ Ip đi  🎉🎉');
+            toast.success('Internal server error  🎉🎉');
         }
     }
     const loadCartItem = async () => {

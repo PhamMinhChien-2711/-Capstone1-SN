@@ -56,7 +56,7 @@ export default function NewPostSupport() {
                                             type="text"
                                             placeholder="Title"
                                             name="title"
-                                            required
+                                            required minlength="8" maxlength="60"
                                             onChange={onChangeData}
                                         />
                                         <input
