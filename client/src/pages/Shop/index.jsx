@@ -1,5 +1,4 @@
-
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Products } from '../../api/Products';
 import {
@@ -7,13 +6,9 @@ import {
 } from "reactstrap";
 import CartContext from '../../context/Cart';
 import './index.scss';
-import axios from 'axios';
 import ShopItem from '../../components/Item/ShopItem';
 
-
 function Shop() {
-
-    
 
     const { total } = useContext(CartContext);
 
