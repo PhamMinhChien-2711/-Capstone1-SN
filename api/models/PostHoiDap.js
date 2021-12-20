@@ -5,7 +5,7 @@ const schema = new mongoose.Schema(
   {
     title: {
       type: String,
-      required: true,
+      required: false,
     },
     content: {
       type: String,
@@ -32,4 +32,4 @@ const schema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model('post', schema);
+module.exports = mongoose.model('postsHoiDap', schema);
