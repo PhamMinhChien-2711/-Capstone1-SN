@@ -1,15 +1,14 @@
 .login {
-  background-color: white !important;
   width: 100% !important;
   margin: 0 auto;
   display: flex;
   flex-direction: row;
-
-  background: linear-gradient(
-    90deg,
-    rgb(244, 247, 217) 0%,
-    rgba(252, 169, 0, 1) 100%
-  );
+  background-color: #fff !important;
+  // background: linear-gradient(
+  //   90deg,
+  //   rgb(244, 247, 217) 0%,
+  //   rgba(252, 169, 0, 1) 100%
+  // );
   &-left {
     margin-right: -2rem;
     &__image {
@@ -54,11 +53,11 @@
     &__form {
       height: 300px;
       padding: 20px;
-
+      position: relative;
       border-radius: 5px;
       display: flex;
       flex-direction: column;
-
+      width: 90%;
       &__input {
         height: 50px;
         border-radius: 10px;
@@ -83,6 +82,7 @@
         cursor: pointer;
         &:hover {
           background-color: rgb(216, 131, 3);
+          transition: 0.5s;
         }
         &:focus {
           outline: none;
@@ -104,7 +104,6 @@
         }
       }
       &__buttonCreate {
-        width: 60%;
         align-self: center;
         height: 50px;
         border-radius: 10px;
@@ -116,12 +115,23 @@
         font-weight: 700;
         cursor: pointer;
         font-weight: bold;
-
+        padding: 10px 20px;
         &:hover {
           background-color: rgb(252, 169, 0, 1);
           color: white;
+          transition: 0.5s;
         }
       }
     }
   }
+}
+.show-pass {
+  position: absolute !important;
+  top: 96px !important;
+  right: 30px !important;
+  transform: translateY(-50%) !important;
+  margin: 0px !important;
+  font-size: 14px !important;
+  font-weight: bold !important;
+  cursor: pointer;
 }

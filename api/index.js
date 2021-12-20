@@ -10,6 +10,10 @@ const authRoute = require("./routes/auth");
 const conversationRoute = require("./routes/conversations");
 const messageRoute = require("./routes/messages");
 const postRoute = require("./routes/posts");
+const supportRoute = require('./routes/support')
+const productRoute=require('./routes/product')
+const cartRoute=require('./routes/cart')
+const commentRoute = require("./routes/comment");
 const router = express.Router();
 const path = require("path");
 var cors = require('cors')
@@ -23,6 +27,7 @@ db.connect();
 
 
 app.use("/images", express.static(path.join(__dirname, "public/images")));
+app.use("/uploads", express.static(path.join(__dirname, "upload")));
 
 //middleware
 app.use(cors())
@@ -39,12 +44,16 @@ const storage = multer.diskStorage({
   },
 });
 
-const upload = multer({ storage: storage });
+const upload = multer({
+  storage: storage
+});
 app.post("/api/upload", upload.single("file"), (req, res) => {
   try {
-    console.log("req.file.originalname",req.file);
-    return res.status(200).json({ url: `http://localhost:8800/images/${req.file.originalname}` });
-    
+    console.log("req.file.originalname", req.file);
+    return res.status(200).json({
+      url: `http://localhost:8800/images/${req.file.originalname}`
+    });
+
   } catch (error) {
     console.error(error);
   }
@@ -55,8 +64,12 @@ app.use("/api/users", userRoute);
 app.use("/api/conversations", conversationRoute);
 app.use("/api/messages", messageRoute);
 app.use("/api/posts", postRoute);
+app.use('/api/support', supportRoute);
+app.use('/api/products', productRoute);
+app.use('/api/cart', cartRoute);
+app.use("/api/comment", commentRoute);
 app.use(express.static('public'))
 
-app.listen(8800, () => {
+app.listen(process.env.PORT, () => {
   console.log("Backend server is running!");
 });

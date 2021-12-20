@@ -44,5 +44,9 @@ io.on("connection", (socket) => {
     removeUser(socket.id);
     io.emit("getUsers", users);
   });
+
+  socket.on("sendComment", (comment) => {
+    io.emit(`getComment-${comment.postId}`, comment);
+  });
   
 });

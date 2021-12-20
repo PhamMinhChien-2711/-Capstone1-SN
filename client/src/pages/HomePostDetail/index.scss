@@ -1,29 +1,94 @@
-.HomePostDetail {
+.PD {
   display: flex;
   flex-direction: row;
   margin-top: 1rem;
-  .left {
-    width: 50%;
-    margin-left: 10rem;
+  width: 100%;
+  margin: 1rem auto;
+  justify-content: space-between;
+  &-left {
+    margin-left: 0rem;
+    &-comment {
+      &-top {
+        border: 5px solid rgb(240, 239, 239);
+        padding: 10px 20px;
+        position: relative;
+        height: 150px;
+        &-input {
+          border-radius: 5px;
+          border: 1px solid rgb(226, 226, 225);
+          width: 100%;
+          padding: 10px;
 
-    .head {
-      &-author {
-        color: rgb(77, 77, 172);
-        font-size: 24px;
-        font-weight: bold;
-      }
-      span {
-        margin-left: 30px;
-      }
-      &-button {
-        margin-left: 50px;
+          &:focus {
+            border: white;
+          }
+        }
+
+        &-button {
+          position: absolute !important;
+          right: 10px !important;
+          translate: -19px;
+          bottom: 1px !important;
+          background-color: rgb(73, 73, 73) !important;
+          color: white !important;
+
+          &:hover {
+            background-color: black !important;
+          }
+        }
       }
     }
   }
 
-  .comment {
-   .head{
+  &-right {
+    background-color: #fff;
+    height: fit-content;
+    padding: 20px 10px;
+    border-radius: 5px;
+    width: 470px;
+    &-infor {
+      display: flex;
+      align-items: center;
 
-   }
+      &-username {
+        padding: 0 20px 0 10px;
+        font-weight: bold;
+      }
+
+      &-button {
+        margin-left: 130px;
+      }
+    }
+
+    &-content {
+      margin-top: 10px;
+    }
+
+    .commentPost {
+      &-User {
+        display: flex;
+        justify-content: space-between;
+
+        .postProfileImg {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+        &-Name {
+          padding-left: 0px;
+        }
+      }
+    }
+    &-Send {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 40px;
+
+      &-input {
+        border: white;
+        border-radius: 5px;
+      }
+    }
   }
 }

@@ -1,55 +1,157 @@
-import React from 'react';
-import { useLocation, Link } from 'react-router-dom';
-import './index.scss';
-import img from "../../assets/item.jpg";
-import {
-    CardMedia, Avatar
-} from "@material-ui/core";
-import { getTimeDistanceFromNow } from "../../utils/formater"
-import { Button } from '@mui/material';
-function HomePostDetail(props) {
+import React, { useState, useEffect, useRef, useContext } from "react";
 
+import './index.scss';
+import { LoadingButton } from '@mui/lab';
+
+import { useLocation, Link } from "react-router-dom";
+import "./index.scss";
+// import img from "../../assets/item.jpg";
+import commentApi from "../../api/comment";
+import { CardMedia, Avatar } from "@material-ui/core";
+import { getTimeDistanceFromNow } from "../../utils/formater";
+import { Button } from "@mui/material";
+import axios from "axios";
+import { Input, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { io } from "socket.io-client"
+import { AuthContext } from "../../context/AuthContext";
+import CommentItem from "../../components/CommentItem";
+
+function HomePostDetail(props) {
     //truyen props thong qua Link
     const location = useLocation();
     const { post } = location.state;
+    const [user, setUser] = useState({});
+    const [comment, setComment] = useState([]);
+    const socket = useRef();
+    const { user: profile } = useContext(AuthContext);
+
+    const [postData, setPostData] = useState({
+        content: ""
+    });
+
+    useEffect(() => {
+        socket.current = io("ws://localhost:8900");
+        socket.current.on(`getComment-${post._id}`, (_comment) => {
+            console.log(_comment, "on comment");
+            setComment(prev => ([...prev, _comment]))
+        });
+    }, []);
+
+    useEffect(() => {
+        const fetchUser = async () => {
+            const res = await axios.get(`/users?userId=${post.authorId}`);
+            setUser(res.data);
+        };
+        fetchUser();
+    }, [post.userId]);
+
+    const onChange = (e) => {
+        const { value, name } = e.target;
+        setPostData((prev) => ({ ...prev, [name]: value }));
+
+    };
+
+    useEffect(() => {
+        commentApi.getComment(post._id).then(res => {
+            setComment(res.data)
+        })
+    }, [])
+
+    const onComment = async () => {
+        commentApi.postComment({
+            authorId: profile?._id,
+            content: postData.content,
+            postId: post._id,
+        })
+
+        socket.current.emit(`sendComment`, {
+            authorId: profile?._id,
+            content: postData.content,
+            postId: post._id,
+            authorInfo: profile,
+        })
+        setPostData({
+            content: ''
+        })
+    }
+
     return (
-        <div className='HomePostDetail'>
-            <div className='left'>
-
+        <div className="PD">
+            <section className="PD-right_head">
+                <Link to="/" style={{ textDecoration: "none" }}>
+                    <Button size="small" variant="outlined">
+                        <i style={{ marginRight: "10px" }} class="fas fa-arrow-left"></i>
+                        Home Page
+                    </Button>
+                </Link>{" "}
+            </section> <hr />
+            <br />
+            <div className="PD-left">
                 <CardMedia
-                    image={img}
+                    image={post.img}
                     title="Title"
-                    style={{ height: "500px", width: "700px", borderRadius: "5px", }} />
-                {/* <section className='body'>
-                   
-                </section> */}
-                <section className='foot'>
+                    style={{ height: "500px", width: "720px", borderRadius: "5px" }}
+                />
 
-                </section>
-            </div>
-            <div className='comment'>
-                <section className='head'>
-                    <Link to='/' style={{ textDecoration: 'none' }}>
-                        <Button size='small' variant='outlined' ><i class="fas fa-arrow-left"></i>Back to home</Button>
-                    </Link> <br /> <hr />
+                <hr />
+                <section className="PD-left-comment">
 
-                    <div className="d-flex">
-                        <Avatar></Avatar>
-                        <div className='head-author mx-3'>post.authorId</div>
+                    <div className="PD-left-comment-top" >
+                        <textarea
+                            className='PD-left-comment-top-input'
+                            name="content"
+                            type="text"
+                            placeholder="Write a comment"
+                            onChange={onChange}
+                            value={postData.content}
+                        />
+                        <LoadingButton className='PD-left-comment-top-button' color="primary" onClick={onComment} >Send</LoadingButton>
                     </div>
-                    <span>{getTimeDistanceFromNow(post.createdAt)}</span>
-                    <Button className='head-button' size='small' variant='outlined'>Theo dõi</Button><br />
-                </section>
-                <h4 className='body-title'>
-                    {post.title}
-                </h4>
-                <p className='body-content'>
-                    {post.content}
-                </p>
-            </div>
-            <hr></hr>
-        </div>
+                    <br /> <br />
+                    <div className='PD-left-comment-content '>
+                        {
+                            comment?.reverse().map(item => {
+                                return <div className="commentPost-User">
+                                    <CommentItem item={item} />
+                                </div>
+                            })
+                        }
+                    </div>
 
+                    <hr />
+
+                </section>
+                <br /><br /><br />
+            </div>
+
+            <div className="PD-right">
+
+
+                <section className="PD-right-infor">
+                    <Avatar
+                        className="postProfileImg"
+                        src={
+                            user.profilePicture
+                        }
+                        alt=""
+                    />
+                    <div className='PD-right-infor-username'>{user.username}</div>
+                    <span >{getTimeDistanceFromNow(post.createdAt)}</span>
+                    <div className='PD-right-infor-button'>
+                        <Button size='small' variant='outlined'>Theo dõi</Button><br />
+                    </div>
+
+                </section>
+                <section className='PD-right-content'>
+                    <p>
+                        {post.content}
+                    </p>
+                </section>
+
+
+
+            </div>
+        </div>
     );
 }
 

@@ -5,16 +5,72 @@
   }
   max-width: 700px;
   margin-bottom: 1rem;
-  padding: 0.5rem 2rem;
+  padding: 2rem 2rem 1rem 2rem;
   font-size: 14px;
   &:hover {
     transition: transform 0.5s ease;
     transform: translateY(-5px);
   }
-}
-.link {
-  text-decoration: none;
-  box-sizing: border-box;
-  width: fit-content;
-  color: white;
+  &-postTop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &-Left {
+      display: flex;
+      align-items: center;
+      &-postUsername {
+        margin-left: 10px;
+        font-size: 1.1rem;
+        color: black;
+      }
+      &-link {
+        text-decoration: none;
+        box-sizing: border-box;
+      }
+      .postProfileImg {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+    }
+    &-Right {
+      position: relative;
+      &-icon {
+        cursor: pointer;
+        border-radius: 5px;
+
+        &:hover {
+          background-color: rgb(219, 214, 214);
+        }
+      }
+
+      &-modal {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        // top: 10px;
+        right: 10px;
+        background-color: rgb(219, 214, 214);
+        box-sizing: border-box;
+        border-radius: 5px;
+        padding: 10px 20px 10px 5px;
+        &-child {
+          cursor: pointer;
+          padding: 5px;
+          margin-right: -10px;
+          display: flex;
+          border-radius: 5px;
+          border-bottom: 1px solid rgb(219, 214, 214);
+          border-bottom-width: 70%;
+          &:hover {
+            background-color: rgb(255, 191, 96);
+          }
+        }
+      }
+    }
+  }
+
+  &-image {
+  }
 }

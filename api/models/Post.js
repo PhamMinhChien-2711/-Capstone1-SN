@@ -3,6 +3,7 @@ const { Schema, model } = mongoose;
 const Types = Schema.Types;
 const schema = new mongoose.Schema(
   {
+   
     title: {
       type: String,
       required: true,
