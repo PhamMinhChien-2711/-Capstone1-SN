@@ -83,6 +83,7 @@
         cursor: pointer;
         &:hover {
           background-color: rgb(216, 131, 3);
+          transition: 0.5s;
         }
         &:focus {
           outline: none;
@@ -119,6 +120,7 @@
         &:hover {
           background-color: rgb(252, 169, 0, 1);
           color: white;
+          transition: 0.5s;
         }
       }
     }

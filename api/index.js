@@ -11,6 +11,7 @@ const conversationRoute = require("./routes/conversations");
 const messageRoute = require("./routes/messages");
 const postRoute = require("./routes/posts");
 const commentRoute = require("./routes/comment");
+const commentHoiDapRoute = require("./routes/commentHoiDap");
 const postsHoiDap = require("./routes/postsHoiDap");
 
 const router = express.Router();
@@ -60,6 +61,7 @@ app.use("/api/messages", messageRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/postsHoiDap", postsHoiDap);
 app.use("/api/comment", commentRoute);
+app.use("/api/commentHoiDap", commentHoiDapRoute);
 app.use(express.static('public'))
 
 app.listen(8800, () => {
