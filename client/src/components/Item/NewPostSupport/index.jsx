@@ -1,14 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState , useContext} from 'react';
 import { NavLink, Route, Switch } from "react-router-dom";
 import './AddItem.css';
 import axios from 'axios'
 import { API_URL } from '../../../actions/type'
+import { AuthContext } from "../../../context/AuthContext";
+
 export default function NewPostSupport() {
     const [data, setData] = useState({
         title:'',
         content:'',
         postImage:null,
     })
+    const { user, dispatch } = useContext(AuthContext);
+
+    
+    const [postLoading, setPostLoading] = useState(false);
+
     const onChangeData = (event) => {
         console.log(event.target.files)
         setData({ ...data, [event.target.name]: event.target.value });
@@ -20,6 +27,9 @@ export default function NewPostSupport() {
         event.preventDefault();
 
         try {
+            setPostLoading(true)
+            if(user===null)
+            return alert('Ban Phai Can Dang Nhap') 
             const formData = new FormData();
             formData.append('title', data.title)
             formData.append('content', data.content)

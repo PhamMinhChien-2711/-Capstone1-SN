@@ -38,6 +38,8 @@ const Home = (props) => {
     });
 
     const { user, dispatch } = useContext(AuthContext);
+
+    console.log('user',user)
     const [url, setUrl] = useState("");
 
     const [modal, setModal] = useState(false);
@@ -61,8 +63,9 @@ const Home = (props) => {
 
     const post = async () => {
         setPostLoading(true);
+        if(user===null)
+        return alert('Ban Phai Can Dang Nhap')
         createPost({
-
             title: postData.title,
             content: postData.content,
             img: url,

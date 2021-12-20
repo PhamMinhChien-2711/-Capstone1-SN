@@ -121,8 +121,11 @@ router.post('/addproduct', cors(), upload.array('productImage', 5), async (req, 
     }
     try {
         const account = User.findById({
-            _id: '617505e86fae8a93bec34087'
-        }).select('_id');
+            _id: User._id,
+        }).select('_id')
+
+        console.log('account', account)
+        
 
         if (!account)
             return res.json({
@@ -146,6 +149,7 @@ router.post('/addproduct', cors(), upload.array('productImage', 5), async (req, 
                 price,
                 currency,
                 quantity,
+                authorId: User._id,
             })
             const product = await newProduct.save();
             return res.json({

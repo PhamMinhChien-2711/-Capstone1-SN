@@ -1,6 +1,6 @@
 {
     "authorId": "617505e86fae8a93bec34087",
-    "total": 14,
+    "total": 20,
     "_id": "61b4c384ef64b30f60a9152b",
     "cartItems": [
         {
@@ -16,9 +16,16 @@
             "price": 8,
             "_id": "61b8aab6a1c5eb1f08aee74b",
             "IDproduct": "61b7fc209b42272684ac7b0e"
+        },
+        {
+            "quantity": 1,
+            "title": "Sản Phẩm Tắm Gội Cho Cún Yêu SLEEKY",
+            "price": 6,
+            "_id": "61bf68549f4a522d881b2551",
+            "IDproduct": "61b4609f987912138c3b52d1"
         }
     ],
     "createdAt": "2021-12-11T15:28:04.049Z",
-    "updatedAt": "2021-12-15T07:37:46.345Z",
+    "updatedAt": "2021-12-19T17:13:56.765Z",
     "__v": 0
 }

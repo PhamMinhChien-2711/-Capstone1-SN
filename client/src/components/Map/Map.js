@@ -48,8 +48,7 @@ const optionsPolyline = {
               }
 
             }}
-            // onClick={(e)=>{console.log('xhung')}}
-            
+
           >
             {positions?(
               <Marker
