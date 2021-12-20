@@ -10,7 +10,7 @@ import { useParams } from "react-router";
 import userApi from "../../api/user";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
-const querystring = require("querystring");
+
 
 function User(props) {
   const { user: currentUser } = useContext(AuthContext);

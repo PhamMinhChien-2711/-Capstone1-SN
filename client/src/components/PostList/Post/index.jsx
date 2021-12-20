@@ -59,6 +59,7 @@ export default function Post({ post, onLike }) {
                             <div className='card-postTop-Right-modal-child'>
                                 <EditIcon />Edit
                             </div>
+                            
                             <div className='card-postTop-Right-modal-child'>
                                 <DeleteIcon />Delete
                             </div>
