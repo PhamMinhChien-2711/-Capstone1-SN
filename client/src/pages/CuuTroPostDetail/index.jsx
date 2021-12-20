@@ -19,6 +19,7 @@ function CuuTroPostDetail(props) {
     const loadPost = async () => {
         try {
             const response = await axios.get(`${API_URL}/api/support/listDetail/${location.pathname.split('/')[2]}`)
+            console.log(location)
             console.log(response)
             if (response.data.success) {
                 setPost(response.data.findPost)

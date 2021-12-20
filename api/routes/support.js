@@ -40,7 +40,7 @@ const upload = multer({
 
 router.get('/listSupport', async (request, response) => {
     try {
-        const findPost = await Support.find({}).populate('authorId')
+        const findPost = await Support.find({}).sort({ createdAt: -1 }).populate('authorId')
         const supportPost = await findPost.map(value => {
             return {
                 _id: value._id,
