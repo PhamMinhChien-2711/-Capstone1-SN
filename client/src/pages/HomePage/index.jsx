@@ -5,10 +5,11 @@ import { AuthContext } from "../../context/AuthContext";
 import { LoadingButton } from "@mui/lab";
 import CreateIcon from "@mui/icons-material/Create";
 import "./index.scss";
-import PostList from "../../components/PostList";
-
+import LoadingBar from "react-top-loading-bar";
+import LoadingOverlay from "react-loading-overlay";
 import { createPost, fetchPosts, likePost } from "../../api/post";
 import { uploadImage } from "../../api/upload";
+import styled, { css } from "styled-components";
 import {
   Container,
   Row,
@@ -43,8 +44,12 @@ const Home = (props) => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
+    loadingRef.current.continuousStart();
+    setPostLoading(true);
     fetchPosts().then((res) => {
       setPosts(res.data);
+      loadingRef.current.complete();
+      setPostLoading(false);
     });
   }, []);
 
@@ -111,8 +116,12 @@ const Home = (props) => {
     setPosts(newPosts);
   };
 
+  const loadingRef = useRef(null);
+
   return (
     <div className='Home'>
+      <LoadingBar color='black' ref={loadingRef} shadow={true} />
+
       <div className='Home-button'>
         <div className='Home-button-1'>
           {tabs.map((tab, index) => {
@@ -169,13 +178,19 @@ const Home = (props) => {
       </div>
 
       <hr />
-      {/* <div className='Home-image'>
-                <img src='https://media2.giphy.com/media/3o8dp7vEroP9E0WSdi/giphy.gif?cid=ecf05e47dbb6nseunuf7fn2b3082vrj038uf6qvznga4k8oj&rid=giphy.gif&ct=g'
-                />
 
-            </div> */}
       <div className='Home-posts'>
         {/* <PostList posts={posts}/> */}
+        <DarkBackground disappear={postLoading}>
+          <LoadingOverlay
+            active={true}
+            // spinner={<BounceLoader />}
+            spinner={true}
+            text='Loading'
+          >
+            {/* <p>Some content or children or something.</p> */}
+          </LoadingOverlay>
+        </DarkBackground>
         <Row>
           {posts.map((post) => (
             <Col key={post._id}>
@@ -187,5 +202,24 @@ const Home = (props) => {
     </div>
   );
 };
+
+const DarkBackground = styled.div`
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 500; /* Sit on top */
+  left: 0;
+  top: 0%;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+
+  ${(props) =>
+    props.disappear &&
+    css`
+      display: block; /* show */
+    `}
+`;
 
 export default Home;
