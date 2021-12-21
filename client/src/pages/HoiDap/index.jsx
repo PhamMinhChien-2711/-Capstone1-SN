@@ -88,7 +88,7 @@ const HoiDap = (props) => {
       )}
       <div className='HoiDap-button'>
         <Button onClick={toggle} color='error' size='medium' variant='contained'>
-          Đặt câu hỏi <img heigh='20' width='20' src='/assets/question.svg' />
+          Đặt câu hỏi <img heigh='15' width='20' src='/assets/question.svg' />
         </Button>
         <Modal isOpen={modal} toggle={toggle}>
           <ModalHeader toggle={toggle}>Add a post ✍️</ModalHeader>

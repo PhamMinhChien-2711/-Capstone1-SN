@@ -3,12 +3,12 @@
   width: 100%;
   margin: 0 auto;
   &-button {
-    margin-top: 0.5rem;
+    margin: 0.5rem 0;
     Button {
       float: right;
-      margin-right: 0rem;
       background-color: #0d6efd !important;
       color: white;
+      margin-bottom: 0.5rem !important;
     }
   }
 
