@@ -1,36 +1,48 @@
 .HoiDap {
-    display: block;
-    &-button {
-        margin-top: 0.5rem;
-        Button {
-            float: right;
-            margin-right: 3rem;
-        }
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+  &-button {
+    margin-top: 0.5rem;
+    Button {
+      float: right;
+      margin-right: 0rem;
+      background-color: #0d6efd !important;
+      color: white;
+    }
+  }
+
+  &-body {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 0 auto;
+
+    .left {
+      background-color: #ffffff;
+      padding: 10px;
+      width: 70%;
+      border-radius: 15px;
     }
 
-    &-body {
-        display: flex;
-        flex-direction: row;
-        .left {
-            width: 100%;
-            margin-left: 7rem;
-        }
+    .right {
+      background-color: #ffffff;
+      border-radius: 10px;
+      padding: 10px;
+      width: 25%;
+      position: fixed;
+      top: 20rem;
+      right: 4rem;
+      hr {
+        width: 70%;
+      }
+      h5 {
+        color: #0d6efd;
+      }
 
-        .right {
-            width: 40%;
-            position: fixed;
-            top: 20rem;
-            right: -3rem;
-            hr {
-                width: 80%;
-            }
-            h4 {
-                color: rgb(75, 75, 153);
-            }
-
-            span {
-                opacity: 0.8;
-            }
-        }
+      span {
+        opacity: 0.8;
+      }
     }
+  }
 }

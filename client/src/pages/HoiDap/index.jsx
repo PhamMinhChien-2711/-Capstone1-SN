@@ -77,7 +77,7 @@ const HoiDap = (props) => {
             position: "absolute",
             top: "10px",
             left: "10px",
-            zIndex: "500",
+            zIndex: "1",
             width: "100%",
             height: "100%",
           }}
@@ -88,7 +88,7 @@ const HoiDap = (props) => {
       )}
       <div className='HoiDap-button'>
         <Button onClick={toggle} color='error' size='medium' variant='contained'>
-          Đặt câu hỏi ?
+          Đặt câu hỏi <img heigh='20' width='20' src='/assets/question.svg' />
         </Button>
         <Modal isOpen={modal} toggle={toggle}>
           <ModalHeader toggle={toggle}>Add a post ✍️</ModalHeader>
@@ -101,7 +101,7 @@ const HoiDap = (props) => {
               onChange={onChange}
               value={postData.content}
             />
-            <img src={url} alt='' style={{ width: "85px", height: "60px" }} />
+            {url && <img src={url} alt='' style={{ width: "85px", height: "60px" }} />}
 
             <input type='file' id='file' accept='.png,.jpeg,.jpg' onChange={upload} />
           </ModalBody>
@@ -118,21 +118,19 @@ const HoiDap = (props) => {
 
       <div className='HoiDap-body'>
         <div className='left'>
-          <div className='HoiDap-posts'>
-            <Container>
-              {posts.map((post) => {
-                return <HoiDapItem post={post} />;
-              })}
-            </Container>
-          </div>
+          <>
+            {posts.map((post) => {
+              return <HoiDapItem post={post} />;
+            })}
+          </>
         </div>
         <div className='right'>
-          <h4>Đáng quan tâm</h4>
+          <h5>Đáng quan tâm</h5>
           <hr />
-          <h5>Tôi không thể sống nếu thiếu nó</h5>
+          <h6>Tôi không thể sống nếu thiếu nó</h6>
           <span>created by Nhat Long </span>
           <hr />
-          <h5>Làm ơn hãy giúp tôi</h5>
+          <h6>Làm ơn hãy giúp tôi</h6>
           <span>created by Elon </span>
         </div>
       </div>
