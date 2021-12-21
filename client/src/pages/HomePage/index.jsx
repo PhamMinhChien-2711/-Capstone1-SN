@@ -161,7 +161,13 @@ const Home = (props) => {
                 onChange={onChange}
                 value={postData.content}
               />
-              {url && <img src={url} alt='' style={{ width: "100%", height: "100%" }} />}
+              {url && (
+                <img
+                  src={url}
+                  alt=''
+                  style={{ width: "100%", height: "100%", marginBottom: "15px" }}
+                />
+              )}
 
               <input type='file' id='file' accept='.png,.jpeg,.jpg' onChange={upload} />
             </ModalBody>
