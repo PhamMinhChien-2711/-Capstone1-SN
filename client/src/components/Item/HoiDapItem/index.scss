@@ -1,22 +1,85 @@
 .Id {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .Author {
-    font-size: 25px;
-    color: rgb(63, 63, 189);
+  font-size: 15px;
+  color: rgb(63, 63, 189);
 }
 .CreatedAt {
-    font-style: italic;
-    margin-left: 50px;
-    font-size: 15px;
+  font-style: italic;
+  margin-left: 50px;
+  font-size: 15px;
 }
 
 .Item {
-    &-link {
-        text-decoration: none;
+  &-link {
+    text-decoration: none;
+  }
+  &-title {
+    align-items: center;
+  }
+}
+
+.HDI {
+  box-sizing: border-box;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  border-bottom: 1px solid rgb(245, 242, 242);
+
+  &-left {
+    margin-right: 20px;
+    &__date {
+      margin-left: 10px;
+      opacity: 0.7;
     }
-    &-title{
-        align-items: center;
+    width: 25%;
+  }
+
+  &-right {
+    width: 65%;
+    &__userInfor {
+      display: flex;
+      align-items: center;
+
+      &-name {
+        font-size: 15px;
+        color: rgb(23, 95, 177);
+        font-weight: bold;
+        cursor: pointer;
+
+        &:hover {
+          color: blue;
+          text-decoration: underline;
+        }
+      }
+
+      &-avatar {
+      }
     }
+
+    &__content {
+      margin-top: 5px;
+      &-title {
+        margin-left: 12px;
+      }
+    }
+  }
+
+  &-button {
+    align-items: flex-end;
+
+    &__svg {
+      width: 30px;
+      height: 20px;
+
+      &:hover {
+        transform: translatex(10px);
+        transition: 0.3s ease-in-out;
+      }
+    }
+  }
 }
