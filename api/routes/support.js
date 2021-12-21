@@ -9,13 +9,12 @@ const router = express.Router();
 
 
 const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, './upload')
+    destination: (req, file, cb) => {
+        cb(null, "public/images");
     },
-    filename: function (req, file, cb) {
-        // cb(null, new Date().toISOString() + file.originalname);
-        cb(null, Date.now() + file.originalname); //prevent "error": "ENOENT: no such file or directory
-    }
+    filename: (req, file, cb) => {
+        cb(null, file.originalname);
+    },
 });
 const fileFilter = (req, file, cb) => {
     if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
@@ -40,7 +39,9 @@ const upload = multer({
 
 router.get('/listSupport', async (request, response) => {
     try {
-        const findPost = await Support.find({}).sort({ createdAt: -1 }).populate('authorId')
+        const findPost = await Support.find({}).sort({
+            createdAt: -1
+        }).populate('authorId')
         const supportPost = await findPost.map(value => {
             return {
                 _id: value._id,
@@ -111,12 +112,6 @@ router.post('/newSupport', upload.array('postImage', 5), async (req, res) => {
             message: 'Title is required',
         })
     }
-    if (!content) {
-        return res.json({
-            success: false,
-            message: 'Content is required',
-        })
-    }
     try {
         const user = await User.findById({
             _id: '617505e86fae8a93bec34087',
@@ -131,7 +126,7 @@ router.post('/newSupport', upload.array('postImage', 5), async (req, res) => {
             const newPost = new Support({
                 title,
                 content,
-                postImage: '/uploads/' + req.files[0]?.filename,
+                postImage: '/images/' + req.files[0]?.filename,
                 authorId: '617505e86fae8a93bec34087'
 
             })
@@ -223,13 +218,13 @@ router.delete('/deletedpost/:id', async (req, res) => {
 
     try {
 
-        const DeletedPost={
+        const DeletedPost = {
             _id: req.params.id,
             authorId: '617505e86fae8a93bec34087'
         }
 
         const postDelete = await Support.findOneAndDelete(DeletedPost);
-   
+
         if (!postDelete) {
             return res.json({
                 success: false,

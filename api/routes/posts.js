@@ -6,7 +6,7 @@ const User = require('../models/User');
 const router = express.Router();
 
 router.get('/', async (req, res) => {
-    try {
+    try { 
         const posts = await Post.find().sort({ createdAt: -1 })
         .then(res => {
           return Promise.all(

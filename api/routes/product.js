@@ -15,13 +15,12 @@ const {
 
 
 const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, './upload')
+    destination: (req, file, cb) => {
+        cb(null, "public/images");
     },
-    filename: function (req, file, cb) {
-        // cb(null, new Date().toISOString() + file.originalname);
-        cb(null, Date.now() + file.originalname); //prevent "error": "ENOENT: no such file or directory
-    }
+    filename: (req, file, cb) => {
+        cb(null, file.originalname);
+    },
 });
 const fileFilter = (req, file, cb) => {
     if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
@@ -145,7 +144,7 @@ router.post('/addproduct', cors(), upload.array('productImage', 5), async (req, 
             const newProduct = new Product({
                 title,
                 desc,
-                productImage: '/uploads/' + req.files[0]?.filename,
+                productImage: '/images/' + req.files[0]?.filename,
                 price,
                 currency,
                 quantity,
