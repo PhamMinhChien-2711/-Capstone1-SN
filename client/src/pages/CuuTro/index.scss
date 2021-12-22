@@ -1,36 +1,95 @@
-.CuuTro {
-    display: block;
-    &-button {
-        margin-top: 0.5rem;
-        Button {
-            float: right;
-            margin-right: 3rem;
-        }
+.CT {
+  width: 100%;
+  &-button {
+    Button {
+      float: right;
+      background-color: #0d6efd;
+    }
+  }
+  &-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+
+    & > h5 {
+      font-size: 13px;
+      font-size: inherit;
+    }
+  }
+  &-body {
+    display: flex;
+
+    &-left {
+      background-color: #ffffff;
+      border-left: 2px dotted #0d6efd;
+      border-bottom: 2px dotted #0d6efd;
+      border-top: none;
+      border-right: none;
+      border-radius: 10px;
+      border-top-left-radius: 0px;
+      max-width: 33%;
+      width: 33%;
+      &-header {
+        padding: 20px 20px;
+        font-size: 23px;
+        border-bottom: 2px dotted #0d6efd;
+      }
     }
 
-    &-body {
+    &-right {
+      width: 60%;
+      margin-left: 5%;
+      background-color: #ffffff;
+      border-radius: 10px;
+      border-top-right-radius: 0px;
+      height: fit-content;
+      position: fixed;
+      top: 323px;
+      right: 74px;
+
+      &-header {
+        padding: 19px 20px;
+        font-size: 23px;
+        border-bottom: 2px dotted #0d6efd;
+      }
+      &-content {
         display: flex;
-        flex-direction: row;
-        .left {
-            width: 100%;
-            margin-left: 7rem;
-        }
+        flex-wrap: wrap;
+        &-item {
+          cursor: pointer;
+          width: 50%;
+          padding: 10px 20px;
+          display: flex;
 
-        .right {
-            width: 40%;
-            position: fixed;
-            top: 20rem;
-            right: -3rem;
-            hr {
-                width: 80%;
-            }
-            h4 {
-                color: rgb(75, 75, 153);
+          &-rank {
+            color: #a0a1a6;
+            font-size: 42px;
+            font-weight: 800;
+            line-height: 1;
+            -webkit-flex: 0 0 64px;
+            -ms-flex: 0 0 64px;
+            flex: 0 0 64px;
+            opacity: 0.48;
+          }
+
+          &-infor {
+            &-title {
+              font-size: 16px;
+              font-weight: 500;
+              margin-bottom: 8px;
+              &:hover {
+                color: #0d6efd;
+              }
             }
 
-            span {
-                opacity: 0.8;
+            &-author {
+              opacity: 0.8;
+              font-style: inherit;
             }
+          }
         }
+      }
     }
+  }
 }

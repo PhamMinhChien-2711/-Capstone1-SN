@@ -19,6 +19,7 @@ import { createPost, fetchPosts } from "../../api/postHoiDap";
 import { uploadImage } from "../../api/upload";
 import LoadingBar from "react-top-loading-bar";
 import { seo } from "../../utils/seo";
+import LoadingVipPro from "../../components/LoadingVipPro";
 
 const HoiDap = (props) => {
   const { user, dispatch } = useContext(AuthContext);
@@ -73,21 +74,7 @@ const HoiDap = (props) => {
   return (
     <div className='HoiDap'>
       <LoadingBar color='black' ref={loadingRef} shadow={true} />
-      {loading && (
-        <div
-          style={{
-            position: "fixed",
-            top: "10px",
-            left: "10px",
-            zIndex: "1",
-            width: "100%",
-            height: "100%",
-          }}
-        >
-          {" "}
-          <Loader type='TailSpin' color='black' height={30} width={30} />
-        </div>
-      )}
+      {loading && <LoadingVipPro />}
       <div className='HoiDap-button'>
         <Button onClick={toggle} color='error' size='medium' variant='contained'>
           Đặt câu hỏi <img heigh='15' width='20' src='/assets/question.svg' />
