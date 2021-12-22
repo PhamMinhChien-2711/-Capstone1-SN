@@ -10,7 +10,7 @@ import { useParams } from "react-router";
 import userApi from "../../api/user";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
-
+import { seo } from "../../utils/seo";
 
 function User(props) {
   const { user: currentUser } = useContext(AuthContext);
@@ -27,6 +27,7 @@ function User(props) {
   });
 
   useEffect(() => {
+    seo("Người dùng");
     userApi.getUser(userId).then((res) => {
       setUser(res.data);
     });
