@@ -28,7 +28,7 @@ export default function Register() {
       password: v.password,
     };
     try {
-      await axios.post("/auth/register", user);
+      await axios.post(`${process.env.REACT_APP_BASE_API}/auth/register`, user);
       history.push("/");
     } catch (err) {
       console.log(err);
