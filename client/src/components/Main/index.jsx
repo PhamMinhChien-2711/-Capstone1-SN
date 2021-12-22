@@ -15,6 +15,7 @@ import Cart from "../../pages/GioHang";
 import { AuthContext } from "../../context/AuthContext";
 import Login from "../../pages/login";
 import Register from "../../pages/register";
+import NewPostSupport from '../Item/NewPostSupport'
 
 export default function Main() {
   const { user } = useContext(AuthContext);
@@ -64,6 +65,9 @@ export default function Main() {
       {/* <Link path={`/users/${user.username}`}>
                 <User />
             </Link> */}
+            <Route exact path='/newPostSupport'>
+        <NewPostSupport />
+      </Route>
     </Switch>
   );
 }
