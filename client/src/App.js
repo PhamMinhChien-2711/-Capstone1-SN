@@ -1,39 +1,25 @@
-import Login from "./pages/login/Login";
-import Register from "./pages/register/Register";
 import { CartProvider } from "./context/Cart";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
 import Messenger from "./pages/messenger/Messenger";
-
-import Header from "./components/Header";
-import Main from "./components/Main";
-import ScrollToTop from "./components/ScrollToTop";
+import { ToastContainer } from "react-toastify";
+import HelloWellcomeToSNPO from "./components/HelloWellcomeToSNPO";
 
 function App() {
   const { user } = useContext(AuthContext);
   return (
     <Router>
       <CartProvider>
-        <div className="App">
-          <Header />
-          <Main />
-          <ScrollToTop />
-        </div>
+        <HelloWellcomeToSNPO user={user} />
+        <ToastContainer position='bottom-left' />
       </CartProvider>
       <Switch>
-        <Route path="/login">{user ? <Redirect to="/" /> : <Login />}</Route>
-        <Route path="/register">
-          {user ? <Redirect to="/" /> : <Register />}
+        <Route path='/login'>{user && <Redirect to='/' />}</Route>
+        <Route path='/register'>
+          {!user ? <Redirect to='/register' /> : <Redirect to='/' />}
         </Route>
-        <Route path="/messenger">
-          {!user ? <Redirect to="/" /> : <Messenger />}
-        </Route>
+        <Route path='/messenger'>{!user ? <Redirect to='/' /> : <Messenger />}</Route>
 
         {/* chien update */}
       </Switch>
