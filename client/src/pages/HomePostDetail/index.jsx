@@ -82,7 +82,7 @@ function HomePostDetail(props) {
   return (
     <div className='PD'>
       <section className='PD-right_head'>
-        <Link to='/home' style={{ textDecoration: "none" }}>
+        <Link to='/' style={{ textDecoration: "none" }}>
           <Button size='small' variant='outlined'>
             <i style={{ marginRight: "10px" }} class='fas fa-arrow-left'></i>
             Home Page
