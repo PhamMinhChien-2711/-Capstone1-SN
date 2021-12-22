@@ -16,7 +16,10 @@ function Cart(props) {
       <section className='Cart__head'>
         <Link to='/shop' style={{ textDecoration: "none" }}>
           <Button variant='outlined' size='small'>
-            <i class='fas fa-arrow-circle-left'> </i>Continue shopping
+            <i style={{ marginRight: "10px" }} class='fas fa-arrow-circle-left'>
+              {" "}
+            </i>
+            Continue shopping
           </Button>
         </Link>
       </section>
