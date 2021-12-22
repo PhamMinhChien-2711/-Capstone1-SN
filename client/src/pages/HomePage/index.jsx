@@ -21,6 +21,7 @@ import {
   ModalFooter,
 } from "reactstrap";
 import Post from "../../components/PostList/Post";
+import { seo } from "../../utils/seo";
 const active = {
   borderBottom: "3px solid black",
 };
@@ -44,6 +45,7 @@ const Home = (props) => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
+    seo("");
     loadingRef.current.continuousStart();
     setPostLoading(true);
     fetchPosts().then((res) => {
