@@ -4,7 +4,7 @@ import WritePost from "../../components/WritePost";
 import Home from "../../pages/HomePage";
 import HoiDap from "../../pages/HoiDap";
 import CuuTro from "../../pages/CuuTro";
-import NewPostSupport from "../../components/Item/NewPostSupport";
+
 import Shop from "../../pages/Shop";
 import HomePostDetail from "../../pages/HomePostDetail";
 import User from "../../pages/User";
@@ -16,6 +16,7 @@ import Cart from "../../pages/GioHang";
 import { AuthContext } from "../../context/AuthContext";
 import Login from "../../pages/login";
 import Register from "../../pages/register";
+import NewPostSupport from '../Item/NewPostSupport'
 
 export default function Main() {
   const { user } = useContext(AuthContext);
@@ -68,6 +69,9 @@ export default function Main() {
       {/* <Link path={`/users/${user.username}`}>
                 <User />
             </Link> */}
+            {/* <Route exact path='/newPostSupport'>
+        <NewPostSupport />
+      </Route> */}
     </Switch>
   );
 }

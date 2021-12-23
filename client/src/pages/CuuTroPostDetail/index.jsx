@@ -183,9 +183,8 @@ function CuuTroPostDetail(props) {
     setPost({ ...post, [e.target.name]: e.target.value });
   };
   return (
-    <div className='HomePostDetail'>
-      <div className='Button-onclick'>
-        {/* {checkButton()} */}
+    <div className='CTPDT'>
+      {/* <div className='Button-onclick'>
         <div className='EditPost-button'>
           <form>
             <Button size='medium' variant='contained' onClick={changeStatus}>
@@ -193,81 +192,54 @@ function CuuTroPostDetail(props) {
             </Button>
           </form>
         </div>
+      </div> */}
+      <div className='CTPDT-head'>
+        <Link to='/cuutro' style={{ textDecoration: "none" }}>
+          <ButtonBack title='Back' />
+        </Link>{" "}
       </div>
+      <div className='CTPDT-body'>
+        <div div className='CTPDT-body-left'>
+          {/* {contentPost()} */}
+          {checkStatus()}
 
-      <div className='left'>
-        <section className='head'>
-          <Link to='/cuutro' style={{ textDecoration: "none" }}>
-            <ButtonBack title='Back' />
-          </Link>{" "}
-          <br /> <hr />
-        </section>
-        {/* {contentPost()} */}
-        {checkStatus()}
-        <hr />
-
-        <section className='comment'>
-        <div className='PD-left-comment-top'>
-            <textarea
-              className='PD-left-comment-top-input'
-              name='content'
-              type='text'
-              placeholder='Write a comment'
-              onChange={onChange}
-              value={postData.content}
-            />
-            <LoadingButton
-              className='PD-left-comment-top-button'
-              color='primary'
-              onClick={onComment}
-            >
-              Send
-            </LoadingButton>
-          </div>
-
-          <div className='PD-left-comment-content '>
-            {comment?.reverse().map((item) => {
-              return (
-                <div className='commentPost-User'>
-                  <CommentItem item={item} />
-                </div>
-              );
-            })}
-          </div>
-        </section>
-
-      </div>
-      <div className='right'>
-        <lable className='right-author'>{post.name}</lable>
-        <Button className='right-button' size='small' variant='outlined'>
-          Theo dõi
-        </Button>
-        <br />
-        <span>Đã đăng khoảng {post.createdAt} giờ trước</span>
-        <hr />
-
-        <div style={{ marginTop: "4%", marginLeft: "20px", width: "130%" }}>
-          <Map
-            lat={post.lat}
-            lng={post.lng}
-            label={post.label}
-            googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${key}&callback=initMap`}
-            loadingElement={<div style={{ height: `100%` }} />}
-            containerElement={
-              <div
-                style={{ height: `90vh`, margin: `auto`, border: "2px solid black" }}
-              />
-            }
-            mapElement={<div style={{ height: `100%` }} />}
-          />
+          <section className='CTPDT-body-left-comment'>comment</section>
         </div>
+        <div className='CTPDT-body-right-infor'>
+          <span className='CTPDT-body-right-infor-author'>{post.name}</span>
+          <Button
+            className='CTPDT-body-right-infor-button'
+            size='small'
+            variant='outlined'
+          >
+            Theo dõi
+          </Button>
+          <br />
+          <span className='CTPDT-body-right-infor-date'>Ngày đăng: {post.createdAt}</span>
+
+          {/* <div style={{ marginTop: "4%", width: "150%" }}>
+            <Map
+              lat={post.lat}
+              lng={post.lng}
+              label={post.label}
+              googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${key}&callback=initMap`}
+              loadingElement={<div style={{ height: `100%` }} />}
+              containerElement={
+                <div
+                  style={{ height: `90vh`, margin: `auto`, border: "2px solid black" }}
+                />
+              }
+              mapElement={<div style={{ height: `100%` }} />}
+            />
+          </div> */}
+        </div>
+        {post.visible ? (
+          <ViewFullImage
+            url={post.postImage}
+            onClick={() => setPost({ ...post, visible: false })}
+          />
+        ) : null}
       </div>
-      {post.visible ? (
-        <ViewFullImage
-          url={post.postImage}
-          onClick={() => setPost({ ...post, visible: false })}
-        />
-      ) : null}
     </div>
   );
 }
