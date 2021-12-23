@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 
-import './index.scss';
-import { LoadingButton } from '@mui/lab';
-import { fetchPosts,updatePost  } from "../../api/post";
+import "./index.scss";
+import { LoadingButton } from "@mui/lab";
+import { fetchPosts, updatePost } from "../../api/post";
 import { useLocation, Link } from "react-router-dom";
 import "./index.scss";
 // import img from "../../assets/item.jpg";
@@ -11,12 +11,12 @@ import { CardMedia, Avatar } from "@material-ui/core";
 import { getTimeDistanceFromNow } from "../../utils/formater";
 import { Button } from "@mui/material";
 import axios from "axios";
-import {  Input, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import { io } from "socket.io-client"
+import { Input, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import { io } from "socket.io-client";
 import { AuthContext } from "../../context/AuthContext";
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
-import CancelIcon from '@mui/icons-material/Cancel';
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
+import CancelIcon from "@mui/icons-material/Cancel";
 import MoreVert from "@material-ui/icons/MoreVert";
 import { uploadImage } from "../../api/upload";
 import CommentItem from "../../components/CommentItem";

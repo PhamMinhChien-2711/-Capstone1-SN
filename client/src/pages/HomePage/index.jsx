@@ -10,6 +10,7 @@ import LoadingOverlay from "react-loading-overlay";
 import { createPost, fetchPosts, likePost } from "../../api/post";
 import { uploadImage } from "../../api/upload";
 import styled, { css } from "styled-components";
+import axios from 'axios'
 import {
   Container,
   Row,
@@ -21,6 +22,7 @@ import {
   ModalFooter,
 } from "reactstrap";
 import Post from "../../components/PostList/Post";
+import { seo } from "../../utils/seo";
 const active = {
   borderBottom: "3px solid black",
 };
@@ -44,6 +46,7 @@ const Home = (props) => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
+    seo("");
     loadingRef.current.continuousStart();
     setPostLoading(true);
     fetchPosts().then((res) => {
@@ -116,7 +119,16 @@ const Home = (props) => {
     setPosts(newPosts);
   };
 
+  const deletePost = async (_id) => {
+    const response = await axios.delete(`${process.env.REACT_APP_BASE_API}/posts/deleted/${_id}`, { _id })
+    
+
+    console.log('response', response)
+
+  }
+
   const loadingRef = useRef(null);
+
 
   return (
     <div className='Home'>

@@ -115,7 +115,7 @@ router.post('/newSupport', upload.array('postImage', 5), async (req, res) => {
     try {
         
         const user = await User.findById({
-            _id: '617505e86fae8a93bec34087',
+            _id: '61777ee86cfa118e47591262',
 
         }).select('_id');
         if (!user) {
@@ -128,7 +128,7 @@ router.post('/newSupport', upload.array('postImage', 5), async (req, res) => {
                 title,
                 content,
                 postImage: '/images/' + req.files[0]?.filename,
-                authorId: '617505e86fae8a93bec34087'
+                authorId: '61777ee86cfa118e47591262'
 
             })
             const post = await newPost.save();

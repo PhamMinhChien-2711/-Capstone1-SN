@@ -18,10 +18,19 @@ import { getTimeDistanceFromNow } from "../../../utils/formater";
 import { Link, useHistory, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthContext";
 import axios from "axios";
+import PropTypes from "prop-types";
 
 import "./style.scss";
 
-export default function Post({ post, onLike }) {
+Post.propTypes = {
+  deletePost: PropTypes.object
+}
+
+export default function Post({ post, onLike }, props) {
+
+  // const {delete} = props
+  const {deletePost} = props
+
   const [modal, setModal] = useState(false);
 
   const { user: currentUser } = useContext(AuthContext);
@@ -29,6 +38,8 @@ export default function Post({ post, onLike }) {
   const toggle = () => setModal(modal ? false : true);
 
   const isLiked = post.likeCount.includes(currentUser?._id);
+
+  
 
   return (
     <>
@@ -53,8 +64,8 @@ export default function Post({ post, onLike }) {
               {getTimeDistanceFromNow(post.createdAt)}
             </span>
           </div>
-          <div className='card-postTop-Right'>
-            <div className='card-postTop-Right-icon'>
+          <div className='card-postTop-Right' style={{zIndex: '1000'}}>
+            <div className='card-postTop-Right-icon' >
               <MoreVert onClick={toggle} />
             </div>
             {modal && (
@@ -66,6 +77,7 @@ export default function Post({ post, onLike }) {
 
                 <div className='card-postTop-Right-modal-child'>
                   <DeleteIcon />
+                  {/* <button onClick={deletePost}>CHUNG</button> */}
                   Delete
                 </div>
                 <div onClick={toggle} className='card-postTop-Right-modal-child'>

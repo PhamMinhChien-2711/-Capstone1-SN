@@ -18,6 +18,7 @@ import { LoadingButton } from "@mui/lab";
 import { createPost, fetchPosts } from "../../api/postHoiDap";
 import { uploadImage } from "../../api/upload";
 import LoadingBar from "react-top-loading-bar";
+import { seo } from "../../utils/seo";
 
 const HoiDap = (props) => {
   const { user, dispatch } = useContext(AuthContext);
@@ -28,6 +29,7 @@ const HoiDap = (props) => {
     attachment: "",
   });
   useEffect(() => {
+    seo("Hỏi Đáp");
     loadingRef.current.continuousStart();
     setLoading(true);
     fetchPosts().then((res) => {
@@ -74,7 +76,7 @@ const HoiDap = (props) => {
       {loading && (
         <div
           style={{
-            position: "absolute",
+            position: "fixed",
             top: "10px",
             left: "10px",
             zIndex: "1",

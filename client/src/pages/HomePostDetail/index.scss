@@ -6,19 +6,16 @@
   margin: 1rem auto;
   justify-content: space-between;
   &-left {
-    margin-left: 0rem;
     &-comment {
       &-top {
-        border: 5px solid #ffffff;
-        padding: 10px 20px;
+        padding: 0px 0px;
         position: relative;
-        height: 150px;
+        height: 110px;
         &-input {
           border-radius: 5px;
           border: 1px solid rgb(226, 226, 225);
           width: 100%;
           padding: 10px;
-
           &:focus {
             border: white;
           }
@@ -26,9 +23,9 @@
 
         &-button {
           position: absolute !important;
-          right: 20px !important;
+          right: 0px !important;
           translate: -19px;
-          bottom: 5px !important;
+          bottom: -20px !important;
           background-color: rgb(73, 73, 73) !important;
           color: white !important;
 
@@ -59,8 +56,6 @@
       &-button {
         margin-left: 0px;
       }
-
-      
     }
 
     &-content {
@@ -81,16 +76,6 @@
         &-Name {
           padding-left: 0px;
         }
-      }
-    }
-    &-Send {
-      display: flex;
-      justify-content: space-between;
-      padding-top: 40px;
-
-      &-input {
-        border: white;
-        border-radius: 5px;
       }
     }
   }
