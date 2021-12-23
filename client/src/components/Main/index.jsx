@@ -71,10 +71,12 @@ export default function Main() {
       <Route path='/user'>
         <User />
       </Route>
+      <Route path='/newPostSupport'>
+        <NewPostSupport />
+      </Route>
       {/* <Link path={`/users/${user.username}`}>
                 <User />
             </Link> */}
-            
     </Switch>
   );
 }
