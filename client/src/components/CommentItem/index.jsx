@@ -20,5 +20,6 @@ export default function CommentItem(props) {
         </div>
 
         <div className='comment-item-content' >{item?.content} </div>
+        {/* <button className='comment-item-delete' >delete </button> */}
     </div>
 }

@@ -1,21 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useRef,useContext } from "react";
 import { useLocation, Link } from "react-router-dom";
 import "./index.scss";
+import { LoadingButton } from "@mui/lab";
+import CommentItem from "../../components/CommentItem";
 import axios from "axios";
+import { AuthContext } from "../../context/AuthContext";
 import Map from "../../components/Map/Map";
 import ViewFullImage from "../../components/ViewFullImage/ViewFullImage";
-
+import { io } from "socket.io-client";
 import { Button } from "@mui/material";
+import commentApi from "../../api/commentCuuTro";
 import ButtonBack from "../../components/ButtonBack";
 function CuuTroPostDetail(props) {
   const key = "AIzaSyCgRBeGCNcwSBnC4ppydD7HTZzgJU1hIYI";
   //truyen props thong qua Link
+  const { user: profile } = useContext(AuthContext);
   const location = useLocation();
+  const [comment, setComment] = useState([]);
   const [post, setPost] = useState({
     title: "",
     content: "",
     postImage: "",
     visible: false,
+  });
+  const [postData, setPostData] = useState({
+    content: "",
   });
   const [status, setStatus] = useState(true);
   // const [buttonStatus, setButtonStatus] = useState(true)
@@ -33,6 +42,38 @@ function CuuTroPostDetail(props) {
       }
       console.log("location: ", location);
     } catch (error) {}
+  };
+  const socket = useRef();
+  const onChange = (e) => {
+    const { value, name } = e.target;
+    setPostData((prev) => ({ ...prev, [name]: value }));
+  };
+  useEffect(() => {
+    socket.current = io("ws://localhost:8900");
+    socket.current.on(`getComment-${location.pathname.split("/")[2]}`, (_comment) => {
+      console.log(_comment, "on comment");
+      setComment((prev) => [...prev, _comment]);
+    });
+
+    commentApi.getComment(location.pathname.split("/")[2]).then((res) => {
+      setComment(res.data);
+    });
+  }, []);
+  const onComment = async () => {
+    commentApi.postComment({
+      authorId: profile?._id,
+      content: postData.content,
+      postId:   post._id,
+    });
+    socket.current.emit(`sendComment`, {
+      authorId: profile?._id,
+      content: postData.content,
+      postId: post._id,
+      authorInfo: profile,
+    });
+    setPostData({
+      content: "",
+    });
   };
   useEffect(() => {
     loadPost();
@@ -161,8 +202,36 @@ function CuuTroPostDetail(props) {
         <div div className='CTPDT-body-left'>
           {/* {contentPost()} */}
           {checkStatus()}
+          <hr/>
+          <section className='CTPDT-body-left-comment'>
+          <div className='PD-left-comment-top'>
+            <textarea
+              className='PD-left-comment-top-input'
+              name='content'
+              type='text'
+              placeholder='Write a comment'
+              onChange={onChange}
+              value={postData.content}
+            />
+            <LoadingButton
+              className='PD-left-comment-top-button'
+              color='primary'
+              onClick={onComment}
+            >
+              Send
+            </LoadingButton>
+          </div>
 
-          <section className='CTPDT-body-left-comment'>comment</section>
+          <div className='PD-left-comment-content '>
+            {comment?.reverse().map((item) => {
+              return (
+                <div className='commentPost-User'>
+                  <CommentItem item={item} />
+                </div>
+              );
+            })}
+          </div>
+          </section>
         </div>
         <div className='CTPDT-body-right-infor'>
           <span className='CTPDT-body-right-infor-author'>{post.name}</span>

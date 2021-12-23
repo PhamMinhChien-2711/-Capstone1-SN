@@ -13,7 +13,7 @@ import axios from "axios";
 import { seo } from "../../utils/seo";
 
 function User(props) {
-  const { user: currentUser } = useContext(AuthContext);
+  const { user: currentUser, dispatch } = useContext(AuthContext);
   console.log("currentUser: ", currentUser);
 
   const [user, setUser] = useState();
@@ -63,8 +63,8 @@ function User(props) {
 
     userApi.updateUser(currentUser?._id, userInfo).then((res) => {
       toggle();
-      userApi.getUser().then((res) => {
-        setUser(res.data);
+      userApi.getUser(currentUser?._id).then((res) => {
+        dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
       });
     });
   };
@@ -84,10 +84,10 @@ function User(props) {
   return (
     <div className='User'>
       <div className='User-left'>
-        <img src={user?.profilePicture} alt='' />
+        <img src={currentUser?.profilePicture} alt='' />
       </div>
       <div className='User-right'>
-        <span className='User-right__userName'>{user?.username}</span>
+        <span className='User-right__userName'>{currentUser?.username}</span>
         <Link style={{ textDecoration: "none" }} to={`/messenger`}>
           <span className='User-right__button-edit' onClick={handleClick}>
             Messages
@@ -143,15 +143,15 @@ function User(props) {
         <br />
         <br />
         <span className='User-right__post'>
-          <strong>1</strong> post
+          <strong>0</strong> post
         </span>
         <span className='User-right__follower'>
-          <strong>{/* {user?.followers} */} </strong> followers
+          <strong>{/* {user?.followers} */} 0</strong> followers
         </span>
         <span className='User-right__following'>
-          <strong>122</strong> following
+          <strong>0</strong> following
         </span>
-        <div className='User-right__name'>{user?.username}</div>
+        <div className='User-right__name'>{currentUser?.username}</div>
       </div>
       {/* <>
                     <Col lg='2'> </Col>

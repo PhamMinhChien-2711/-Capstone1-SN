@@ -157,19 +157,19 @@ const Home = (props) => {
           <Modal isOpen={modal} toggle={toggle}>
             <ModalHeader toggle={toggle}>Add a post ✍️</ModalHeader>
             <ModalBody>
-              <Input
+              {/* <Input
                 style={{ marginBottom: "0.5rem" }}
                 name='title'
                 type='text'
                 placeholder='title'
                 onChange={onChange}
                 value={postData.title}
-              />
+              /> */}
               <Input
                 style={{ marginBottom: "0.5rem" }}
                 name='content'
                 type='textarea'
-                placeholder='content'
+                placeholder='Bạn đang nghĩ gì thế...?'
                 onChange={onChange}
                 value={postData.content}
               />

@@ -4,18 +4,21 @@ import WritePost from "../../components/WritePost";
 import Home from "../../pages/HomePage";
 import HoiDap from "../../pages/HoiDap";
 import CuuTro from "../../pages/CuuTro";
+
 import Shop from "../../pages/Shop";
 import HomePostDetail from "../../pages/HomePostDetail";
 import User from "../../pages/User";
 import CuuTroPostDetail from "../../pages/CuuTroPostDetail";
 import HoiDapPostDetail from "../../pages/HoiDapPostDetail";
+
 // import SignIn from '../../pages/SignIn';
 // import SignUp from '../../pages/SignUp';
 import Cart from "../../pages/GioHang";
 import { AuthContext } from "../../context/AuthContext";
 import Login from "../../pages/login";
 import Register from "../../pages/register";
-import NewPostSupport from "../Item/NewPostSupport";
+import NewPostSupport from '../Item/NewPostSupport'
+import NewItem from "../Item/NewItem";
 
 export default function Main() {
   const { user } = useContext(AuthContext);
@@ -55,6 +58,9 @@ export default function Main() {
       </Route>
       <Route exact path='/newPostSupport'>
         <NewPostSupport />
+      </Route>
+      <Route exact path='/newitem'>
+        <NewItem />
       </Route>
       {/* <Route path='/signin'>
                 <SignIn/>

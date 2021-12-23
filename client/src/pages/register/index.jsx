@@ -6,6 +6,7 @@ import TypeWritter from "typewriter-effect";
 import * as Yup from "yup";
 import { FastField, Form, Formik } from "formik";
 import InputField from "../../components/CustomField/InputField";
+import { toast } from "react-toastify";
 
 export default function Register() {
   // const username = useRef();
@@ -31,6 +32,7 @@ export default function Register() {
       await axios.post(`${process.env.REACT_APP_BASE_API}/auth/register`, user);
       history.push("/");
     } catch (err) {
+      toast.error("Thông tin đăng kí bị trùng");
       console.log(err);
     }
   };

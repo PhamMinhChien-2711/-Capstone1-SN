@@ -64,8 +64,8 @@ function HoiDapPostDetail(props) {
           {/* <img src='https://images.unsplash.com/photo-1635365349638-c79256d73f79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80' /> */}
         </section>
 
-        <section className='PD-left-comment'>
-          <div className='PD-left-comment-top'>
+        <section className='PD-left-comment '>
+          <div className='PD-left-comment-top '>
             <textarea
               className='PD-left-comment-top-input'
               name='content'
