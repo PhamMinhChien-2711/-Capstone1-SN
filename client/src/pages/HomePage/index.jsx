@@ -10,6 +10,7 @@ import LoadingOverlay from "react-loading-overlay";
 import { createPost, fetchPosts, likePost } from "../../api/post";
 import { uploadImage } from "../../api/upload";
 import styled, { css } from "styled-components";
+import axios from 'axios'
 import {
   Container,
   Row,
@@ -118,7 +119,16 @@ const Home = (props) => {
     setPosts(newPosts);
   };
 
+  const deletePost = async (_id) => {
+    const response = await axios.delete(`${process.env.REACT_APP_BASE_API}/posts/deleted/${_id}`, { _id })
+    
+
+    console.log('response', response)
+
+  }
+
   const loadingRef = useRef(null);
+
 
   return (
     <div className='Home'>

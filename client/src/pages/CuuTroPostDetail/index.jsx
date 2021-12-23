@@ -50,12 +50,12 @@ function CuuTroPostDetail(props) {
   };
   useEffect(() => {
     socket.current = io("ws://localhost:8900");
-    socket.current.on(`getComment-${post._id}`, (_comment) => {
+    socket.current.on(`getComment-${location.pathname.split("/")[2]}`, (_comment) => {
       console.log(_comment, "on comment");
       setComment((prev) => [...prev, _comment]);
     });
 
-    commentApi.getComment(post._id).then((res) => {
+    commentApi.getComment(location.pathname.split("/")[2]).then((res) => {
       setComment(res.data);
     });
   }, []);
@@ -63,7 +63,7 @@ function CuuTroPostDetail(props) {
     commentApi.postComment({
       authorId: profile?._id,
       content: postData.content,
-      postId: post._id,
+      postId:   post._id,
     });
     socket.current.emit(`sendComment`, {
       authorId: profile?._id,
@@ -202,8 +202,36 @@ function CuuTroPostDetail(props) {
         <div div className='CTPDT-body-left'>
           {/* {contentPost()} */}
           {checkStatus()}
+          <hr/>
+          <section className='CTPDT-body-left-comment'>
+          <div className='PD-left-comment-top'>
+            <textarea
+              className='PD-left-comment-top-input'
+              name='content'
+              type='text'
+              placeholder='Write a comment'
+              onChange={onChange}
+              value={postData.content}
+            />
+            <LoadingButton
+              className='PD-left-comment-top-button'
+              color='primary'
+              onClick={onComment}
+            >
+              Send
+            </LoadingButton>
+          </div>
 
-          <section className='CTPDT-body-left-comment'>comment</section>
+          <div className='PD-left-comment-content '>
+            {comment?.reverse().map((item) => {
+              return (
+                <div className='commentPost-User'>
+                  <CommentItem item={item} />
+                </div>
+              );
+            })}
+          </div>
+          </section>
         </div>
         <div className='CTPDT-body-right-infor'>
           <span className='CTPDT-body-right-infor-author'>{post.name}</span>

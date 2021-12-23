@@ -99,6 +99,32 @@ router.delete("/:id", async (req, res) => {
       res.status(500).json(err);
     }
   });
+
+router.delete('deleted/:id', async (req, res)=>{
+  try {
+    const postDeletedCondition={_id:req.params.id}
+  const deletedPost = await Post.findOneAndDelete(postDeletedCondition)
+
+  if(!deletedPost){
+    return res.json({
+      success:false,
+      message:'Deleted Fail'
+    })
+  }
+  else {
+    return res.json({
+        success: true,
+        message: 'Completed',
+        post: postDelete,
+    })
+}
+  } catch (error) {
+    return res.json({
+      success: false,
+      message: 'Internal server error'
+  })
+  }
+})
   router.get("/timeline/:userId", async (req, res) => {
     try {
       const currentUser = await User.findById(req.params.userId);
