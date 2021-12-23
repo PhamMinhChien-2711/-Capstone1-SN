@@ -56,13 +56,13 @@ function ShopItem(props) {
               {item.currency}
             </Typography>
             <Typography variant='body2' color='text.primary'>
-              {item.price} USD
+              {item.price} VND
             </Typography>
           </CardContent>
           <CardActions>
             <span>Số lượng:{item.quantity}</span>
             <Button variant='contained' size='small' onClick={() => addToCart(item)}>
-              Buy
+              Mua Ngay
             </Button>
           </CardActions>
         </Card>

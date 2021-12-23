@@ -186,10 +186,10 @@ const Home = (props) => {
             </ModalBody>
             <ModalFooter>
               <LoadingButton loading={postLoading} color='primary' onClick={post}>
-                POST IT
+                Đăng Ngay
               </LoadingButton>
               <Button variant='danger' onClick={toggle}>
-                Cancel
+                Huỷ
               </Button>
             </ModalFooter>
           </Modal>

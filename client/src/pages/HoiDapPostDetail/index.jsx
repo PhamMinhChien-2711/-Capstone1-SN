@@ -79,7 +79,7 @@ function HoiDapPostDetail(props) {
               color='primary'
               onClick={onComment}
             >
-              Send
+              Gửi
             </LoadingButton>
           </div>
 

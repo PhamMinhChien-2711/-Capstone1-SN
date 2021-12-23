@@ -41,7 +41,7 @@ export default function Login() {
       <div className='login-right'>
         <h3 className='login-right__logo'>SNPO</h3>
         <span className='login-right__description'>
-          Connect with other pet owers around you on SNPO social.
+        Connect with other pet owers around you on SNPO social.
         </span>
         <Formik
           initialValues={initialValues}
@@ -59,7 +59,7 @@ export default function Login() {
                 <Field
                   name='password'
                   component={InputField}
-                  placeholder='Password'
+                  placeholder='Mật khẩu'
                   type={show ? "text" : "password"}
                 ></Field>
                 <img
@@ -75,9 +75,9 @@ export default function Login() {
                   type='submit'
                   disabled={isFetching}
                 >
-                  {isFetching ? <CircularProgress color='white' size='20px' /> : "Log In"}
+                  {isFetching ? <CircularProgress color='white' size='20px' /> : "ĐĂNG NHẬP"}
                 </button>
-                <span className='login-right__form__buttonForgot'>Forgot Password?</span>
+                <span className='login-right__form__buttonForgot'>Quên mật khẩu?</span>
 
                 <button
                   disabled={isFetching}
@@ -87,7 +87,7 @@ export default function Login() {
                   {isFetching ? (
                     <CircularProgress color='white' size='20px' />
                   ) : (
-                    "Or Create an Account"
+                    "Hoặc tạo tài khoản"
                   )}
                 </button>
               </Form>

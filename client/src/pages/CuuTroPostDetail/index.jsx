@@ -4,6 +4,7 @@ import "./index.scss";
 import { LoadingButton } from "@mui/lab";
 import CommentItem from "../../components/CommentItem";
 import axios from "axios";
+import { getTimeDistanceFromNow } from "../../utils/formater";
 import { AuthContext } from "../../context/AuthContext";
 import Map from "../../components/Map/Map";
 import ViewFullImage from "../../components/ViewFullImage/ViewFullImage";
@@ -243,7 +244,7 @@ function CuuTroPostDetail(props) {
             Theo dõi
           </Button>
           <br />
-          <span className='CTPDT-body-right-infor-date'>Ngày đăng: {post.createdAt}</span>
+          <span className='CTPDT-body-right-infor-date'>Ngày đăng: {getTimeDistanceFromNow(post.createdAt)}</span>
 
           {/* <div style={{ marginTop: "4%", width: "150%" }}>
             <Map
