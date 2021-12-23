@@ -60,7 +60,7 @@ function ShopItem(props) {
             </Typography>
           </CardContent>
           <CardActions>
-            <span>SL:{item.quantity}</span>
+            <span>Số lượng:{item.quantity}</span>
             <Button variant='contained' size='small' onClick={() => addToCart(item)}>
               Buy
             </Button>
