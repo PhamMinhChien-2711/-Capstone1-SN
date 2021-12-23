@@ -1,48 +1,33 @@
-.HomePostDetail {
+.CTPDT {
+  width: 80%;
+  margin: 0 auto;
+  &-head {
+    padding: 10px 0;
+  }
+
+  &-body {
     display: flex;
-    flex-direction: row;
-    margin-top: 1rem;
-    .left {
-        width: 50%;
-        margin-left: 10rem;
+    &-left {
+      width: 50%;
 
-        .head {
-            span {
-                margin-left: 30px;
-            }
-            &-button {
-                margin-left: 50px;
-            }
-        }
-
-        .img {
-            img {
-                width: 300px;
-                height: 270px;
-                margin-left: 10px;
-            }
-        }
+      &-comment {
+        border-top: 1px solid rgb(201, 197, 197);
+      }
     }
 
-    .right {
-        padding: 0 2rem;
-        width: 30%;
-        position: fixed;
-        right: 0;
-        top: 18rem;
-        border-left: solid 1px black;
+    &-right {
+      width: 50%;
 
+      &-infor {
         &-author {
-            color: rgb(46, 46, 253);
-            font-weight: bold;
+          font-weight: bold;
+          color: #0d6efd;
         }
 
         &-button {
-            margin-left: 1rem;
+          margin-left: 15px !important;
         }
-
-        span {
-            font-style: italic;
-        }
+      }
     }
+  }
 }
