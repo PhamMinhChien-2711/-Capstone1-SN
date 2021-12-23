@@ -1,0 +1,27 @@
+h4 {
+  text-align: center;
+  opacity: 0.6;
+}
+.add {
+  width: 50%;
+  margin: 20px auto;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+
+  &-input {
+    margin-bottom: 10px;
+
+    &-upload {
+      width: 100px;
+    }
+  }
+
+  &-button {
+    width: 100%;
+
+    Button {
+      width: 100% !important;
+    }
+  }
+}

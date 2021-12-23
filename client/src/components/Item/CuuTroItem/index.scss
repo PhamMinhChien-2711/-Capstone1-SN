@@ -13,7 +13,7 @@
     transition: 0.3s ease-in-out;
   }
   &-dot {
-    width: 10px;
+    width: 15px;
     height: 10px;
     border-radius: 50%;
     background-color: #0d6efd;
@@ -22,13 +22,14 @@
   }
 
   &-content {
-    width: 30%;
+    width: 66%;
     margin-left: 10px;
   }
 
   &-image {
+    width: 100%;
     img {
-      width: 100%;
+      width: 50%;
       height: 100%;
       border-radius: 10px;
       margin-left: 5px;

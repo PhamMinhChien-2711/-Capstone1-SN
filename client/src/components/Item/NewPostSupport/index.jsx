@@ -1,8 +1,13 @@
 import React, { useState, useContext } from "react";
-import { NavLink, Route, Switch } from "react-router-dom";
-import "./AddItem.css";
+import { useHistory } from "react-router-dom";
+import "./AddItem.scss";
 import axios from "axios";
 import { AuthContext } from "../../../context/AuthContext";
+import { FastField, Form, Formik } from "formik";
+import InputField from "../../CustomField/InputField";
+import { Button, Input } from "reactstrap";
+import { toast } from "react-toastify";
+import { TextField } from "@mui/material";
 
 export default function NewPostSupport() {
   const [data, setData] = useState({
@@ -15,15 +20,12 @@ export default function NewPostSupport() {
   const [postLoading, setPostLoading] = useState(false);
 
   const onChangeData = (event) => {
-    console.log(event.target.files);
     setData({ ...data, [event.target.name]: event.target.value });
     if (event.target.name === "postImage")
       setData({ ...data, postImage: event.target.files[0] });
   };
-  console.log(data);
+  const history = useHistory();
   const onSubmit = async (event) => {
-    event.preventDefault();
-
     try {
       setPostLoading(true);
       if (user === null) return alert("Ban Phai Can Dang Nhap");
@@ -35,58 +37,59 @@ export default function NewPostSupport() {
         `${process.env.REACT_APP_BASE_API}/support/newSupport`,
         formData
       );
-
-      console.log(response);
-    } catch (error) {}
+    } catch (error) {
+      console.log("ERR of Relief post", error);
+    }
   };
-  const onChangMessage = () => {
-    alert("Đã thêm thành công");
+  const onChangeMessage = () => {
+    toast.success("Đã thêm thành công");
+    history.push("/cuutro");
   };
   return (
     <div>
       {"admin" === "admin" ? (
         <div>
           <div id='root'>
-            <div className='App'>
-              <div className='admin'>
-                <div className='nav-menu-mobile'>
-                  <i className='fas fa-bars text-black' />
+            <div className='add'>
+              <form onSubmit={onSubmit} className='margin-top-0 form-custom'>
+                <div className='Title-item'>
+                  <h4>Post Relief</h4>
                 </div>
 
-                <form onSubmit={onSubmit} className='margin-top-0 form-custom'>
-                  <div className='Title-item'>
-                    <h1>Post Relief</h1>
-                  </div>
-                  <div className='container'>
-                    <input
-                      type='text'
-                      placeholder='Title'
-                      name='title'
-                      required
-                      minlength='8'
-                      maxlength='60'
-                      onChange={onChangeData}
-                    />
-                    <input
-                      type='text'
-                      placeholder='Content'
-                      name='content'
-                      required
-                      onChange={onChangeData}
-                    />
-                    <input
-                      type='file'
-                      name='postImage'
-                      placeholder='Upload an image'
-                      onChange={onChangeData}
-                      accept='image/png, image/gif, image/jpeg'
-                    />
-                    <button type='submit' onClick={onChangMessage}>
-                      Post It
-                    </button>
-                  </div>
-                </form>
-              </div>
+                <div className='add-input'>
+                  <TextField
+                    fullWidth
+                    name='title'
+                    label='Title'
+                    value={data.title}
+                    onChange={onChangeData}
+                  />
+                </div>
+                <div className='add-input'>
+                  <TextField
+                    fullWidth
+                    name='content'
+                    placeholder='Content'
+                    label='Content'
+                    value={data.content}
+                    onChange={onChangeData}
+                  />
+                </div>
+
+                <div className='add-input'>
+                  <input
+                    type='file'
+                    name='postImage'
+                    onChange={onChangeData}
+                    accept='image/png, image/gif, image/jpeg'
+                  />
+                </div>
+                <div className='add-button'>
+                  <Button type='submit' onClick={onChangeMessage}>
+                    POST IT
+                  </Button>
+                </div>
+              </form>
             </div>
           </div>
           <div className='swal-overlay' tabIndex={-1}>
