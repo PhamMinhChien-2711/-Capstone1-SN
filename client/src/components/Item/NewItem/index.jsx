@@ -1,8 +1,11 @@
 import React, { useState, useContext } from "react";
 import { NavLink, Route, Switch } from "react-router-dom";
-import "./AddItem.css";
+import "./AddItem.scss";
 import axios from "axios";
 import { AuthContext } from "../../../context/AuthContext";
+import { FormControl, MenuItem, TextareaAutosize, TextField } from "@material-ui/core";
+import { Button } from "reactstrap";
+import { InputLabel, Select } from "@mui/material";
 export default function NewItem() {
   const [data, setData] = useState({
     title: "",
@@ -65,63 +68,61 @@ export default function NewItem() {
 
                 <form onSubmit={onSubmit} className='margin-top-0 form-custom'>
                   <div className='Title-item'>
-                    <h1>Add Items</h1>
+                    <h4>Add Items</h4>
                   </div>
                   <div className='container'>
-                    <input
-                      type='text'
-                      placeholder='Title'
-                      name='title'
-                      required
-                      minlength='8'
-                      maxlength='60'
-                      onChange={onChangeData}
-                    />
-                    {/* <input
-                                            type="text"
-                                            placeholder="Currency"
-                                            select name="currency" id ="currency"
-                                            required
-                                            onChange={onChangeData}
-                                        /> */}
-                    <select name='currency' id='currency'>
+                    <div className='control'>
+                      <TextField
+                        label='Title'
+                        name='title'
+                        required
+                        minlength='8'
+                        maxlength='60'
+                        onChange={onChangeData}
+                      />
+                      <TextField
+                        style={{ marginLeft: "100px" }}
+                        type='number'
+                        label='Price'
+                        name='price'
+                        onChange={onChangeData}
+                      />
+                    </div>
+
+                    {/* <select name='currency' id='currency'>
                       <option value='USD'>USD</option>
                       <option value='VNĐ'>VND</option>
-                    </select>
+                    </select> */}
+                    <div className='control'>
+                      <TextField
+                        type='number'
+                        label='Number'
+                        name='quantity'
+                        required
+                        onChange={onChangeData}
+                      />
+                      <textarea
+                        placeholder='Description'
+                        name='desc'
+                        defaultValue={""}
+                        onChange={onChangeData}
+                      />
+                    </div>
+                    <div className='control'>
+                      <input
+                        type='file'
+                        name='productImage'
+                        placeholder='Upload an image'
+                        onChange={onChangeData}
+                        accept='image/png, image/gif, image/jpeg'
+                      />
+                    </div>
 
-                    <input
-                      type='number'
-                      placeholder='Nhập giá bán'
-                      name='price'
-                      required
-                      onChange={onChangeData}
-                    />
-                    <input
-                      type='number'
-                      placeholder='Nhập số lượng'
-                      name='quantity'
-                      required
-                      onChange={onChangeData}
-                    />
-                    <textarea
-                      placeholder='Description'
-                      cols={30}
-                      rows={5}
-                      name='desc'
-                      defaultValue={""}
-                      onChange={onChangeData}
-                    />
-
-                    <input
-                      type='file'
-                      name='productImage'
-                      placeholder='Upload an image'
-                      onChange={onChangeData}
-                      accept='image/png, image/gif, image/jpeg'
-                    />
-                    <button type='submit' onClick={onChangMessage}>
-                      Post It
-                    </button>
+                    <div className='control'>
+                      <Button type='submit' onClick={onChangMessage}>
+                        ADD ITEM
+                      </Button>
+                    </div>
                   </div>
                 </form>
               </div>
