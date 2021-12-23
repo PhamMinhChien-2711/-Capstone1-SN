@@ -1,24 +1,9 @@
 {
     "authorId": "617505e86fae8a93bec34087",
-    "total": 307,
+    "total": 0,
     "_id": "61b4c384ef64b30f60a9152b",
-    "cartItems": [
-        {
-            "quantity": 1,
-            "title": "Sữa tắm cho chó Pug ",
-            "price": 7,
-            "_id": "61c3ea5260e2a307fc9e139c",
-            "IDproduct": "61c19f4f85110831f0fd2f3e"
-        },
-        {
-            "quantity": 1,
-            "title": "Chó Phốc ",
-            "price": 300,
-            "_id": "61c3fd3a7482b02de0aa14da",
-            "IDproduct": "61c19a7685110831f0fd2f29"
-        }
-    ],
+    "cartItems": [],
     "createdAt": "2021-12-11T15:28:04.049Z",
-    "updatedAt": "2021-12-23T04:38:18.190Z",
+    "updatedAt": "2021-12-23T06:30:40.977Z",
     "__v": 0
 }
