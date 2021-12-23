@@ -30,6 +30,7 @@ export default function Register() {
     };
     try {
       await axios.post(`${process.env.REACT_APP_BASE_API}/auth/register`, user);
+      toast.success("Đăng kí thành công!");
       history.push("/");
     } catch (err) {
       toast.error("Thông tin đăng kí bị trùng");
@@ -63,7 +64,7 @@ export default function Register() {
           </h3>
 
           <span className='loginDesc'>
-            Connect with friends and the world around you on social.
+          Connect with friends and the world around you on social.
           </span>
         </div>
         <div className='loginRight'>
@@ -75,32 +76,32 @@ export default function Register() {
             {({ isSubmiting }) => {
               return (
                 <Form className='loginBox'>
-                  <h3 style={{ textAlign: "center" }}>SIGN UP</h3>
+                  <h3 style={{ textAlign: "center" }}>ĐĂNG KÝ</h3>
                   <FastField
                     name='username'
-                    placeholder='Username'
+                    placeholder='Tên đăng nhập'
                     component={InputField}
                   />
                   <FastField name='email' placeholder='Email' component={InputField} />
                   <FastField
                     name='password'
-                    placeholder='Password'
+                    placeholder='Mật khẩu'
                     component={InputField}
                     type='password'
                   />
                   <FastField
                     name='password_confirm'
-                    placeholder='Confirm password'
+                    placeholder='Nhập lại mật khẩu'
                     component={InputField}
                     type='password'
                   />
                   <div>
                     <button className='loginButton' type='submit'>
-                      Join with us
+                      Tham gia với chúng tôi
                     </button>
                   </div>
                   <div onClick={handleLogin} className='loginRegisterButton'>
-                    Already a number ? Sign in
+                    Đã có tài khoản ? Đăng Nhập
                   </div>
                 </Form>
               );
