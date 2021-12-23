@@ -18,7 +18,7 @@ function Shop() {
     <div className='Shop'>
       <div className='CT-head-button' onClick={() => history.push("/newitem")}>
           <Button size='medium' variant='contained'>
-            Đăng cứu trợ
+            Đăng Sản Phẩm
           </Button>
         </div>
       <section className='Shop__head'>
