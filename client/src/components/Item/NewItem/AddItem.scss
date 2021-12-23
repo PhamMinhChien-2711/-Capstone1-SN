@@ -1,0 +1,18 @@
+.admin {
+  width: 50%;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+
+.control {
+  padding: 10px 30px;
+  width: 200%px;
+
+  textarea {
+    border: none !important;
+    margin-left: 97px !important;
+    border-bottom: 1px solid rgb(168, 168, 168) !important;
+  }
+}
