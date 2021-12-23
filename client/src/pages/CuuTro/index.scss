@@ -28,8 +28,8 @@
       border-right: none;
       border-radius: 10px;
       border-top-left-radius: 0px;
-      max-width: 33%;
-      width: 33%;
+      max-width: 100%;
+      width: 760px;
       &-header {
         padding: 20px 20px;
         font-size: 23px;
@@ -38,7 +38,7 @@
     }
 
     &-right {
-      width: 60%;
+      width: 40%;
       margin-left: 5%;
       background-color: #ffffff;
       border-radius: 10px;

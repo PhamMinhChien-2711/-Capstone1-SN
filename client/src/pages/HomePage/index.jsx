@@ -170,6 +170,7 @@ const Home = (props) => {
                 name='content'
                 type='textarea'
                 placeholder='Bạn đang nghĩ gì thế...?'
+                
                 onChange={onChange}
                 value={postData.content}
               />
