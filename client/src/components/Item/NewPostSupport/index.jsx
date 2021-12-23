@@ -56,7 +56,7 @@ export default function NewPostSupport() {
                   <h4>Post Relief</h4>
                 </div>
 
-                <div className='add-input'>
+                {/* <div className='add-input'>
                   <TextField
                     fullWidth
                     name='title'
@@ -64,13 +64,13 @@ export default function NewPostSupport() {
                     value={data.title}
                     onChange={onChangeData}
                   />
-                </div>
+                </div> */}
                 <div className='add-input'>
                   <TextField
                     fullWidth
                     name='content'
-                    placeholder='Content'
-                    label='Content'
+                    placeholder='Bạn đang gặp vấn đề gì vậy...?'
+                    label='Bạn đang gặp vấn đề gì vậy...?'
                     value={data.content}
                     onChange={onChangeData}
                   />

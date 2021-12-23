@@ -65,6 +65,7 @@ function User(props) {
       toggle();
       userApi.getUser(currentUser?._id).then((res) => {
         dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+        setUser(res.data)
       });
     });
   };
@@ -84,10 +85,10 @@ function User(props) {
   return (
     <div className='User'>
       <div className='User-left'>
-        <img src={currentUser?.profilePicture} alt='' />
+        <img src={user?.profilePicture} alt='' />
       </div>
       <div className='User-right'>
-        <span className='User-right__userName'>{currentUser?.username}</span>
+        <span className='User-right__userName'>{user?.username}</span>
         <Link style={{ textDecoration: "none" }} to={`/messenger`}>
           <span className='User-right__button-edit' onClick={handleClick}>
             Messages
@@ -151,7 +152,7 @@ function User(props) {
         <span className='User-right__following'>
           <strong>0</strong> following
         </span>
-        <div className='User-right__name'>{currentUser?.username}</div>
+        <div className='User-right__name'>{user?.username}</div>
       </div>
       {/* <>
                     <Col lg='2'> </Col>
