@@ -53,6 +53,9 @@ export default function Main() {
       <Route path='/hoidap/:id'>
         <HoiDapPostDetail />
       </Route>
+      <Route exact path='/newPostSupport'>
+        <NewPostSupport />
+      </Route>
       {/* <Route path='/signin'>
                 <SignIn/>
             </Route>

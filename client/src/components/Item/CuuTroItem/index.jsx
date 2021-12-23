@@ -35,7 +35,7 @@ function CuuTroItem(props) {
         <div className='CT-item-dot'></div>
         <span className='CT-item-content'>{post.content}</span>
         <div className='CT-item-image'>
-          <img src={"/assets/person/1.jpeg" || post.postImage} />
+          <img src={post.postImage || "/assets/post/1.jpeg"} />
         </div>
       </Link>
     </div>

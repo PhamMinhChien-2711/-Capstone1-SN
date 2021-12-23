@@ -1,10 +1,38 @@
 {
     "authorId": "617505e86fae8a93bec34087",
+<<<<<<< HEAD
+    "total": 313,
+=======
     "total": 319,
+>>>>>>> fbc6c03891bd43e1cd65facd66fac329fe3ca39d
     "_id": "61b4c384ef64b30f60a9152b",
     "cartItems": [
         {
             "quantity": 1,
+<<<<<<< HEAD
+            "title": "Chó Phốc ",
+            "price": 300,
+            "_id": "61c2d4a8d32bc800f0648a79",
+            "IDproduct": "61c19a7685110831f0fd2f29"
+        },
+        {
+            "quantity": 1,
+            "title": "Sản Phẩm Cho Chó Gọi SLEEKY",
+            "price": 6,
+            "_id": "61c2d4af637eed46e8e1bca2",
+            "IDproduct": "61c19bc485110831f0fd2f34"
+        },
+        {
+            "quantity": 1,
+            "title": "Sữa tắm cho chó Pug ",
+            "price": 7,
+            "_id": "61c2d4b589d71f37985fcb6c",
+            "IDproduct": "61c19f4f85110831f0fd2f3e"
+        }
+    ],
+    "createdAt": "2021-12-11T15:28:04.049Z",
+    "updatedAt": "2021-12-22T07:33:09.345Z",
+=======
             "title": "Sản Phẩm Cho Chó Gọi SLEEKY",
             "price": 6,
             "_id": "61c2d4af637eed46e8e1bca2",
@@ -34,5 +62,6 @@
     ],
     "createdAt": "2021-12-11T15:28:04.049Z",
     "updatedAt": "2021-12-22T19:55:16.077Z",
+>>>>>>> fbc6c03891bd43e1cd65facd66fac329fe3ca39d
     "__v": 0
 }
