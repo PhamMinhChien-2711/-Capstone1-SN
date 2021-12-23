@@ -13,6 +13,8 @@ const postRoute = require("./routes/posts");
 const commentRoute = require("./routes/comment");
 const supportRoute = require("./routes/support");
 const commentHoiDapRoute = require("./routes/commentHoiDap");
+const CommentCuuTroRoute = require("./routes/commentCuuTro");
+
 const productRoute=require('./routes/product')
 const cartRoute=require('./routes/cart')
 const postsHoiDap = require("./routes/postsHoiDap");
@@ -68,6 +70,8 @@ app.use("/api/support", supportRoute);
 app.use('/api/products', productRoute);
 app.use('/api/cart', cartRoute);
 app.use("/api/commentHoiDap", commentHoiDapRoute);
+app.use("/api/CommentCuuTro", CommentCuuTroRoute);
+
 app.use(express.static('public'))
 
 app.listen(8800, () => {

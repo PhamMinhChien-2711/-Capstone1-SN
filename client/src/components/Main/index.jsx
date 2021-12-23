@@ -4,6 +4,7 @@ import WritePost from "../../components/WritePost";
 import Home from "../../pages/HomePage";
 import HoiDap from "../../pages/HoiDap";
 import CuuTro from "../../pages/CuuTro";
+import NewPostSupport from "../../components/Item/NewPostSupport";
 import Shop from "../../pages/Shop";
 import HomePostDetail from "../../pages/HomePostDetail";
 import User from "../../pages/User";
@@ -51,6 +52,9 @@ export default function Main() {
       </Route>
       <Route path='/hoidap/:id'>
         <HoiDapPostDetail />
+      </Route>
+      <Route exact path='/newPostSupport'>
+        <NewPostSupport />
       </Route>
       {/* <Route path='/signin'>
                 <SignIn/>

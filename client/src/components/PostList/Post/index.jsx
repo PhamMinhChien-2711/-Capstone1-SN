@@ -127,10 +127,10 @@ export default function Post({ post, onLike }) {
         </CardActions>
 
         <CardContent className='card-content'>
-          <Typography align='left' variant='h5' color='textPrimary'>
+          {/* <Typography align='left' variant='h5' color='textPrimary'>
             {post.title}
-          </Typography>
-          <Typography color='textSecondary'>
+          </Typography> */}
+          <Typography color='textPrimary'>
             {""}
             {post.content}{" "}
           </Typography>
