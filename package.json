@@ -1,27 +1,22 @@
 {
-  "name": "Capstone",
+  "name": "Capstone1",
   "version": "1.0.0",
-  "description": "",
+  "description": "Build a social network for pet owner",
   "scripts": {
-    "start": "concurrently  \"cd client && yarn start\" \"cd api && yarn start\" \"cd socket && yarn start\" "
+    "start": "concurrently  \"cd client && yarn start\" \"cd api && yarn start\" \"cd socket && yarn start\" ",
+    "install-all": "concurrently  \"cd client && yarn install\" \"cd api && yarn install\" \"cd socket && yarn install\" "
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/phudinhnguyen/instagram-clone.git"
+    "url": "git+https://github.com/PhamMinhChien-2711/-Capstone1-SN.git"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/phudinhnguyen/instagram-clone/issues"
+    "url": "https://github.com/PhamMinhChien-2711/-Capstone1-SN/issues"
   },
-  "homepage": "https://github.com/phudinhnguyen/instagram-clone#readme",
+  "homepage": "https://github.com/PhamMinhChien-2711/-Capstone1-SN#README.md",
   "dependencies": {
-    "@aeaton/react-prosemirror": "^2.0.3",
-    "@aeaton/react-prosemirror-config-default": "^2.0.3",
-    "concurrently": "^5.3.0",
-    "formik": "^2.2.9",
-    "react-loader-spinner": "^4.0.0",
-    "typewriter-effect": "^2.18.2",
-    "yup": "^0.32.11"
+    "concurrently": "^5.3.0"
   }
 }
