@@ -11,10 +11,11 @@
 - `Step 1`: Clone the project to local
 - `Step 2`: Open project folder in VISUAL STUDIO CODE
 - `Step 3`: use Ctrl + ~ for open terminal and Type npm i yarn --global
-- `Step 4`: Type yarn install-all
-- `Step 5`: In folder client -> create a file name .evn.local with content 'REACT_APP_BASE_API=http://localhost:8800/api'
-- `Step 6`: Ctrl + ~ and type yarn start
-- `Step 7`: View the website at Localhost:3000 at your browser
+- `Step 4`: Type yarn install 
+- `Step 5`: Type yarn install-all
+- `Step 6`: In folder client -> create a file name .evn.local with content 'REACT_APP_BASE_API=http://localhost:8800/api'
+- `Step 7`: Ctrl + ~ and type yarn start
+- `Step 8`: View the website at Localhost:3000 at your browser
 
 #### MAIN CONCEPT
 
